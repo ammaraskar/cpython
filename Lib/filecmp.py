@@ -51,10 +51,20 @@ def cmp(f1, f2, shallow=True):
     s1 = _sig(os.stat(f1))
     s2 = _sig(os.stat(f2))
     if s1[0] != stat.S_IFREG or s2[0] != stat.S_IFREG:
+        print("s1[0] != stat.S_IFREG or s2[0] != stat.S_IFREG")
         return False
     if shallow and s1 == s2:
         return True
     if s1[1] != s2[1]:
+        print("s1[1] = " + str(s1[1]))
+        print("s2[1] = " + str(s2[1]))
+        print("-------")
+        with open(f1) as fp1:
+            print(fp1.read())
+        print("-------")
+        with open(f2) as fp2:
+            print(fp2.read())
+        print("-------")
         return False
 
     outcome = _cache.get((f1, f2, s1, s2))
@@ -77,6 +87,7 @@ def _do_cmp(f1, f2):
             b1 = fp1.read(bufsize)
             b2 = fp2.read(bufsize)
             if b1 != b2:
+                print("b1 != b2")
                 return False
             if not b1:
                 return True
