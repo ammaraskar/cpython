@@ -2,7 +2,7 @@
 
 .. _allocating-objects:
 
-Allocating Objects on the Heap
+Allocating dummy Objects on the Heap
 ==============================
 
 
