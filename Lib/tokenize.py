@@ -39,7 +39,7 @@ blank_re = re.compile(br'^[ \t\f]*(?:[#\r\n]|$)', re.ASCII)
 import token
 __all__ = token.__all__ + ["tokenize", "generate_tokens", "detect_encoding",
                            "untokenize", "TokenInfo"]
-del token
+del token  
 
 EXACT_TOKEN_TYPES = {
     '(':   LPAR,
