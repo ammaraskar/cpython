@@ -34,6 +34,9 @@ matrix:
     - env: OPTIONAL=true
   include:
     - os: linux
+      env: PATCH_CHECK
+      script: ./python Tools/scripts/patchcheck.py --travis $TRAVIS_PULL_REQUEST
+    - os: linux
       language: c
       compiler: clang
       # gcc also works, but to keep the # of concurrent builds down, we use one C
