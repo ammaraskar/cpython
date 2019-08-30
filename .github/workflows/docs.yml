@@ -4,6 +4,7 @@ on:
 
 jobs:
   docs:
+    runs-on: ubuntu-latest
     steps:
     - uses: ammaraskar/sphinx-action@master
       with:
