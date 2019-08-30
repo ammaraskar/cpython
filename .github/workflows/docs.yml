@@ -1,0 +1,11 @@
+name: "Pull Request Docs Check"
+on: 
+- pull_request
+
+jobs:
+  docs:
+    steps:
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        args: "Docs/"
