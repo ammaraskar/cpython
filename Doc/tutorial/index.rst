@@ -2,7 +2,7 @@
 
 ######################
   The Python Tutorial
-######################
+  ######################
 
 Python is an easy to learn, powerful programming language. It has efficient
 high-level data structures and a simple but effective approach to
@@ -38,6 +38,8 @@ write Python modules and programs, and you will be ready to learn more about the
 various Python library modules described in :ref:`library-index`.
 
 The :ref:`glossary` is also worth going through.
+
+.. whoops:: mistake
 
 .. toctree::
    :numbered:
