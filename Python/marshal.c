@@ -487,6 +487,8 @@ w_complex_object(PyObject *v, char flag, WFILE *p)
         Py_ssize_t pos;
         PyObject *key, *value;
         W_TYPE(TYPE_DICT, p);
+        n = PyDict_Size(p);
+        W_SIZE(n, p);
         /* This one is NULL object terminated! */
         pos = 0;
         while (PyDict_Next(v, &pos, &key, &value)) {
@@ -1234,7 +1236,14 @@ r_object(RFILE *p)
         break;
 
     case TYPE_DICT:
-        v = PyDict_New();
+        n = r_long(p);
+        if (PyErr_Occurred())
+            break;
+        if (n < 0 || n > SIZE32_MAX) {
+            PyErr_SetString(PyExc_ValueError, "bad marshal data (list size out of range)");
+            break;
+        }
+        v = _PyDict_NewPresized(n);
         R_REF(v);
         if (v == NULL)
             break;
