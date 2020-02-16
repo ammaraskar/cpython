@@ -28,6 +28,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: ammaraskar/msvc-problem-matcher@master
     - name: Build CPython
       run: .\PCbuild\build.bat -e -p Win32
     - name: Display build info
@@ -40,6 +41,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: ammaraskar/msvc-problem-matcher@master
     - name: Build CPython
       run: .\PCbuild\build.bat -e -p x64
     - name: Display build info
