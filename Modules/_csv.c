@@ -42,7 +42,7 @@ _csv_traverse(PyObject *m, visitproc visit, void *arg)
 static void
 _csv_free(void *m)
 {
-   _csv_clear((PyObject *)m);
+   _csv_clear((PyObject **)m);
 }
 
 static struct PyModuleDef _csvmodule;
