@@ -1024,7 +1024,7 @@ forbidden_name(struct compiling *c, identifier name, const node *n,
             return 1;
         }
     }
-    return 0;
+    return;
 }
 
 static expr_ty

@@ -81,6 +81,7 @@ jobs:
       run: python3 Tools/ssl/multissltests.py --steps=library --base-directory $PWD/multissl --openssl $OPENSSL_VER --system Linux
     - name: Configure CPython
       run: ./configure --with-pydebug --with-openssl=$PWD/multissl/openssl/$OPENSSL_VER
+    - uses: ammaraskar/gcc-problem-matcher@master
     - name: Build CPython
       run: make -s -j4
     - name: Display build info
