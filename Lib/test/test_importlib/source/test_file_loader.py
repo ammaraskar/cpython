@@ -464,14 +464,14 @@ class BadBytecodeTest:
     def _test_partial_size(self, test, *, del_source=False):
         with util.create_modules('_temp') as mapping:
             bc_path = self.manipulate_bytecode('_temp', mapping,
-                                                lambda bc: bc[:15],
+                                                lambda bc: bc[:17],
                                                 del_source=del_source)
             test('_temp', mapping, bc_path)
 
     def _test_no_marshal(self, *, del_source=False):
         with util.create_modules('_temp') as mapping:
             bc_path = self.manipulate_bytecode('_temp', mapping,
-                                                lambda bc: bc[:16],
+                                                lambda bc: bc[:24],
                                                 del_source=del_source)
             file_path = mapping['_temp'] if not del_source else bc_path
             with self.assertRaises(EOFError):
@@ -480,7 +480,7 @@ class BadBytecodeTest:
     def _test_non_code_marshal(self, *, del_source=False):
         with util.create_modules('_temp') as mapping:
             bytecode_path = self.manipulate_bytecode('_temp', mapping,
-                                    lambda bc: bc[:16] + marshal.dumps(b'abcd'),
+                                    lambda bc: bc[:24] + marshal.dumps(b'abcd'),
                                     del_source=del_source)
             file_path = mapping['_temp'] if not del_source else bytecode_path
             with self.assertRaises(ImportError) as cm:
@@ -491,7 +491,7 @@ class BadBytecodeTest:
     def _test_bad_marshal(self, *, del_source=False):
         with util.create_modules('_temp') as mapping:
             bytecode_path = self.manipulate_bytecode('_temp', mapping,
-                                                lambda bc: bc[:16] + b'<test>',
+                                                lambda bc: bc[:24] + b'<test>',
                                                 del_source=del_source)
             file_path = mapping['_temp'] if not del_source else bytecode_path
             with self.assertRaises(EOFError):
