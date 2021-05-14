@@ -232,7 +232,22 @@ syslog_log_mask(PyObject *self, PyObject *args)
 {
     long mask;
     long pri;
-    if (!PyArg_ParseTuple(args, "l:LOG_MASK", &pri))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("LOG_MASK", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&pri = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     mask = LOG_MASK(pri);
     return PyLong_FromLong(mask);
@@ -243,7 +258,22 @@ syslog_log_upto(PyObject *self, PyObject *args)
 {
     long mask;
     long pri;
-    if (!PyArg_ParseTuple(args, "l:LOG_UPTO", &pri))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("LOG_UPTO", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&pri = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     mask = LOG_UPTO(pri);
     return PyLong_FromLong(mask);

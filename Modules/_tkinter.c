@@ -1890,8 +1890,54 @@ SetVar(TkappObject *self, PyObject *args, int flags)
         LEAVE_OVERLAP_TCL
         break;
     case 3:
-        if (!PyArg_ParseTuple(args, "ssO:setvar",
-                              &name1, &name2, &newValue))
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+            if (!_PyArg_CheckPositional("setvar", _nargs, 3, 3)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                    Py_ssize_t _len;
+                    const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                    if (_sarg == NULL) {
+                        PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    if (strlen(_sarg) != (size_t)_len) {
+                        PyErr_SetString(PyExc_ValueError, "embedded null character");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    *&name1 = _sarg;
+                } else {
+                    PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+            {
+                if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                    Py_ssize_t _len;
+                    const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                    if (_sarg == NULL) {
+                        PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    if (strlen(_sarg) != (size_t)_len) {
+                        PyErr_SetString(PyExc_ValueError, "embedded null character");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    *&name2 = _sarg;
+                } else {
+                    PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+            {
+                *&newValue = PyTuple_GET_ITEM(args, 2);
+            }
+        }
+        _parse_exit_label:
+        if (!_parseResult)
             return NULL;
         CHECK_STRING_LENGTH(name1);
         CHECK_STRING_LENGTH(name2);
@@ -1979,7 +2025,53 @@ UnsetVar(TkappObject *self, PyObject *args, int flags)
     int code;
     PyObject *res = NULL;
 
-    if (!PyArg_ParseTuple(args, "s|s:unsetvar", &name1, &name2))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unsetvar", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name1 = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name2 = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     CHECK_STRING_LENGTH(name1);
@@ -3062,7 +3154,30 @@ Tkapp_WantObjects(PyObject *self, PyObject *args)
 {
 
     int wantobjects = -1;
-    if (!PyArg_ParseTuple(args, "|i:wantobjects", &wantobjects))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("wantobjects", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&wantobjects = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (wantobjects == -1)
         return PyBool_FromLong(((TkappObject*)self)->wantobjects);

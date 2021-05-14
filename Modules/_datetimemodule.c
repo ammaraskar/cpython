@@ -3196,7 +3196,25 @@ date_format(PyDateTime_Date *self, PyObject *args)
 {
     PyObject *format;
 
-    if (!PyArg_ParseTuple(args, "U:__format__", &format))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__format__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&format = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     /* if the format is zero length, return str(self) */
@@ -4647,7 +4665,28 @@ static PyObject *
 time_reduce_ex(PyDateTime_Time *self, PyObject *args)
 {
     int proto;
-    if (!PyArg_ParseTuple(args, "i:__reduce_ex__", &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__reduce_ex__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&proto = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     return Py_BuildValue("(ON)", Py_TYPE(self), time_getstate(self, proto));
@@ -5153,7 +5192,35 @@ datetime_strptime(PyObject *cls, PyObject *args)
     PyObject *string, *format;
     _Py_IDENTIFIER(_strptime_datetime);
 
-    if (!PyArg_ParseTuple(args, "UU:strptime", &string, &format))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("strptime", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&string = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 1)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&format = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (module == NULL) {
@@ -6303,7 +6370,28 @@ static PyObject *
 datetime_reduce_ex(PyDateTime_DateTime *self, PyObject *args)
 {
     int proto;
-    if (!PyArg_ParseTuple(args, "i:__reduce_ex__", &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__reduce_ex__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&proto = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     return Py_BuildValue("(ON)", Py_TYPE(self), datetime_getstate(self, proto));

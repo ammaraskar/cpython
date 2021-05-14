@@ -1772,7 +1772,37 @@ dequeiter_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
     Py_ssize_t i, index=0;
     PyObject *deque;
     dequeiterobject *it;
-    if (!PyArg_ParseTuple(args, "O!|n", &deque_type, &deque, &index))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dequeiter_new", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &deque_type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&deque = _p;
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&index = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&index = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&index == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     assert(type == &dequeiter_type);
 
@@ -1914,7 +1944,37 @@ dequereviter_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
     Py_ssize_t i, index=0;
     PyObject *deque;
     dequeiterobject *it;
-    if (!PyArg_ParseTuple(args, "O!|n", &deque_type, &deque, &index))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dequereviter_new", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &deque_type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&deque = _p;
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&index = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&index = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&index == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     assert(type == &dequereviter_type);
 

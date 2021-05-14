@@ -1182,7 +1182,30 @@ static PyObject *
 thread_PyThread_interrupt_main(PyObject *self, PyObject *args)
 {
     int signum = SIGINT;
-    if (!PyArg_ParseTuple(args, "|i:signum", &signum)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("signum", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&signum = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -1343,7 +1366,28 @@ thread_stack_size(PyObject *self, PyObject *args)
     Py_ssize_t new_size = 0;
     int rc;
 
-    if (!PyArg_ParseTuple(args, "|n:stack_size", &new_size))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("stack_size", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            *&new_size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&new_size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&new_size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (new_size < 0) {

@@ -312,7 +312,51 @@ _msi_FCICreate_impl(PyObject *module, const char *cabname, PyObject *files)
         PyObject *item = PyList_GET_ITEM(files, i);
         char *filename, *cabname;
 
-        if (!PyArg_ParseTuple(item, "ss", &filename, &cabname)) {
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(item);
+            if (!_PyArg_CheckPositional("_msi_FCICreate_impl", _nargs, 2, 2)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                if (PyUnicode_Check(PyTuple_GET_ITEM(item, 0))) {
+                    Py_ssize_t _len;
+                    const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(item, 0), &_len);
+                    if (_sarg == NULL) {
+                        PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    if (strlen(_sarg) != (size_t)_len) {
+                        PyErr_SetString(PyExc_ValueError, "embedded null character");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    *&filename = _sarg;
+                } else {
+                    PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(item, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+            {
+                if (PyUnicode_Check(PyTuple_GET_ITEM(item, 1))) {
+                    Py_ssize_t _len;
+                    const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(item, 1), &_len);
+                    if (_sarg == NULL) {
+                        PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    if (strlen(_sarg) != (size_t)_len) {
+                        PyErr_SetString(PyExc_ValueError, "embedded null character");
+                        _parseResult = 0; goto _parse_exit_label;
+                    }
+                    *&cabname = _sarg;
+                } else {
+                    PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(item, 1))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+        }
+        _parse_exit_label:
+        if (!_parseResult) {
             PyErr_SetString(PyExc_TypeError, "FCICreate expects a list of tuples containing two strings");
             FCIDestroy(hfci);
             return NULL;

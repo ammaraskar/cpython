@@ -970,7 +970,28 @@ faulthandler_unregister_py(PyObject *self, PyObject *args)
     user_signal_t *user;
     int change;
 
-    if (!PyArg_ParseTuple(args, "i:unregister", &signum))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unregister", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&signum = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (!check_signum(signum))
@@ -1054,7 +1075,30 @@ static PyObject *
 faulthandler_sigsegv(PyObject *self, PyObject *args)
 {
     int release_gil = 0;
-    if (!PyArg_ParseTuple(args, "|i:_sigsegv", &release_gil))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("_sigsegv", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&release_gil = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (release_gil) {

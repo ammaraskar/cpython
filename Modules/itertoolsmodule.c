@@ -347,7 +347,24 @@ groupby_setstate(groupbyobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "OOO", &currkey, &currvalue, &tgtkey)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("groupby_setstate", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&currkey = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+            *&currvalue = PyTuple_GET_ITEM(state, 1);
+        }
+        {
+            *&tgtkey = PyTuple_GET_ITEM(state, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     Py_INCREF(currkey);
@@ -938,7 +955,37 @@ tee_setstate(teeobject *to, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!i", &teedataobject_type, &tdo, &index)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("tee_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &teedataobject_type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&tdo = _p;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(state, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&index = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (index < 0 || index > LINKCELLS) {
@@ -1203,7 +1250,37 @@ cycle_setstate(cycleobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!i", &PyList_Type, &saved, &firstpass)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("cycle_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyList_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&saved = _p;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(state, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&firstpass = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     Py_INCREF(saved);
@@ -2134,7 +2211,23 @@ chain_setstate(chainobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O|O", &source, &active)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("chain_setstate", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&source = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&active = PyTuple_GET_ITEM(state, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (!PyIter_Check(source) || (active != NULL && !PyIter_Check(active))) {
@@ -3497,9 +3590,33 @@ permutations_setstate(permutationsobject *po, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!O!",
-                          &PyTuple_Type, &indices,
-                          &PyTuple_Type, &cycles)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("permutations_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&indices = _p;
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 1);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&cycles = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 

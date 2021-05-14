@@ -411,8 +411,28 @@ partial_setstate(partialobject *pto, PyObject *state)
 {
     PyObject *fn, *fnargs, *kw, *dict;
 
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("partial_setstate", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&fn = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+            *&fnargs = PyTuple_GET_ITEM(state, 1);
+        }
+        {
+            *&kw = PyTuple_GET_ITEM(state, 2);
+        }
+        {
+            *&dict = PyTuple_GET_ITEM(state, 3);
+        }
+    }
+    _parse_exit_label:
     if (!PyTuple_Check(state) ||
-        !PyArg_ParseTuple(state, "OOOO", &fn, &fnargs, &kw, &dict) ||
+        !_parseResult ||
         !PyCallable_Check(fn) ||
         !PyTuple_Check(fnargs) ||
         (kw != Py_None && !PyDict_Check(kw)))

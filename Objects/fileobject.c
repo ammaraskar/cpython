@@ -363,7 +363,25 @@ stdprinter_write(PyStdPrinter_Object *self, PyObject *args)
         Py_RETURN_NONE;
     }
 
-    if (!PyArg_ParseTuple(args, "U", &unicode)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("stdprinter_write", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 

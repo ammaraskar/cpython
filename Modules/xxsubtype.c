@@ -26,7 +26,15 @@ typedef struct {
 static PyObject *
 spamlist_getstate(spamlistobject *self, PyObject *args)
 {
-    if (!PyArg_ParseTuple(args, ":getstate"))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getstate", _nargs, 0, 0)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong(self->state);
 }
@@ -36,7 +44,28 @@ spamlist_setstate(spamlistobject *self, PyObject *args)
 {
     int state;
 
-    if (!PyArg_ParseTuple(args, "i:setstate", &state))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("setstate", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&state = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     self->state = state;
     Py_INCREF(Py_None);
@@ -151,7 +180,15 @@ typedef struct {
 static PyObject *
 spamdict_getstate(spamdictobject *self, PyObject *args)
 {
-    if (!PyArg_ParseTuple(args, ":getstate"))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getstate", _nargs, 0, 0)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong(self->state);
 }
@@ -161,7 +198,28 @@ spamdict_setstate(spamdictobject *self, PyObject *args)
 {
     int state;
 
-    if (!PyArg_ParseTuple(args, "i:setstate", &state))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("setstate", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&state = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     self->state = state;
     Py_INCREF(Py_None);
@@ -239,7 +297,43 @@ spam_bench(PyObject *self, PyObject *args)
     int n = 1000;
     time_t t0, t1;
 
-    if (!PyArg_ParseTuple(args, "OU|i", &obj, &name, &n))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("spam_bench", _nargs, 2, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 1)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&name = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&n = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     t0 = clock();
     while (--n >= 0) {

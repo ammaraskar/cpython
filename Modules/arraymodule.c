@@ -2612,7 +2612,36 @@ array_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
     if (type == state->ArrayType && !_PyArg_NoKeywords("array.array", kwds))
         return NULL;
 
-    if (!PyArg_ParseTuple(args, "C|O:array", &c, &initial))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("array", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be a unicode character, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0))) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_GET_LENGTH(PyTuple_GET_ITEM(args, 0)) != 1) {
+                PyErr_Format(PyExc_TypeError, "must be a unicode character, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            int kind = PyUnicode_KIND(PyTuple_GET_ITEM(args, 0));
+            const void *data = PyUnicode_DATA(PyTuple_GET_ITEM(args, 0));
+            *&c = PyUnicode_READ(kind, data, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&initial = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (PySys_Audit("array.__new__", "CO",

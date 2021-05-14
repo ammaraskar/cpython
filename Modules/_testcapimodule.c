@@ -318,8 +318,32 @@ dict_getitem_knownhash(PyObject *self, PyObject *args)
     PyObject *mp, *key, *result;
     Py_ssize_t hash;
 
-    if (!PyArg_ParseTuple(args, "OOn:dict_getitem_knownhash",
-                          &mp, &key, &hash)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dict_getitem_knownhash", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&mp = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&key = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&hash = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&hash = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&hash == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -958,7 +982,22 @@ test_L_code(PyObject *self, PyObject *Py_UNUSED(ignored))
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = -1;
-    if (!PyArg_ParseTuple(tuple, "L:test_L_code", &value)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(tuple);
+        if (!_PyArg_CheckPositional("test_L_code", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long long _ival = PyLong_AsLongLong(PyTuple_GET_ITEM(tuple, 0));
+            if (_ival == (long long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (value != 42)
@@ -1218,7 +1257,28 @@ static PyObject *
 getargs_b(PyObject *self, PyObject *args)
 {
     unsigned char value;
-    if (!PyArg_ParseTuple(args, "b", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_b", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < 0) {
+                PyErr_SetString(PyExc_OverflowError, "unsigned byte integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > UCHAR_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "unsigned byte integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = (unsigned char) _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLong((unsigned long)value);
 }
@@ -1227,7 +1287,22 @@ static PyObject *
 getargs_B(PyObject *self, PyObject *args)
 {
     unsigned char value;
-    if (!PyArg_ParseTuple(args, "B", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_B", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = (unsigned char) _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLong((unsigned long)value);
 }
@@ -1236,7 +1311,28 @@ static PyObject *
 getargs_h(PyObject *self, PyObject *args)
 {
     short value;
-    if (!PyArg_ParseTuple(args, "h", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_h", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < SHRT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed short integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > SHRT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed short integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = (short) _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong((long)value);
 }
@@ -1245,7 +1341,22 @@ static PyObject *
 getargs_H(PyObject *self, PyObject *args)
 {
     unsigned short value;
-    if (!PyArg_ParseTuple(args, "H", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_H", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = (unsigned short) _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLong((unsigned long)value);
 }
@@ -1254,7 +1365,22 @@ static PyObject *
 getargs_I(PyObject *self, PyObject *args)
 {
     unsigned int value;
-    if (!PyArg_ParseTuple(args, "I", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_I", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLong((unsigned long)value);
 }
@@ -1263,7 +1389,25 @@ static PyObject *
 getargs_k(PyObject *self, PyObject *args)
 {
     unsigned long value;
-    if (!PyArg_ParseTuple(args, "k", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_k", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival;
+            if (PyLong_Check(PyTuple_GET_ITEM(args, 0))) {
+                _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be int, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLong(value);
 }
@@ -1272,7 +1416,28 @@ static PyObject *
 getargs_i(PyObject *self, PyObject *args)
 {
     int value;
-    if (!PyArg_ParseTuple(args, "i", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_i", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong((long)value);
 }
@@ -1281,7 +1446,22 @@ static PyObject *
 getargs_l(PyObject *self, PyObject *args)
 {
     long value;
-    if (!PyArg_ParseTuple(args, "l", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_l", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong(value);
 }
@@ -1290,7 +1470,26 @@ static PyObject *
 getargs_n(PyObject *self, PyObject *args)
 {
     Py_ssize_t value;
-    if (!PyArg_ParseTuple(args, "n", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_n", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&value = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&value = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&value == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromSsize_t(value);
 }
@@ -1299,7 +1498,25 @@ static PyObject *
 getargs_p(PyObject *self, PyObject *args)
 {
     int value;
-    if (!PyArg_ParseTuple(args, "p", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_p", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&value = 1;
+            } else if (_val == 0) {
+                *&value = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong(value);
 }
@@ -1308,7 +1525,22 @@ static PyObject *
 getargs_L(PyObject *self, PyObject *args)
 {
     long long value;
-    if (!PyArg_ParseTuple(args, "L", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_L", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long long _ival = PyLong_AsLongLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (long long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLongLong(value);
 }
@@ -1317,7 +1549,25 @@ static PyObject *
 getargs_K(PyObject *self, PyObject *args)
 {
     unsigned long long value;
-    if (!PyArg_ParseTuple(args, "K", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_K", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long long _ival;
+            if (PyLong_Check(PyTuple_GET_ITEM(args, 0))) {
+                _ival = PyLong_AsUnsignedLongLongMask(PyTuple_GET_ITEM(args, 0));
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be int, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromUnsignedLongLong(value);
 }
@@ -1347,7 +1597,25 @@ test_k_code(PyObject *self, PyObject *Py_UNUSED(ignored))
     PyTuple_SET_ITEM(tuple, 0, num);
 
     value = 0;
-    if (!PyArg_ParseTuple(tuple, "k:test_k_code", &value)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(tuple);
+        if (!_PyArg_CheckPositional("test_k_code", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival;
+            if (PyLong_Check(PyTuple_GET_ITEM(tuple, 0))) {
+                _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(tuple, 0));
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be int, not %.50s", Py_TYPE(PyTuple_GET_ITEM(tuple, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (value != ULONG_MAX)
@@ -1383,7 +1651,22 @@ static PyObject *
 getargs_f(PyObject *self, PyObject *args)
 {
     float f;
-    if (!PyArg_ParseTuple(args, "f", &f))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_f", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            double _dval = PyFloat_AsDouble(PyTuple_GET_ITEM(args, 0));
+            if (_dval == -1.0 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&f = (float) _dval;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyFloat_FromDouble(f);
 }
@@ -1392,7 +1675,22 @@ static PyObject *
 getargs_d(PyObject *self, PyObject *args)
 {
     double d;
-    if (!PyArg_ParseTuple(args, "d", &d))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_d", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            double _dval = PyFloat_AsDouble(PyTuple_GET_ITEM(args, 0));
+            if (_dval == -1.0 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&d = _dval;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyFloat_FromDouble(d);
 }
@@ -1401,7 +1699,22 @@ static PyObject *
 getargs_D(PyObject *self, PyObject *args)
 {
     Py_complex cval;
-    if (!PyArg_ParseTuple(args, "D", &cval))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_D", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            Py_complex _cval = PyComplex_AsCComplex(PyTuple_GET_ITEM(args, 0));
+            if (PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&cval = _cval;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyComplex_FromCComplex(cval);
 }
@@ -1410,7 +1723,22 @@ static PyObject *
 getargs_S(PyObject *self, PyObject *args)
 {
     PyObject *obj;
-    if (!PyArg_ParseTuple(args, "S", &obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_S", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyBytes_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be bytes, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_INCREF(obj);
     return obj;
@@ -1420,7 +1748,22 @@ static PyObject *
 getargs_Y(PyObject *self, PyObject *args)
 {
     PyObject *obj;
-    if (!PyArg_ParseTuple(args, "Y", &obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_Y", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyByteArray_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be bytearray, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_INCREF(obj);
     return obj;
@@ -1430,7 +1773,25 @@ static PyObject *
 getargs_U(PyObject *self, PyObject *args)
 {
     PyObject *obj;
-    if (!PyArg_ParseTuple(args, "U", &obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_U", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_INCREF(obj);
     return obj;
@@ -1440,7 +1801,25 @@ static PyObject *
 getargs_c(PyObject *self, PyObject *args)
 {
     char c;
-    if (!PyArg_ParseTuple(args, "c", &c))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_c", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyBytes_Check(PyTuple_GET_ITEM(args, 0)) && PyBytes_Size(PyTuple_GET_ITEM(args, 0)) == 1) {
+                *&c = PyBytes_AS_STRING(PyTuple_GET_ITEM(args, 0))[0];
+            } else if (PyByteArray_Check(PyTuple_GET_ITEM(args, 0)) && PyByteArray_Size(PyTuple_GET_ITEM(args, 0)) == 1) {
+                *&c = PyByteArray_AS_STRING(PyTuple_GET_ITEM(args, 0))[0];
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a byte string of length 1, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong((unsigned char)c);
 }
@@ -1449,7 +1828,31 @@ static PyObject *
 getargs_C(PyObject *self, PyObject *args)
 {
     int c;
-    if (!PyArg_ParseTuple(args, "C", &c))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_C", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be a unicode character, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0))) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_GET_LENGTH(PyTuple_GET_ITEM(args, 0)) != 1) {
+                PyErr_Format(PyExc_TypeError, "must be a unicode character, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            int kind = PyUnicode_KIND(PyTuple_GET_ITEM(args, 0));
+            const void *data = PyUnicode_DATA(PyTuple_GET_ITEM(args, 0));
+            *&c = PyUnicode_READ(kind, data, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyLong_FromLong(c);
 }
@@ -1458,7 +1861,33 @@ static PyObject *
 getargs_s(PyObject *self, PyObject *args)
 {
     char *str;
-    if (!PyArg_ParseTuple(args, "s", &str))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_s", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&str = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyBytes_FromString(str);
 }
@@ -1468,7 +1897,36 @@ getargs_s_star(PyObject *self, PyObject *args)
 {
     Py_buffer buffer;
     PyObject *bytes;
-    if (!PyArg_ParseTuple(args, "s*", &buffer))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_s_star", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                PyBuffer_FillInfo(&buffer, PyTuple_GET_ITEM(args, 0), (void *)_sarg, _len, 1, 0);
+            } else {
+                if (PyObject_GetBuffer(PyTuple_GET_ITEM(args, 0), &buffer, PyBUF_SIMPLE) != 0) {
+                    PyErr_Format(PyExc_TypeError, "must be a bytes-like object, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (!PyBuffer_IsContiguous(&buffer, 'C')) {
+                    PyBuffer_Release(&buffer);
+                    PyErr_Format(PyExc_TypeError, "must be a contiguous buffer, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     bytes = PyBytes_FromStringAndSize(buffer.buf, buffer.len);
     PyBuffer_Release(&buffer);
@@ -1489,7 +1947,35 @@ static PyObject *
 getargs_z(PyObject *self, PyObject *args)
 {
     char *str;
-    if (!PyArg_ParseTuple(args, "z", &str))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_z", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyTuple_GET_ITEM(args, 0) == Py_None) {
+                *&str = NULL;
+            } else if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&str = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (str != NULL)
         return PyBytes_FromString(str);
@@ -1502,7 +1988,38 @@ getargs_z_star(PyObject *self, PyObject *args)
 {
     Py_buffer buffer;
     PyObject *bytes;
-    if (!PyArg_ParseTuple(args, "z*", &buffer))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_z_star", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyTuple_GET_ITEM(args, 0) == Py_None) {
+                PyBuffer_FillInfo(&buffer, NULL, NULL, 0, 1, 0);
+            } else if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                PyBuffer_FillInfo(&buffer, PyTuple_GET_ITEM(args, 0), (void *)_sarg, _len, 1, 0);
+            } else {
+                if (PyObject_GetBuffer(PyTuple_GET_ITEM(args, 0), &buffer, PyBUF_SIMPLE) != 0) {
+                    PyErr_Format(PyExc_TypeError, "must be a bytes-like object, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (!PyBuffer_IsContiguous(&buffer, 'C')) {
+                    PyBuffer_Release(&buffer);
+                    PyErr_Format(PyExc_TypeError, "must be a contiguous buffer, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (buffer.buf != NULL)
         bytes = PyBytes_FromStringAndSize(buffer.buf, buffer.len);
@@ -1609,7 +2126,38 @@ getargs_es(PyObject *self, PyObject *args)
     const char *encoding = NULL;
     char *str;
 
-    if (!PyArg_ParseTuple(args, "O|s", &arg, &encoding))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_es", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (!PyArg_Parse(arg, "es", encoding, &str))
         return NULL;
@@ -1625,7 +2173,38 @@ getargs_et(PyObject *self, PyObject *args)
     const char *encoding = NULL;
     char *str;
 
-    if (!PyArg_ParseTuple(args, "O|s", &arg, &encoding))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_et", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (!PyArg_Parse(arg, "et", encoding, &str))
         return NULL;
@@ -1643,7 +2222,45 @@ getargs_es_hash(PyObject *self, PyObject *args)
     char *str = NULL;
     Py_ssize_t size;
 
-    if (!PyArg_ParseTuple(args, "O|sY", &arg, &encoding, &buffer))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_es_hash", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 3) {
+            if (!PyByteArray_Check(PyTuple_GET_ITEM(args, 2))) {
+                PyErr_Format(PyExc_TypeError, "must be bytearray, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 2))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&buffer = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (buffer != NULL) {
         str = PyByteArray_AS_STRING(buffer);
@@ -1666,7 +2283,45 @@ getargs_et_hash(PyObject *self, PyObject *args)
     char *str = NULL;
     Py_ssize_t size;
 
-    if (!PyArg_ParseTuple(args, "O|sY", &arg, &encoding, &buffer))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getargs_et_hash", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 3) {
+            if (!PyByteArray_Check(PyTuple_GET_ITEM(args, 2))) {
+                PyErr_Format(PyExc_TypeError, "must be bytearray, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 2))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&buffer = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (buffer != NULL) {
         str = PyByteArray_AS_STRING(buffer);
@@ -1703,7 +2358,33 @@ test_s_code(PyObject *self, PyObject *Py_UNUSED(ignored))
     /* These two blocks used to raise a TypeError:
      * "argument must be string without null bytes, not str"
      */
-    if (!PyArg_ParseTuple(tuple, "s:test_s_code1", &value)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(tuple);
+        if (!_PyArg_CheckPositional("test_s_code1", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(tuple, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(tuple, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&value = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(tuple, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -1733,9 +2414,42 @@ parse_tuple_and_keywords(PyObject *self, PyObject *args)
 
     double buffers[8][4]; /* double ensures alignment where necessary */
 
-    if (!PyArg_ParseTuple(args, "OOsO:parse_tuple_and_keywords",
-        &sub_args, &sub_kwargs,
-        &sub_format, &sub_keywords))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("parse_tuple_and_keywords", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&sub_args = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&sub_kwargs = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 2))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 2), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&sub_format = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 2))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&sub_keywords = PyTuple_GET_ITEM(args, 3);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (!(PyList_CheckExact(sub_keywords) || PyTuple_CheckExact(sub_keywords))) {
@@ -1982,7 +2696,36 @@ unicode_aswidechar(PyObject *self, PyObject *args)
     Py_ssize_t buflen, size;
     wchar_t *buffer;
 
-    if (!PyArg_ParseTuple(args, "Un", &unicode, &buflen))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_aswidechar", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&buflen = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&buflen = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&buflen == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     buffer = PyMem_New(wchar_t, buflen);
     if (buffer == NULL)
@@ -2013,7 +2756,25 @@ unicode_aswidecharstring(PyObject *self, PyObject *args)
     Py_ssize_t size;
     wchar_t *buffer;
 
-    if (!PyArg_ParseTuple(args, "U", &unicode))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_aswidecharstring", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     buffer = PyUnicode_AsWideCharString(unicode, &size);
@@ -2035,7 +2796,46 @@ unicode_asucs4(PyObject *self, PyObject *args)
     int copy_null;
     Py_ssize_t str_len, buf_len;
 
-    if (!PyArg_ParseTuple(args, "Unp:unicode_asucs4", &unicode, &str_len, &copy_null)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_asucs4", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&str_len = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&str_len = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&str_len == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 2));
+            if (_val > 0) {
+                *&copy_null = 1;
+            } else if (_val == 0) {
+                *&copy_null = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2063,7 +2863,25 @@ unicode_asutf8(PyObject *self, PyObject *args)
     PyObject *unicode;
     const char *buffer;
 
-    if (!PyArg_ParseTuple(args, "U", &unicode)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_asutf8", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2082,7 +2900,25 @@ unicode_asutf8andsize(PyObject *self, PyObject *args)
     const char *buffer;
     Py_ssize_t utf8_len;
 
-    if(!PyArg_ParseTuple(args, "U", &unicode)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_asutf8andsize", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if(!_parseResult) {
         return NULL;
     }
 
@@ -2108,8 +2944,67 @@ unicode_findchar(PyObject *self, PyObject *args)
     Py_ssize_t result;
     Py_ssize_t start, end;
 
-    if (!PyArg_ParseTuple(args, "UInni:unicode_findchar", &str, &ch,
-                          &start, &end, &direction)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_findchar", _nargs, 5, 5)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&str = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 1));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&ch = _ival;
+        }
+        {
+            *&start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&end = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 3));
+            if (_iobj != NULL) {
+                *&end = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&end == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 4));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&direction = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2126,8 +3021,61 @@ unicode_copycharacters(PyObject *self, PyObject *args)
     PyObject *from, *to, *to_copy;
     Py_ssize_t from_start, to_start, how_many, copied;
 
-    if (!PyArg_ParseTuple(args, "UnOnn:unicode_copycharacters", &to, &to_start,
-                          &from, &from_start, &how_many)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unicode_copycharacters", _nargs, 5, 5)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&to = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&to_start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&to_start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&to_start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&from = PyTuple_GET_ITEM(args, 2);
+        }
+        {
+            *&from_start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 3));
+            if (_iobj != NULL) {
+                *&from_start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&from_start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&how_many = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 4));
+            if (_iobj != NULL) {
+                *&how_many = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&how_many == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2256,7 +3204,17 @@ test_empty_argparse(PyObject *self, PyObject *Py_UNUSED(ignored))
     tuple = PyTuple_New(0);
     if (!tuple)
         return NULL;
-    if (!(result = PyArg_ParseTuple(tuple, "|:test_empty_argparse"))) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(tuple);
+        if (!_PyArg_CheckPositional("test_empty_argparse", _nargs, 0, 0)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+    }
+    _parse_exit_label:
+    if (!(result = _parseResult)) {
         goto done;
     }
     dict = PyDict_New();
@@ -2278,8 +3236,53 @@ static PyObject *
 codec_incrementalencoder(PyObject *self, PyObject *args)
 {
     const char *encoding, *errors = NULL;
-    if (!PyArg_ParseTuple(args, "s|s:test_incrementalencoder",
-                          &encoding, &errors))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_incrementalencoder", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&errors = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyCodec_IncrementalEncoder(encoding, errors);
 }
@@ -2288,8 +3291,53 @@ static PyObject *
 codec_incrementaldecoder(PyObject *self, PyObject *args)
 {
     const char *encoding, *errors = NULL;
-    if (!PyArg_ParseTuple(args, "s|s:test_incrementaldecoder",
-                          &encoding, &errors))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_incrementaldecoder", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&encoding = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&errors = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     return PyCodec_IncrementalDecoder(encoding, errors);
 }
@@ -2361,8 +3409,31 @@ raise_exception(PyObject *self, PyObject *args)
     PyObject *exc_args, *v;
     int num_args, i;
 
-    if (!PyArg_ParseTuple(args, "Oi:raise_exception",
-                          &exc, &num_args))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("raise_exception", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&exc = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&num_args = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     exc_args = PyTuple_New(num_args);
@@ -2386,7 +3457,28 @@ set_errno(PyObject *self, PyObject *args)
 {
     int new_errno;
 
-    if (!PyArg_ParseTuple(args, "i:set_errno", &new_errno))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("set_errno", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&new_errno = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     errno = new_errno;
@@ -2399,8 +3491,24 @@ test_set_exc_info(PyObject *self, PyObject *args)
     PyObject *orig_exc;
     PyObject *new_type, *new_value, *new_tb;
     PyObject *type, *value, *tb;
-    if (!PyArg_ParseTuple(args, "OOO:test_set_exc_info",
-                          &new_type, &new_value, &new_tb))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_set_exc_info", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&new_type = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&new_value = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&new_tb = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     PyErr_GetExcInfo(&type, &value, &tb);
@@ -2533,7 +3641,27 @@ get_timezones_offset_zero(PyObject *self, PyObject *args) {
 static PyObject *
 get_timezone_utc_capi(PyObject* self, PyObject *args) {
     int macro = 0;
-    if (!PyArg_ParseTuple(args, "|p", &macro)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_timezone_utc_capi", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (macro) {
@@ -2552,7 +3680,64 @@ get_date_fromdate(PyObject *self, PyObject *args)
     int macro;
     int year, month, day;
 
-    if (!PyArg_ParseTuple(args, "piii", &macro, &year, &month, &day)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_date_fromdate", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&year = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&month = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&day = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2575,10 +3760,116 @@ get_datetime_fromdateandtime(PyObject *self, PyObject *args)
     int year, month, day;
     int hour, minute, second, microsecond;
 
-    if (!PyArg_ParseTuple(args, "piiiiiii",
-                          &macro,
-                          &year, &month, &day,
-                          &hour, &minute, &second, &microsecond)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_datetime_fromdateandtime", _nargs, 8, 8)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&year = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&month = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&day = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 4));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&hour = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 5));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&minute = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 6));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&second = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 7));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&microsecond = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2605,11 +3896,129 @@ get_datetime_fromdateandtimeandfold(PyObject *self, PyObject *args)
     int year, month, day;
     int hour, minute, second, microsecond, fold;
 
-    if (!PyArg_ParseTuple(args, "piiiiiiii",
-                          &macro,
-                          &year, &month, &day,
-                          &hour, &minute, &second, &microsecond,
-                          &fold)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_datetime_fromdateandtimeandfold", _nargs, 9, 9)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&year = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&month = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&day = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 4));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&hour = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 5));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&minute = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 6));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&second = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 7));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&microsecond = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 8));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&fold = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2637,9 +4046,77 @@ get_time_fromtime(PyObject *self, PyObject *args)
     int macro;
     int hour, minute, second, microsecond;
 
-    if (!PyArg_ParseTuple(args, "piiii",
-                          &macro,
-                          &hour, &minute, &second, &microsecond)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_time_fromtime", _nargs, 5, 5)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&hour = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&minute = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&second = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 4));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&microsecond = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2662,10 +4139,90 @@ get_time_fromtimeandfold(PyObject *self, PyObject *args)
     int macro;
     int hour, minute, second, microsecond, fold;
 
-    if (!PyArg_ParseTuple(args, "piiiii",
-                          &macro,
-                          &hour, &minute, &second, &microsecond,
-                          &fold)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_time_fromtimeandfold", _nargs, 6, 6)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&hour = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&minute = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&second = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 4));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&microsecond = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 5));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&fold = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2689,9 +4246,64 @@ get_delta_fromdsu(PyObject *self, PyObject *args)
     int macro;
     int days, seconds, microseconds;
 
-    if (!PyArg_ParseTuple(args, "piii",
-                          &macro,
-                          &days, &seconds, &microseconds)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_delta_fromdsu", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 0));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&days = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&seconds = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&microseconds = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2713,7 +4325,30 @@ get_date_fromtimestamp(PyObject* self, PyObject *args)
     PyObject *tsargs = NULL, *ts = NULL, *rv = NULL;
     int macro = 0;
 
-    if (!PyArg_ParseTuple(args, "O|p", &ts, &macro)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_date_fromtimestamp", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&ts = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 1));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2742,7 +4377,43 @@ get_datetime_fromtimestamp(PyObject* self, PyObject *args)
     int macro = 0;
     int usetz = 0;
     PyObject *tsargs = NULL, *ts = NULL, *tzinfo = Py_None, *rv = NULL;
-    if (!PyArg_ParseTuple(args, "OO|pp", &ts, &tzinfo, &usetz, &macro)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_datetime_fromtimestamp", _nargs, 2, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&ts = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&tzinfo = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 2));
+            if (_val > 0) {
+                *&usetz = 1;
+            } else if (_val == 0) {
+                *&usetz = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 4) {
+            int _val = PyObject_IsTrue(PyTuple_GET_ITEM(args, 3));
+            if (_val > 0) {
+                *&macro = 1;
+            } else if (_val == 0) {
+                *&macro = 0;
+            } else {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2862,7 +4533,18 @@ test_thread_state(PyObject *self, PyObject *args)
     PyObject *fn;
     int success = 1;
 
-    if (!PyArg_ParseTuple(args, "O:test_thread_state", &fn))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_thread_state", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&fn = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (!PyCallable_Check(fn)) {
@@ -2924,7 +4606,18 @@ pending_threadfunc(PyObject *self, PyObject *arg)
 {
     PyObject *callable;
     int r;
-    if (PyArg_ParseTuple(arg, "O", &callable) == 0)
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(arg);
+        if (!_PyArg_CheckPositional("pending_threadfunc", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&callable = PyTuple_GET_ITEM(arg, 0);
+        }
+    }
+    _parse_exit_label:
+    if (_parseResult == 0)
         return NULL;
 
     /* create the reference for the callbackwhile we hold the lock */
@@ -3335,8 +5028,21 @@ traceback_print(PyObject *self, PyObject *args)
     PyObject *traceback;
     int result;
 
-    if (!PyArg_ParseTuple(args, "OO:traceback_print",
-                            &traceback, &file))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("traceback_print", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&traceback = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&file = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     result = PyTraceBack_Print(traceback, file);
@@ -3352,8 +5058,18 @@ exception_print(PyObject *self, PyObject *args)
     PyObject *value;
     PyObject *tb;
 
-    if (!PyArg_ParseTuple(args, "O:exception_print",
-                            &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("exception_print", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&value = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (!PyExceptionInstance_Check(value)) {
         PyErr_Format(PyExc_TypeError, "an exception instance is required");
@@ -3417,8 +5133,64 @@ code_newempty(PyObject *self, PyObject *args)
     const char *funcname;
     int firstlineno;
 
-    if (!PyArg_ParseTuple(args, "ssi:code_newempty",
-                          &filename, &funcname, &firstlineno))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("code_newempty", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&filename = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&funcname = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&firstlineno = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     return (PyObject *)PyCode_NewEmpty(filename, funcname, firstlineno);
@@ -3562,8 +5334,33 @@ test_PyBuffer_SizeFromFormat(PyObject *self, PyObject *args)
     const char *format;
     Py_ssize_t result;
 
-    if (!PyArg_ParseTuple(args, "s:test_PyBuffer_SizeFromFormat",
-                          &format)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_PyBuffer_SizeFromFormat", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&format = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -3600,8 +5397,33 @@ run_in_subinterp(PyObject *self, PyObject *args)
     /* only initialise 'cflags.cf_flags' to test backwards compatibility */
     PyCompilerFlags cflags = {0};
 
-    if (!PyArg_ParseTuple(args, "s:run_in_subinterp",
-                          &code))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("run_in_subinterp", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&code = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     mainstate = PyThreadState_Get();
@@ -3644,7 +5466,31 @@ test_pytime_object_to_time_t(PyObject *self, PyObject *args)
     PyObject *obj;
     time_t sec;
     int round;
-    if (!PyArg_ParseTuple(args, "Oi:pytime_object_to_time_t", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pytime_object_to_time_t", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (check_time_rounding(round) < 0)
         return NULL;
@@ -3660,7 +5506,31 @@ test_pytime_object_to_timeval(PyObject *self, PyObject *args)
     time_t sec;
     long usec;
     int round;
-    if (!PyArg_ParseTuple(args, "Oi:pytime_object_to_timeval", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pytime_object_to_timeval", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (check_time_rounding(round) < 0)
         return NULL;
@@ -3676,7 +5546,31 @@ test_pytime_object_to_timespec(PyObject *self, PyObject *args)
     time_t sec;
     long nsec;
     int round;
-    if (!PyArg_ParseTuple(args, "Oi:pytime_object_to_timespec", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pytime_object_to_timespec", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (check_time_rounding(round) < 0)
         return NULL;
@@ -3745,7 +5639,18 @@ with_tp_del(PyObject *self, PyObject *args)
     PyObject *obj;
     PyTypeObject *tp;
 
-    if (!PyArg_ParseTuple(args, "O:with_tp_del", &obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("with_tp_del", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     tp = (PyTypeObject *) obj;
     if (!PyType_Check(obj) || !PyType_HasFeature(tp, Py_TPFLAGS_HEAPTYPE)) {
@@ -4243,7 +6148,43 @@ set_nomemory(PyObject *self, PyObject *args)
      * to 0 (default) in which case allocation failures never stop. */
     FmData.count = 0;
     FmData.stop = 0;
-    if (!PyArg_ParseTuple(args, "i|i", &FmData.start, &FmData.stop)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("set_nomemory", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&FmData.start = _ival;
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&FmData.stop = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     fm_setup_hooks();
@@ -4408,8 +6349,38 @@ pymarshal_write_long_to_file(PyObject* self, PyObject *args)
     int version;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "lOi:pymarshal_write_long_to_file",
-                          &value, &filename, &version))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_write_long_to_file", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = _ival;
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&version = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "wb");
@@ -4434,8 +6405,34 @@ pymarshal_write_object_to_file(PyObject* self, PyObject *args)
     int version;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "OOi:pymarshal_write_object_to_file",
-                          &obj, &filename, &version))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_write_object_to_file", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&version = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "wb");
@@ -4460,7 +6457,18 @@ pymarshal_read_short_from_file(PyObject* self, PyObject *args)
     PyObject *filename;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "O:pymarshal_read_short_from_file", &filename))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_read_short_from_file", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "rb");
@@ -4485,7 +6493,18 @@ pymarshal_read_long_from_file(PyObject* self, PyObject *args)
     PyObject *filename;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "O:pymarshal_read_long_from_file", &filename))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_read_long_from_file", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "rb");
@@ -4511,7 +6530,18 @@ pymarshal_read_last_object_from_file(PyObject* self, PyObject *args)
     PyObject *filename;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "O:pymarshal_read_last_object_from_file", &filename))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_read_last_object_from_file", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "rb");
@@ -4535,7 +6565,18 @@ pymarshal_read_object_from_file(PyObject* self, PyObject *args)
     PyObject *filename;
     FILE *fp;
 
-    if (!PyArg_ParseTuple(args, "O:pymarshal_read_object_from_file", &filename))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pymarshal_read_object_from_file", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&filename = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fp = _Py_fopen_obj(filename, "rb");
@@ -4573,7 +6614,21 @@ static PyObject*
 getitem_with_error(PyObject *self, PyObject *args)
 {
     PyObject *map, *key;
-    if (!PyArg_ParseTuple(args, "OO", &map, &key)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getitem_with_error", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&map = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&key = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -4587,7 +6642,28 @@ test_pytime_fromseconds(PyObject *self, PyObject *args)
     int seconds;
     _PyTime_t ts;
 
-    if (!PyArg_ParseTuple(args, "i", &seconds))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pytime_fromseconds", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&seconds = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     ts = _PyTime_FromSeconds(seconds);
     return _PyTime_AsNanosecondsObject(ts);
@@ -4600,7 +6676,31 @@ test_pytime_fromsecondsobject(PyObject *self, PyObject *args)
     int round;
     _PyTime_t ts;
 
-    if (!PyArg_ParseTuple(args, "Oi", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pytime_fromsecondsobject", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (check_time_rounding(round) < 0)
         return NULL;
@@ -4616,7 +6716,18 @@ test_pytime_assecondsdouble(PyObject *self, PyObject *args)
     _PyTime_t ts;
     double d;
 
-    if (!PyArg_ParseTuple(args, "O", &obj)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pytime_assecondsdouble", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (_PyTime_FromNanosecondsObject(&ts, obj) < 0) {
@@ -4635,7 +6746,31 @@ test_PyTime_AsTimeval(PyObject *self, PyObject *args)
     struct timeval tv;
     PyObject *seconds;
 
-    if (!PyArg_ParseTuple(args, "Oi", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_PyTime_AsTimeval", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (check_time_rounding(round) < 0) {
         return NULL;
@@ -4662,7 +6797,18 @@ test_PyTime_AsTimespec(PyObject *self, PyObject *args)
     _PyTime_t t;
     struct timespec ts;
 
-    if (!PyArg_ParseTuple(args, "O", &obj)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_PyTime_AsTimespec", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (_PyTime_FromNanosecondsObject(&t, obj) < 0) {
@@ -4682,7 +6828,31 @@ test_PyTime_AsMilliseconds(PyObject *self, PyObject *args)
     int round;
     _PyTime_t t, ms;
 
-    if (!PyArg_ParseTuple(args, "Oi", &obj, &round)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_PyTime_AsMilliseconds", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (_PyTime_FromNanosecondsObject(&t, obj) < 0) {
@@ -4704,7 +6874,31 @@ test_PyTime_AsMicroseconds(PyObject *self, PyObject *args)
     int round;
     _PyTime_t t, ms;
 
-    if (!PyArg_ParseTuple(args, "Oi", &obj, &round))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_PyTime_AsMicroseconds", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&round = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (_PyTime_FromNanosecondsObject(&t, obj) < 0) {
         return NULL;
@@ -4867,7 +7061,51 @@ tracemalloc_track(PyObject *self, PyObject *args)
     int release_gil = 0;
     int res;
 
-    if (!PyArg_ParseTuple(args, "IOn|i", &domain, &ptr_obj, &size, &release_gil))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("tracemalloc_track", _nargs, 3, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&domain = _ival;
+        }
+        {
+            *&ptr_obj = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 4) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&release_gil = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     ptr = PyLong_AsVoidPtr(ptr_obj);
     if (PyErr_Occurred())
@@ -4898,7 +7136,25 @@ tracemalloc_untrack(PyObject *self, PyObject *args)
     void *ptr;
     int res;
 
-    if (!PyArg_ParseTuple(args, "IO", &domain, &ptr_obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("tracemalloc_untrack", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&domain = _ival;
+        }
+        {
+            *&ptr_obj = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     ptr = PyLong_AsVoidPtr(ptr_obj);
     if (PyErr_Occurred())
@@ -4920,7 +7176,25 @@ tracemalloc_get_traceback(PyObject *self, PyObject *args)
     PyObject *ptr_obj;
     void *ptr;
 
-    if (!PyArg_ParseTuple(args, "IO", &domain, &ptr_obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("tracemalloc_get_traceback", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            unsigned long _ival = PyLong_AsUnsignedLongMask(PyTuple_GET_ITEM(args, 0));
+            if (_ival == (unsigned long)-1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&domain = _ival;
+        }
+        {
+            *&ptr_obj = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     ptr = PyLong_AsVoidPtr(ptr_obj);
     if (PyErr_Occurred())
@@ -4935,7 +7209,24 @@ dict_get_version(PyObject *self, PyObject *args)
     PyDictObject *dict;
     uint64_t version;
 
-    if (!PyArg_ParseTuple(args, "O!", &PyDict_Type, &dict))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dict_get_version", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyDict_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&dict = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     version = dict->ma_version_tag;
@@ -4951,7 +7242,24 @@ raise_SIGINT_then_send_None(PyObject *self, PyObject *args)
     _Py_IDENTIFIER(send);
     PyGenObject *gen;
 
-    if (!PyArg_ParseTuple(args, "O!", &PyGen_Type, &gen))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("raise_SIGINT_then_send_None", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyGen_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be a %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&gen = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     /* This is used in a test to check what happens if a signal arrives just
@@ -4995,7 +7303,21 @@ test_pyobject_fastcall(PyObject *self, PyObject *args)
     PyObject **stack;
     Py_ssize_t nargs;
 
-    if (!PyArg_ParseTuple(args, "OO", &func, &func_args)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pyobject_fastcall", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&func = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&func_args = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5013,7 +7335,24 @@ test_pyobject_fastcalldict(PyObject *self, PyObject *args)
     PyObject **stack;
     Py_ssize_t nargs;
 
-    if (!PyArg_ParseTuple(args, "OOO", &func, &func_args, &kwargs)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pyobject_fastcalldict", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&func = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&func_args = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&kwargs = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5040,7 +7379,24 @@ test_pyobject_vectorcall(PyObject *self, PyObject *args)
     PyObject **stack;
     Py_ssize_t nargs, nkw;
 
-    if (!PyArg_ParseTuple(args, "OOO", &func, &func_args, &kwnames)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pyobject_vectorcall", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&func = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&func_args = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&kwnames = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5074,7 +7430,26 @@ test_pyvectorcall_call(PyObject *self, PyObject *args)
     PyObject *argstuple;
     PyObject *kwargs = NULL;
 
-    if (!PyArg_ParseTuple(args, "OO|O", &func, &argstuple, &kwargs)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_pyvectorcall_call", _nargs, 2, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&func = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&argstuple = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            *&kwargs = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5104,7 +7479,28 @@ static PyObject*
 py_w_stopcode(PyObject *self, PyObject *args)
 {
     int sig, status;
-    if (!PyArg_ParseTuple(args, "i", &sig)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("py_w_stopcode", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&sig = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     status = W_STOPCODE(sig);
@@ -5225,7 +7621,58 @@ encode_locale_ex(PyObject *self, PyObject *args)
     PyObject *res = NULL;
     const char *errors = NULL;
 
-    if (!PyArg_ParseTuple(args, "U|is", &unicode, &current_locale, &errors)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("encode_locale_ex", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&unicode = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&current_locale = _ival;
+        }
+        if (_nargs >= 3) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 2))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 2), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&errors = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 2))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     wstr = PyUnicode_AsWideCharString(unicode, NULL);
@@ -5331,7 +7778,24 @@ static PyObject*
 test_write_unraisable_exc(PyObject *self, PyObject *args)
 {
     PyObject *exc, *err_msg, *obj;
-    if (!PyArg_ParseTuple(args, "OOO", &exc, &err_msg, &obj)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("test_write_unraisable_exc", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&exc = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&err_msg = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5357,7 +7821,29 @@ sequence_getitem(PyObject *self, PyObject *args)
 {
     PyObject *seq;
     Py_ssize_t i;
-    if (!PyArg_ParseTuple(args, "On", &seq, &i)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("sequence_getitem", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&seq = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&i = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&i = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&i == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     return PySequence_GetItem(seq, i);
@@ -5447,8 +7933,31 @@ pynumber_tobase(PyObject *module, PyObject *args)
 {
     PyObject *obj;
     int base;
-    if (!PyArg_ParseTuple(args, "Oi:pynumber_tobase",
-                          &obj, &base)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pynumber_tobase", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&base = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     return PyNumber_ToBase(obj, base);

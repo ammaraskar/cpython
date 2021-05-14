@@ -1675,7 +1675,26 @@ static PyObject *
 FutureIter_throw(futureiterobject *self, PyObject *args)
 {
     PyObject *type, *val = NULL, *tb = NULL;
-    if (!PyArg_ParseTuple(args, "O|OO", &type, &val, &tb))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("FutureIter_throw", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&type = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&val = PyTuple_GET_ITEM(args, 1);
+        }
+        if (_nargs >= 3) {
+            *&tb = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (val == Py_None) {
