@@ -88,8 +88,8 @@ tb_new_impl(PyTypeObject *type, PyObject *tb_next, PyFrameObject *tb_frame,
 static PyObject *
 tb_dir(PyTracebackObject *self, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("[ssss]", "tb_frame", "tb_next",
-                                   "tb_lasti", "tb_lineno");
+    return Py_BuildValue("[sssss]", "tb_frame", "tb_next",
+                                    "tb_lasti", "tb_lineno", "tb_source_position");
 }
 
 static PyObject *
@@ -140,6 +140,31 @@ tb_next_set(PyTracebackObject *self, PyObject *new_next, void *Py_UNUSED(_))
     return 0;
 }
 
+static PyObject*
+tb_source_position_get(PyTracebackObject *self, void *Py_UNUSED(_))
+{
+    PyCodeObject *code = PyFrame_GetCode(self->tb_frame);
+
+    int end_lineno = PyCode_Addr2EndLine(code, self->tb_lasti);
+    if (end_lineno < 0) {
+        Py_DECREF(code);
+        Py_RETURN_NONE;
+    }
+
+    int start_col = PyCode_Addr2Offset(code, self->tb_lasti);
+    if (start_col < 0) {
+        Py_DECREF(code);
+        Py_RETURN_NONE;
+    }
+
+    int end_col = PyCode_Addr2EndOffset(code, self->tb_lasti);
+    if (end_col < 0) {
+        Py_DECREF(code);
+        Py_RETURN_NONE;
+    }
+
+    return Py_BuildValue("iiii", self->tb_lineno, end_lineno, start_col, end_col);
+}
 
 static PyMethodDef tb_methods[] = {
    {"__dir__", (PyCFunction)tb_dir, METH_NOARGS},
@@ -155,6 +180,7 @@ static PyMemberDef tb_memberlist[] = {
 
 static PyGetSetDef tb_getsetters[] = {
     {"tb_next", (getter)tb_next_get, (setter)tb_next_set, NULL, NULL},
+    {"tb_source_position", (getter)tb_source_position_get, NULL, NULL, NULL},
     {NULL}      /* Sentinel */
 };
 
@@ -561,7 +587,7 @@ tb_displayline(PyTracebackObject* tb, PyObject *f, PyObject *filename, int linen
     else {
         PyErr_Clear();
     }
-    
+
 done:
     return err;
 }

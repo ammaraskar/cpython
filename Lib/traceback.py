@@ -69,7 +69,7 @@ def extract_tb(tb, limit=None):
     trace.  The line is a string with leading and trailing
     whitespace stripped; if the source is not available it is None.
     """
-    return StackSummary.extract(walk_tb(tb), limit=limit)
+    return StackSummary.extract(walk_tb(tb, only_line_numbers=False), limit=limit, with_full_source_position=True)
 
 #
 # Exception formatting and output.
@@ -251,10 +251,10 @@ class FrameSummary:
       mapping the name to the repr() of the variable.
     """
 
-    __slots__ = ('filename', 'lineno', 'name', '_line', 'locals')
+    __slots__ = ('filename', 'lineno', 'name', '_line', 'locals', 'end_lineno', 'col_start', 'col_end')
 
     def __init__(self, filename, lineno, name, *, lookup_line=True,
-            locals=None, line=None):
+            locals=None, line=None, end_lineno=None, col_start=None, col_end=None):
         """Construct a FrameSummary.
 
         :param lookup_line: If True, `linecache` is consulted for the source
@@ -271,6 +271,9 @@ class FrameSummary:
         if lookup_line:
             self.line
         self.locals = {k: repr(v) for k, v in locals.items()} if locals else None
+        self.end_lineno = end_lineno
+        self.col_start = col_start
+        self.col_end = col_end
 
     def __eq__(self, other):
         if isinstance(other, FrameSummary):
@@ -289,8 +292,8 @@ class FrameSummary:
         return iter([self.filename, self.lineno, self.name, self.line])
 
     def __repr__(self):
-        return "<FrameSummary file {filename}, line {lineno} in {name}>".format(
-            filename=self.filename, lineno=self.lineno, name=self.name)
+        return "<FrameSummary file {filename}, line {lineno}:{end_lineno} column {col_start}:{col_end} in {name}>".format(
+            filename=self.filename, lineno=self.lineno, name=self.name, end_lineno=self.end_lineno, col_start=self.col_start, col_end=self.col_end)
 
     def __len__(self):
         return 4
@@ -315,14 +318,17 @@ def walk_stack(f):
         f = f.f_back
 
 
-def walk_tb(tb):
+def walk_tb(tb, only_line_numbers=True):
     """Walk a traceback yielding the frame and line number for each frame.
 
     This will follow tb.tb_next (and thus is in the opposite order to
     walk_stack). Usually used with StackSummary.extract.
     """
     while tb is not None:
-        yield tb.tb_frame, tb.tb_lineno
+        if only_line_numbers:
+            yield tb.tb_frame, tb.tb_lineno
+        else:
+            yield tb.tb_frame, tb.tb_source_position
         tb = tb.tb_next
 
 
@@ -333,7 +339,7 @@ class StackSummary(list):
 
     @classmethod
     def extract(klass, frame_gen, *, limit=None, lookup_lines=True,
-            capture_locals=False):
+            capture_locals=False, with_full_source_position=False):
         """Create a StackSummary from a traceback or stack object.
 
         :param frame_gen: A generator that yields (frame, lineno) tuples to
@@ -362,6 +368,11 @@ class StackSummary(list):
             filename = co.co_filename
             name = co.co_name
 
+            if with_full_source_position:
+                lineno, end_lineno, col_start, col_end = lineno
+            else:
+                end_lineno, col_start, col_end = None, None, None
+
             fnames.add(filename)
             linecache.lazycache(filename, f.f_globals)
             # Must defer line lookups until we have called checkcache.
@@ -370,7 +381,8 @@ class StackSummary(list):
             else:
                 f_locals = None
             result.append(FrameSummary(
-                filename, lineno, name, lookup_line=False, locals=f_locals))
+                filename, lineno, name, lookup_line=False, locals=f_locals,
+                end_lineno=end_lineno, col_start=col_start, col_end=col_end))
         for filename in fnames:
             linecache.checkcache(filename)
         # If immediate lookup was desired, trigger lookups now.
@@ -437,6 +449,10 @@ class StackSummary(list):
                 frame.filename, frame.lineno, frame.name))
             if frame.line:
                 row.append('    {}\n'.format(frame.line.strip()))
+                if frame.col_start and frame.col_end:
+                    row.append(' ' * (frame.col_start - 1))
+                    row.append('^' * (frame.col_end - frame.col_start))
+                    row.append('\n')
             if frame.locals:
                 for name, value in sorted(frame.locals.items()):
                     row.append('    {name} = {value}\n'.format(name=name, value=value))
@@ -492,8 +508,8 @@ class TracebackException:
 
         # TODO: locals.
         self.stack = StackSummary.extract(
-            walk_tb(exc_traceback), limit=limit, lookup_lines=lookup_lines,
-            capture_locals=capture_locals)
+            walk_tb(exc_traceback, only_line_numbers=False), limit=limit, lookup_lines=lookup_lines,
+            capture_locals=capture_locals, with_full_source_position=True)
         self.exc_type = exc_type
         # Capture now to permit freeing resources: only complication is in the
         # unofficial API _format_final_exc_line

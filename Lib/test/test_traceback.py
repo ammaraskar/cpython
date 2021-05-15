@@ -564,10 +564,10 @@ class TracebackFormatTests(unittest.TestCase):
             exception_print(exc_val)
 
         tb = stderr_f.getvalue().strip().splitlines()
-        self.assertEqual(11, len(tb))
-        self.assertEqual(context_message.strip(), tb[5])
-        self.assertIn('UnhashableException: ex2', tb[3])
-        self.assertIn('UnhashableException: ex1', tb[10])
+        self.assertEqual(13, len(tb))
+        self.assertEqual(context_message.strip(), tb[6])
+        self.assertIn('UnhashableException: ex2', tb[4])
+        self.assertIn('UnhashableException: ex1', tb[12])
 
 
 cause_message = (
@@ -597,8 +597,12 @@ class BaseExceptionReportingTests:
 
     def check_zero_div(self, msg):
         lines = msg.splitlines()
-        self.assertTrue(lines[-3].startswith('  File'))
-        self.assertIn('1/0 # In zero_div', lines[-2])
+        print('----')
+        print(lines[-4])
+        print(lines[-4].startswith('  File'))
+        print('----')
+        self.assertTrue(lines[-4].startswith('  File'))
+        self.assertIn('1/0 # In zero_div', lines[-3])
         self.assertTrue(lines[-1].startswith('ZeroDivisionError'), lines[-1])
 
     def test_simple(self):
@@ -622,6 +626,7 @@ class BaseExceptionReportingTests:
         def outer_raise():
             inner_raise() # Marker
         blocks = boundaries.split(self.get_report(outer_raise))
+        print(blocks)
         self.assertEqual(len(blocks), 3)
         self.assertEqual(blocks[1], cause_message)
         self.check_zero_div(blocks[0])
@@ -650,11 +655,11 @@ class BaseExceptionReportingTests:
         except ZeroDivisionError as _:
             e = _
         lines = self.get_report(e).splitlines()
-        self.assertEqual(len(lines), 4)
+        self.assertEqual(len(lines), 5)
         self.assertTrue(lines[0].startswith('Traceback'))
         self.assertTrue(lines[1].startswith('  File'))
         self.assertIn('ZeroDivisionError from None', lines[2])
-        self.assertTrue(lines[3].startswith('ZeroDivisionError'))
+        self.assertTrue(lines[4].startswith('ZeroDivisionError'))
 
     def test_cause_and_context(self):
         # When both a cause and a context are set, only the cause should be
