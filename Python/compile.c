@@ -7850,18 +7850,30 @@ assemble(struct compiler *c, int addNone)
     if (!merge_const_one(c, &a.a_lnotab)) {
         goto error;
     }
-    if (!assemble_end_line_range(&a)) {
-        return 0;
+
+    if (_Py_GetConfig()->deactivate_debug_ranges) {
+        Py_DECREF(a.a_enotab);
+        a.a_enotab = Py_None;
+        Py_INCREF(a.a_enotab);
+
+        Py_DECREF(a.a_cnotab);
+        a.a_cnotab = Py_None;
+        Py_INCREF(a.a_cnotab);
+    } else {
+        if (!assemble_end_line_range(&a)) {
+            return 0;
+        }
+        if (_PyBytes_Resize(&a.a_enotab, a.a_enotab_off) < 0) {
+            goto error;
+        }
+        if (!merge_const_one(c, &a.a_enotab)) {
+            goto error;
+        }
+        if (_PyBytes_Resize(&a.a_cnotab, a.a_cnotab_off) < 0) {
+            goto error;
+        }
     }
-    if (_PyBytes_Resize(&a.a_enotab, a.a_enotab_off) < 0) {
-        goto error;
-    }
-    if (!merge_const_one(c, &a.a_enotab)) {
-        goto error;
-    }
-    if (_PyBytes_Resize(&a.a_cnotab, a.a_cnotab_off) < 0) {
-        goto error;
-    }
+
     if (_PyBytes_Resize(&a.a_bytecode, a.a_offset * sizeof(_Py_CODEUNIT)) < 0) {
         goto error;
     }

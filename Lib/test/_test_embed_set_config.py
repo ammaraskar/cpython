@@ -61,6 +61,7 @@ class SetConfigTests(unittest.TestCase):
             'faulthandler',
             'tracemalloc',
             'import_time',
+            'deactivate_debug_ranges',
             'show_ref_count',
             'dump_refs',
             'malloc_stats',
