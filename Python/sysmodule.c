@@ -786,12 +786,61 @@ sys_exc_info_impl(PyObject *module)
 /*[clinic end generated code: output=3afd0940cf3a4d30 input=b5c5bf077788a3e5]*/
 {
     _PyErr_StackItem *err_info = _PyErr_GetTopmostException(_PyThreadState_GET());
-    return Py_BuildValue(
-        "(OOO)",
-        err_info->exc_type != NULL ? err_info->exc_type : Py_None,
-        err_info->exc_value != NULL ? err_info->exc_value : Py_None,
-        err_info->exc_traceback != NULL ?
-            err_info->exc_traceback : Py_None);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) err_info->exc_type != NULL ? err_info->exc_type : Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) err_info->exc_value != NULL ? err_info->exc_value : Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) err_info->exc_traceback != NULL ?
+                err_info->exc_traceback : Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 

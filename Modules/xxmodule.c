@@ -50,7 +50,15 @@ Xxo_dealloc(XxoObject *self)
 static PyObject *
 Xxo_demo(XxoObject *self, PyObject *args)
 {
-    if (!PyArg_ParseTuple(args, ":demo"))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("demo", _nargs, 0, 0)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_INCREF(Py_None);
     return Py_None;
@@ -156,7 +164,29 @@ xx_foo(PyObject *self, PyObject *args)
 {
     long i, j;
     long res;
-    if (!PyArg_ParseTuple(args, "ll:foo", &i, &j))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("foo", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&i = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&j = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     res = i+j; /* XXX Do something here */
     return PyLong_FromLong(res);
@@ -170,7 +200,15 @@ xx_new(PyObject *self, PyObject *args)
 {
     XxoObject *rv;
 
-    if (!PyArg_ParseTuple(args, ":new"))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("new", _nargs, 0, 0)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     rv = newXxoObject(args);
     if (rv == NULL)
@@ -185,7 +223,18 @@ xx_bug(PyObject *self, PyObject *args)
 {
     PyObject *list, *item;
 
-    if (!PyArg_ParseTuple(args, "O:bug", &list))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("bug", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&list = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     item = PyList_GetItem(list, 0);

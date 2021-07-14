@@ -572,7 +572,44 @@ py_scanstring(PyObject* Py_UNUSED(self), PyObject *args)
     Py_ssize_t end;
     Py_ssize_t next_end = -1;
     int strict = 1;
-    if (!PyArg_ParseTuple(args, "On|i:scanstring", &pystr, &end, &strict)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("scanstring", _nargs, 2, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&pystr = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&end = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&end = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&end == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&strict = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (PyUnicode_Check(pystr)) {

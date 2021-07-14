@@ -556,7 +556,36 @@ _io_IncrementalNewlineDecoder_getstate_impl(nldecoder_object *self)
     flag <<= 1;
     if (self->pendingcr)
         flag |= 1;
-    return Py_BuildValue("NK", buffer, flag);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) buffer;
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromUnsignedLongLong(flag);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -620,13 +649,156 @@ incrementalnewlinedecoder_newlines_get(nldecoder_object *self, void *context)
     case SEEN_CRLF:
         return PyUnicode_FromString("\r\n");
     case SEEN_CR | SEEN_LF:
-        return Py_BuildValue("ss", "\r", "\n");
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) "\r";
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) "\n";
+        if (_strArg) {
+            _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     case SEEN_CR | SEEN_CRLF:
-        return Py_BuildValue("ss", "\r", "\r\n");
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) "\r";
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) "\r\n";
+        if (_strArg) {
+            _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     case SEEN_LF | SEEN_CRLF:
-        return Py_BuildValue("ss", "\n", "\r\n");
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) "\n";
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) "\r\n";
+        if (_strArg) {
+            _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     case SEEN_CR | SEEN_LF | SEEN_CRLF:
-        return Py_BuildValue("sss", "\r", "\n", "\r\n");
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) "\r";
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) "\n";
+        if (_strArg) {
+            _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        const char* _strArg = (const char*) "\r\n";
+        if (_strArg) {
+            _tupleMember2 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember2 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     default:
         Py_RETURN_NONE;
    }
@@ -1903,7 +2075,40 @@ textiowrapper_read_chunk(textio *self, Py_ssize_t size_hint)
         if (next_input == NULL) {
             goto fail;
         }
-        PyObject *snapshot = Py_BuildValue("NN", dec_flags, next_input);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) dec_flags;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) next_input;
+        if (_objectArg) {
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        PyObject *snapshot = _builtResult;
         if (snapshot == NULL) {
             dec_flags = NULL;
             goto fail;
@@ -2698,7 +2903,31 @@ _io_TextIOWrapper_tell_impl(textio *self)
 
     /* Skip backward to the snapshot point (see _read_chunk). */
     assert(PyTuple_Check(self->snapshot));
-    if (!PyArg_ParseTuple(self->snapshot, "iO", &cookie.dec_flags, &next_input))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(self->snapshot);
+        if (!_PyArg_CheckPositional("_io_TextIOWrapper_tell_impl", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(self->snapshot, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&cookie.dec_flags = _ival;
+        }
+        {
+            *&next_input = PyTuple_GET_ITEM(self->snapshot, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         goto fail;
 
     assert (PyBytes_Check(next_input));

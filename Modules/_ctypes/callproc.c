@@ -204,7 +204,28 @@ set_error_internal(PyObject *self, PyObject *args, int index)
     PyObject *errobj;
     int *space;
 
-    if (!PyArg_ParseTuple(args, "i", &new_errno)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("set_error_internal", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&new_errno = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     errobj = _ctypes_get_errobj(&space);
@@ -1490,7 +1511,33 @@ static PyObject *py_dl_open(PyObject *self, PyObject *args)
     /* cygwin doesn't define RTLD_LOCAL */
     int mode = RTLD_NOW;
 #endif
-    if (!PyArg_ParseTuple(args, "O|i:dlopen", &name, &mode))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dlopen", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&name = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&mode = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     mode |= RTLD_NOW;
     if (name != Py_None) {
@@ -1776,9 +1823,29 @@ resize(PyObject *self, PyObject *args)
     StgDictObject *dict;
     Py_ssize_t size;
 
-    if (!PyArg_ParseTuple(args,
-                          "On:resize",
-                          &obj, &size))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("resize", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     dict = PyObject_stgdict((PyObject *)obj);
@@ -1830,7 +1897,27 @@ unpickle(PyObject *self, PyObject *args)
     _Py_IDENTIFIER(__new__);
     _Py_IDENTIFIER(__setstate__);
 
-    if (!PyArg_ParseTuple(args, "OO!", &typ, &PyTuple_Type, &state))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("unpickle", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&typ = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 1);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&state = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     obj = _PyObject_CallMethodIdOneArg(typ, &PyId___new__, typ);
     if (obj == NULL)
@@ -1965,7 +2052,47 @@ buffer_info(PyObject *self, PyObject *arg)
         Py_DECREF(shape);
         return NULL;
     }
-    return Py_BuildValue("siN", dict->format, dict->ndim, shape);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    const char* _strArg = (const char*) dict->format;
+    if (_strArg) {
+        _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _tupleMember0 = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(dict->ndim);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) shape;
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 

@@ -1013,11 +1013,38 @@ positionsiter_next(positionsiterator* pi)
     }
 
     pi->pi_offset += 2;
-    return Py_BuildValue("(O&O&O&O&)",
-        _source_offset_converter, &start_line,
-        _source_offset_converter, &end_line,
-        _source_offset_converter, &start_col,
-        _source_offset_converter, &end_col);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(4);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = _source_offset_converter( &start_line );
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = _source_offset_converter( &end_line );
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = _source_offset_converter( &start_col );
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    _tupleMember3 = _source_offset_converter( &end_col );
+    PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyTypeObject PositionsIterator = {

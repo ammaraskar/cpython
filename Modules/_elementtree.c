@@ -394,7 +394,29 @@ element_init(PyObject *self, PyObject *args, PyObject *kwds)
     PyObject *attrib = NULL;
     ElementObject *self_elem;
 
-    if (!PyArg_ParseTuple(args, "O|O!:Element", &tag, &PyDict_Type, &attrib))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("Element", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&tag = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            PyTypeObject* _type = &PyDict_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 1);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&attrib = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return -1;
 
     if (attrib) {
@@ -593,9 +615,38 @@ subelement(PyObject *self, PyObject *args, PyObject *kwds)
     ElementObject* parent;
     PyObject* tag;
     PyObject* attrib = NULL;
-    if (!PyArg_ParseTuple(args, "O!O|O!:SubElement",
-                          &Element_Type, &parent, &tag,
-                          &PyDict_Type, &attrib)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("SubElement", _nargs, 2, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &Element_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&parent = _p;
+        }
+        {
+            *&tag = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            PyTypeObject* _type = &PyDict_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 2);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&attrib = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 

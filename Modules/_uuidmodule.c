@@ -27,7 +27,34 @@ py_uuid_generate_time_safe(PyObject *Py_UNUSED(context),
     int res;
 
     res = uuid_generate_time_safe(uuid);
-    return Py_BuildValue("y#i", (const char *) uuid, sizeof(uuid), res);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    const char* _strArg = (const char*) (const char *) uuid;
+    if (_strArg) {
+        _tupleMember0 = PyBytes_FromStringAndSize(_strArg, sizeof(uuid));
+    } else {
+        _tupleMember0 = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(res);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 #elif defined(HAVE_UUID_CREATE)
     uint32_t status;
     uuid_create(&uuid, &status);

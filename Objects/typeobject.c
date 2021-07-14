@@ -3294,10 +3294,43 @@ type_new(PyTypeObject *metatype, PyObject *args, PyObject *kwds)
 
     /* Parse arguments: (name, bases, dict) */
     PyObject *name, *bases, *orig_dict;
-    if (!PyArg_ParseTuple(args, "UO!O!:type.__new__",
-                          &name,
-                          &PyTuple_Type, &bases,
-                          &PyDict_Type, &orig_dict))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("type.__new__", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&name = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 1);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&bases = _p;
+        }
+        {
+            PyTypeObject* _type = &PyDict_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 2);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&orig_dict = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
     {
         return NULL;
     }
@@ -8945,7 +8978,29 @@ super_init(PyObject *self, PyObject *args, PyObject *kwds)
 
     if (!_PyArg_NoKeywords("super", kwds))
         return -1;
-    if (!PyArg_ParseTuple(args, "|O!O:super", &PyType_Type, &type, &obj))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("super", _nargs, 0, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            PyTypeObject* _type = &PyType_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&type = _p;
+        }
+        if (_nargs >= 2) {
+            *&obj = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return -1;
 
     if (type == NULL) {

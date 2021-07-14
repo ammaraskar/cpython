@@ -668,7 +668,21 @@ signal_strsignal_impl(PyObject *module, int signalnum)
         Py_RETURN_NONE;
 #endif
 
-    return Py_BuildValue("s", res);
+    {
+    PyObject* _builtResult;
+    {
+    const char* _strArg = (const char*) res;
+    if (_strArg) {
+        _builtResult = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 #ifdef HAVE_SIGINTERRUPT
@@ -1822,7 +1836,33 @@ _PyErr_CheckSignalsTstate(PyThreadState *tstate)
             continue;
         }
 
-        PyObject *arglist = Py_BuildValue("(iO)", i, frame);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromLong(i);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) frame;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        PyObject *arglist = _builtResult;
         PyObject *result;
         if (arglist) {
             result = _PyObject_Call(tstate, func, arglist, NULL);

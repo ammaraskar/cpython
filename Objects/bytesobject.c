@@ -2467,7 +2467,29 @@ bytes_hex_impl(PyBytesObject *self, PyObject *sep, int bytes_per_sep)
 static PyObject *
 bytes_getnewargs(PyBytesObject *v, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("(y#)", v->ob_sval, Py_SIZE(v));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(1);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    const char* _strArg = (const char*) v->ob_sval;
+    if (_strArg) {
+        _tupleMember0 = PyBytes_FromStringAndSize(_strArg, Py_SIZE(v));
+    } else {
+        _tupleMember0 = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 
@@ -3145,10 +3167,104 @@ striter_reduce(striterobject *it, PyObject *Py_UNUSED(ignored))
 {
     _Py_IDENTIFIER(iter);
     if (it->it_seq != NULL) {
-        return Py_BuildValue("N(O)n", _PyEval_GetBuiltinId(&PyId_iter),
-                             it->it_seq, it->it_index);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) _PyEval_GetBuiltinId(&PyId_iter);
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) it->it_seq;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember2 = PyLong_FromSsize_t(it->it_index);
+        #else
+        _tupleMember2 = PyLong_FromLong(it->it_index);
+        #endif
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else {
-        return Py_BuildValue("N(())", _PyEval_GetBuiltinId(&PyId_iter));
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) _PyEval_GetBuiltinId(&PyId_iter);
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 }
 

@@ -1629,14 +1629,64 @@ _tracemalloc_get_traced_memory_impl(PyObject *module)
     Py_ssize_t size, peak_size;
 
     if (!_Py_tracemalloc_config.tracing)
-        return Py_BuildValue("ii", 0, 0);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromLong(0);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(0);
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 
     TABLES_LOCK();
     size = tracemalloc_traced_memory;
     peak_size = tracemalloc_peak_traced_memory;
     TABLES_UNLOCK();
 
-    return Py_BuildValue("nn", size, peak_size);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember0 = PyLong_FromSsize_t(size);
+    #else
+    _tupleMember0 = PyLong_FromLong(size);
+    #endif
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember1 = PyLong_FromSsize_t(peak_size);
+    #else
+    _tupleMember1 = PyLong_FromLong(peak_size);
+    #endif
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]

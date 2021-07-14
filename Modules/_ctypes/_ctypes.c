@@ -609,7 +609,31 @@ CDataType_from_buffer(PyObject *type, PyObject *args)
         return NULL;
     }
 
-    if (!PyArg_ParseTuple(args, "O|n:from_buffer", &obj, &offset))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("from_buffer", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&offset = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&offset = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&offset == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     mv = PyMemoryView_FromObject(obj);
@@ -731,7 +755,36 @@ CDataType_in_dll(PyObject *type, PyObject *args)
     void *handle;
     void *address;
 
-    if (!PyArg_ParseTuple(args, "Os:in_dll", &dll, &name))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("in_dll", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&dll = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (PySys_Audit("ctypes.dlsym", "O", args) < 0) {
         return NULL;
@@ -2853,8 +2906,88 @@ PyCData_reduce(PyObject *myself, PyObject *args)
     if (dict == NULL) {
         return NULL;
     }
-    return Py_BuildValue("O(O(NN))", _unpickle, Py_TYPE(myself), dict,
-                         PyBytes_FromStringAndSize(self->b_ptr, self->b_size));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) _unpickle;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(myself);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) dict;
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) PyBytes_FromStringAndSize(self->b_ptr, self->b_size);
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -2865,8 +2998,54 @@ PyCData_setstate(PyObject *myself, PyObject *args)
     int res;
     PyObject *dict, *mydict;
     CDataObject *self = (CDataObject *)myself;
-    if (!PyArg_ParseTuple(args, "O!s#",
-                          &PyDict_Type, &dict, &data, &len))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("PyCData_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyDict_Type;
+            PyObject* _p = PyTuple_GET_ITEM(args, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&dict = _p;
+        }
+        {
+            Py_ssize_t* _len = &len;
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), _len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&data = _sarg;
+            } else {
+                PyBufferProcs *pb = Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_as_buffer;
+                if (pb != NULL && pb->bf_releasebuffer != NULL) {
+                    PyErr_Format(PyExc_TypeError, "must be read-only bytes-like object, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                Py_buffer _view;
+                if (PyObject_GetBuffer(PyTuple_GET_ITEM(args, 1), &_view, PyBUF_SIMPLE) != 0) {
+                    PyErr_Format(PyExc_TypeError, "must be bytes-like object, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (!PyBuffer_IsContiguous(&_view, 'C')) {
+                    PyBuffer_Release(&_view);
+                    PyErr_Format(PyExc_TypeError, "must be contiguous buffer, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *_len = _view.len;
+                *&data = _view.buf;
+                PyBuffer_Release(&_view);
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
     {
         return NULL;
     }
@@ -3484,7 +3663,36 @@ _validate_paramflags(PyTypeObject *type, PyObject *paramflags)
         PyObject *name = Py_None;
         PyObject *defval;
         PyObject *typ;
-        if (!PyArg_ParseTuple(item, "i|OO", &flag, &name, &defval) ||
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(item);
+            if (!_PyArg_CheckPositional("_validate_paramflags", _nargs, 1, 3)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                long _ival = PyLong_AsLong(PyTuple_GET_ITEM(item, 0));
+                if (_ival == -1 && PyErr_Occurred()) {
+                    _parseResult = 0; goto _parse_exit_label;
+                } else if (_ival > INT_MAX) {
+                    PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                    _parseResult = 0; goto _parse_exit_label;
+                } else if (_ival < INT_MIN) {
+                    PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&flag = _ival;
+            }
+            {
+            }
+            if (_nargs >= 2) {
+                *&name = PyTuple_GET_ITEM(item, 1);
+            }
+            if (_nargs >= 3) {
+                *&defval = PyTuple_GET_ITEM(item, 2);
+            }
+        }
+        _parse_exit_label:
+        if (!_parseResult ||
             !(name == Py_None || PyUnicode_Check(name)))
         {
             PyErr_SetString(PyExc_TypeError,
@@ -3550,7 +3758,23 @@ PyCFuncPtr_FromDll(PyTypeObject *type, PyObject *args, PyObject *kwds)
     void *handle;
     PyObject *paramflags = NULL;
 
-    if (!PyArg_ParseTuple(args, "O|O", &ftuple, &paramflags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("PyCFuncPtr_FromDll", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&ftuple = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&paramflags = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (paramflags == Py_None)
         paramflags = NULL;
@@ -3732,7 +3956,18 @@ PyCFuncPtr_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
         return (PyObject *)ob;
     }
 
-    if (!PyArg_ParseTuple(args, "O", &callable))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("PyCFuncPtr_new", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&callable = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (!PyCallable_Check(callable)) {
         PyErr_SetString(PyExc_TypeError,

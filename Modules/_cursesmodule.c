@@ -636,10 +636,10 @@ Window_OneArgNoReturnVoidFunction(immedok, int, "i;True(1) or False(0)")
 #endif
 Window_OneArgNoReturnVoidFunction(wtimeout, int, "i;delay")
 
-Window_NoArg2TupleReturnFunction(getyx, int, "ii")
-Window_NoArg2TupleReturnFunction(getbegyx, int, "ii")
-Window_NoArg2TupleReturnFunction(getmaxyx, int, "ii")
-Window_NoArg2TupleReturnFunction(getparyx, int, "ii")
+(getyx, int, "ii")
+(getbegyx, int, "ii")
+(getmaxyx, int, "ii")
+(getparyx, int, "ii")
 
 Window_OneArgNoReturnFunction(clearok, int, "i;True(1) or False(0)")
 Window_OneArgNoReturnFunction(idlok, int, "i;True(1) or False(0)")
@@ -2749,7 +2749,33 @@ _curses_color_content_impl(PyObject *module, int color_number)
         return NULL;
     }
 
-    return Py_BuildValue("(iii)", r, g, b);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(r);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(g);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyLong_FromLong(b);
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -2958,7 +2984,28 @@ _curses_getsyx_impl(PyObject *module)
 
     getsyx(y, x);
 
-    return Py_BuildValue("(ii)", y, x);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(y);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(x);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif
 
@@ -2986,10 +3033,43 @@ _curses_getmouse_impl(PyObject *module)
         PyErr_SetString(PyCursesError, "getmouse() returned ERR");
         return NULL;
     }
-    return Py_BuildValue("(hiiik)",
-                         (short)event.id,
-                         (int)event.x, (int)event.y, (int)event.z,
-                         (unsigned long) event.bstate);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(5);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong((short)event.id);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong((int)event.x);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyLong_FromLong((int)event.y);
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    _tupleMember3 = PyLong_FromLong((int)event.z);
+    PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+    }
+    {
+    PyObject* _tupleMember4;
+    _tupleMember4 = PyLong_FromUnsignedLong((unsigned long) event.bstate);
+    PyTuple_SET_ITEM(_builtResult, 4, _tupleMember4);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -3667,8 +3747,28 @@ _curses_mousemask_impl(PyObject *module, unsigned long newmask)
 
     PyCursesInitialised;
     availmask = mousemask((mmask_t)newmask, &oldmask);
-    return Py_BuildValue("(kk)",
-                         (unsigned long)availmask, (unsigned long)oldmask);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromUnsignedLong((unsigned long)availmask);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromUnsignedLong((unsigned long)oldmask);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif
 
@@ -3688,7 +3788,15 @@ _curses_napms_impl(PyObject *module, int ms)
 {
     PyCursesInitialised;
 
-    return Py_BuildValue("i", napms(ms));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyLong_FromLong(napms(ms));
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 
@@ -3878,7 +3986,28 @@ _curses_pair_content_impl(PyObject *module, int pair_number)
         return NULL;
     }
 
-    return Py_BuildValue("(ii)", f, b);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(f);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(b);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]

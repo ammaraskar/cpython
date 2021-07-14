@@ -500,7 +500,28 @@ audioop_minmax_impl(PyObject *module, Py_buffer *fragment, int width)
         if (val > max) max = val;
         if (val < min) min = val;
     }
-    return Py_BuildValue("(ii)", min, max);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(min);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(max);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -670,7 +691,32 @@ audioop_findfit_impl(PyObject *module, Py_buffer *fragment,
 
     factor = _sum2(cp1+best_j, cp2, len2) / sum_ri_2;
 
-    return Py_BuildValue("(nf)", best_j, factor);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember0 = PyLong_FromSsize_t(best_j);
+    #else
+    _tupleMember0 = PyLong_FromLong(best_j);
+    #endif
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyFloat_FromDouble(factor);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*

@@ -669,7 +669,28 @@ complex___getnewargs___impl(PyComplexObject *self)
 /*[clinic end generated code: output=689b8206e8728934 input=539543e0a50533d7]*/
 {
     Py_complex c = self->cval;
-    return Py_BuildValue("(dd)", c.real, c.imag);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyFloat_FromDouble(c.real);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyFloat_FromDouble(c.imag);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 

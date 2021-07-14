@@ -5054,7 +5054,31 @@ static PyObject *
 int___getnewargs___impl(PyObject *self)
 /*[clinic end generated code: output=839a49de3f00b61b input=5904770ab1fb8c75]*/
 {
-    return Py_BuildValue("(N)", _PyLong_Copy((PyLongObject *)self));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(1);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) _PyLong_Copy((PyLongObject *)self);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *

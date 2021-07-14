@@ -544,7 +544,57 @@ slice_indices(PySliceObject* self, PyObject* len)
     if (error == -1)
         return NULL;
     else
-        return Py_BuildValue("(NNN)", start, stop, step);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) start;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) stop;
+        if (_objectArg) {
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) step;
+        if (_objectArg) {
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 }
 
 PyDoc_STRVAR(slice_indices_doc,
@@ -558,7 +608,82 @@ handling of normal slices.");
 static PyObject *
 slice_reduce(PySliceObject* self, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OOO)", Py_TYPE(self), self->start, self->stop, self->step);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(3);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) self->start;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) self->stop;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) self->step;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 2, _tupleMember2);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 PyDoc_STRVAR(reduce_doc, "Return state information for pickling.");

@@ -3735,8 +3735,64 @@ save_global(PicklerObject *self, PyObject *obj, PyObject *name)
         }
         else if (parent != module) {
             PickleState *st = _Pickle_GetGlobalState();
-            PyObject *reduce_value = Py_BuildValue("(O(OO))",
-                                        st->getattr, parent, lastname);
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(2);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) st->getattr;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyTuple_New(2);
+            if (_tupleMember1 == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) parent;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            PyObject* _objectArg = (PyObject*) lastname;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember1 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember1 = NULL;
+            }
+            PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+            }
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            }
+            PyObject *reduce_value = _builtResult;
             if (reduce_value == NULL)
                 goto error;
             status = save_reduce(self, reduce_value, NULL);

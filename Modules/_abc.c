@@ -285,11 +285,58 @@ _abc__get_dump(PyObject *module, PyObject *self)
     if (impl == NULL) {
         return NULL;
     }
-    PyObject *res = Py_BuildValue("NNNK",
-                                  PySet_New(impl->_abc_registry),
-                                  PySet_New(impl->_abc_cache),
-                                  PySet_New(impl->_abc_negative_cache),
-                                  impl->_abc_negative_cache_version);
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(4);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_registry);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_cache);
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_negative_cache);
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    _tupleMember3 = PyLong_FromUnsignedLongLong(impl->_abc_negative_cache_version);
+    PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+    }
+    }
+    PyObject *res = _builtResult;
     Py_DECREF(impl);
     return res;
 }

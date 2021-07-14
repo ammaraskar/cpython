@@ -347,7 +347,24 @@ groupby_setstate(groupbyobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "OOO", &currkey, &currvalue, &tgtkey)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("groupby_setstate", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&currkey = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+            *&currvalue = PyTuple_GET_ITEM(state, 1);
+        }
+        {
+            *&tgtkey = PyTuple_GET_ITEM(state, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     Py_INCREF(currkey);
@@ -506,9 +523,110 @@ _grouper_reduce(_grouperobject *lz, PyObject *Py_UNUSED(ignored))
 {
     _Py_IDENTIFIER(iter);
     if (((groupbyobject *)lz->parent)->currgrouper != lz) {
-        return Py_BuildValue("N(())", _PyEval_GetBuiltinId(&PyId_iter));
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) _PyEval_GetBuiltinId(&PyId_iter);
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
-    return Py_BuildValue("O(OO)", Py_TYPE(lz), lz->parent, lz->tgtkey);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->parent;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->tgtkey;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyMethodDef _grouper_methods[] = {
@@ -706,9 +824,81 @@ teedataobject_reduce(teedataobject *tdo, PyObject *Py_UNUSED(ignored))
         Py_INCREF(tdo->values[i]);
         PyList_SET_ITEM(values, i, tdo->values[i]);
     }
-    return Py_BuildValue("O(ONO)", Py_TYPE(tdo), tdo->it,
-                         values,
-                         tdo->nextlink ? tdo->nextlink : Py_None);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(tdo);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(3);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) tdo->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) values;
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) tdo->nextlink ? tdo->nextlink : Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 2, _tupleMember2);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -927,7 +1117,75 @@ tee_dealloc(teeobject *to)
 static PyObject *
 tee_reduce(teeobject *to, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(())(Oi)", Py_TYPE(to), to->dataobj, to->index);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(to);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(1);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyTuple_New(0);
+    if (_tupleMember0 == NULL) {
+        // TODO: error handling
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyTuple_New(2);
+    if (_tupleMember2 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) to->dataobj;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(to->index);
+    PyTuple_SET_ITEM(_tupleMember2, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -939,7 +1197,37 @@ tee_setstate(teeobject *to, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!i", &teedataobject_type, &tdo, &index)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("tee_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &teedataobject_type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&tdo = _p;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(state, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&index = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (index < 0 || index > LINKCELLS) {
@@ -1189,10 +1477,174 @@ cycle_reduce(cycleobject *lz, PyObject *Py_UNUSED(ignored))
             }
             Py_DECREF(res);
         }
-        return Py_BuildValue("O(N)(OO)", Py_TYPE(lz), it, lz->saved, Py_True);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) it;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyTuple_New(2);
+        if (_tupleMember2 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->saved;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) Py_True;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember2, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
-    return Py_BuildValue("O(O)(OO)", Py_TYPE(lz), lz->it, lz->saved,
-                         lz->firstpass ? Py_True : Py_False);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(1);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyTuple_New(2);
+    if (_tupleMember2 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->saved;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->firstpass ? Py_True : Py_False;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember2, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -1204,7 +1656,37 @@ cycle_setstate(cycleobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!i", &PyList_Type, &saved, &firstpass)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("cycle_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyList_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&saved = _p;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(state, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&firstpass = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     Py_INCREF(saved);
@@ -1366,7 +1848,73 @@ dropwhile_next(dropwhileobject *lz)
 static PyObject *
 dropwhile_reduce(dropwhileobject *lz, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OO)l", Py_TYPE(lz), lz->func, lz->it, lz->start);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->func;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyLong_FromLong(lz->start);
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -1525,7 +2073,73 @@ takewhile_next(takewhileobject *lz)
 static PyObject *
 takewhile_reduce(takewhileobject *lz, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OO)l", Py_TYPE(lz), lz->func, lz->it, lz->stop);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->func;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyLong_FromLong(lz->stop);
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -1761,7 +2375,71 @@ islice_reduce(isliceobject *lz, PyObject *Py_UNUSED(ignored))
         Py_DECREF(empty_list);
         if (empty_it == NULL)
             return NULL;
-        return Py_BuildValue("O(Nn)n", Py_TYPE(lz), empty_it, 0, 0);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) empty_it;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(0);
+        #else
+        _tupleMember1 = PyLong_FromLong(0);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember2 = PyLong_FromSsize_t(0);
+        #else
+        _tupleMember2 = PyLong_FromLong(0);
+        #endif
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
     if (lz->stop == -1) {
         stop = Py_None;
@@ -1771,9 +2449,94 @@ islice_reduce(isliceobject *lz, PyObject *Py_UNUSED(ignored))
         if (stop == NULL)
             return NULL;
     }
-    return Py_BuildValue("O(OnNn)n", Py_TYPE(lz),
-        lz->it, lz->next, stop, lz->step,
-        lz->cnt);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(4);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember1 = PyLong_FromSsize_t(lz->next);
+    #else
+    _tupleMember1 = PyLong_FromLong(lz->next);
+    #endif
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) stop;
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember3 = PyLong_FromSsize_t(lz->step);
+    #else
+    _tupleMember3 = PyLong_FromLong(lz->step);
+    #endif
+    PyTuple_SET_ITEM(_tupleMember1, 3, _tupleMember3);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember2 = PyLong_FromSsize_t(lz->cnt);
+    #else
+    _tupleMember2 = PyLong_FromLong(lz->cnt);
+    #endif
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -1936,7 +2699,68 @@ static PyObject *
 starmap_reduce(starmapobject *lz, PyObject *Py_UNUSED(ignored))
 {
     /* Just pickle the iterator */
-    return Py_BuildValue("O(OO)", Py_TYPE(lz), lz->func, lz->it);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->func;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyMethodDef starmap_methods[] = {
@@ -2116,12 +2940,169 @@ chain_reduce(chainobject *lz, PyObject *Py_UNUSED(ignored))
          * will fix pickling of functions
          */
         if (lz->active) {
-            return Py_BuildValue("O()(OO)", Py_TYPE(lz), lz->source, lz->active);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(3);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyTuple_New(0);
+            if (_tupleMember1 == NULL) {
+                // TODO: error handling
+            }
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            {
+            PyObject* _tupleMember2;
+            _tupleMember2 = PyTuple_New(2);
+            if (_tupleMember2 == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) lz->source;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            PyObject* _objectArg = (PyObject*) lz->active;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember1 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember1 = NULL;
+            }
+            PyTuple_SET_ITEM(_tupleMember2, 1, _tupleMember1);
+            }
+            PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         } else {
-            return Py_BuildValue("O()(O)", Py_TYPE(lz), lz->source);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(3);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyTuple_New(0);
+            if (_tupleMember1 == NULL) {
+                // TODO: error handling
+            }
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            {
+            PyObject* _tupleMember2;
+            _tupleMember2 = PyTuple_New(1);
+            if (_tupleMember2 == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) lz->source;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+            }
+            PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         }
     } else {
-        return Py_BuildValue("O()", Py_TYPE(lz)); /* exhausted */
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(0);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+         /* exhausted */
     }
     return NULL;
 }
@@ -2135,7 +3116,23 @@ chain_setstate(chainobject *lz, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O|O", &source, &active)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("chain_setstate", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&source = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&active = PyTuple_GET_ITEM(state, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (!PyIter_Check(source) || (active != NULL && !PyIter_Check(active))) {
@@ -2430,9 +3427,89 @@ static PyObject *
 product_reduce(productobject *lz, PyObject *Py_UNUSED(ignored))
 {
     if (lz->stopped) {
-        return Py_BuildValue("O(())", Py_TYPE(lz));
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else if (lz->result == NULL) {
-        return Py_BuildValue("OO", Py_TYPE(lz), lz->pools);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) lz->pools;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else {
         PyObject *indices;
         Py_ssize_t n, i;
@@ -2452,7 +3529,59 @@ product_reduce(productobject *lz, PyObject *Py_UNUSED(ignored))
             }
             PyTuple_SET_ITEM(indices, i, index);
         }
-        return Py_BuildValue("OON", Py_TYPE(lz), lz->pools, indices);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) lz->pools;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) indices;
+        if (_objectArg) {
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 }
 
@@ -2761,9 +3890,115 @@ static PyObject *
 combinations_reduce(combinationsobject *lz, PyObject *Py_UNUSED(ignored))
 {
     if (lz->result == NULL) {
-        return Py_BuildValue("O(On)", Py_TYPE(lz), lz->pool, lz->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else if (lz->stopped) {
-        return Py_BuildValue("O(()n)", Py_TYPE(lz), lz->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else {
         PyObject *indices;
         Py_ssize_t i;
@@ -2782,7 +4017,76 @@ combinations_reduce(combinationsobject *lz, PyObject *Py_UNUSED(ignored))
             PyTuple_SET_ITEM(indices, i, index);
         }
 
-        return Py_BuildValue("O(On)N", Py_TYPE(lz), lz->pool, lz->r, indices);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) indices;
+        if (_objectArg) {
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 }
 
@@ -3092,9 +4396,115 @@ static PyObject *
 cwr_reduce(cwrobject *lz, PyObject *Py_UNUSED(ignored))
 {
     if (lz->result == NULL) {
-        return Py_BuildValue("O(On)", Py_TYPE(lz), lz->pool, lz->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else if (lz->stopped) {
-        return Py_BuildValue("O(()n)", Py_TYPE(lz), lz->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else {
         PyObject *indices;
         Py_ssize_t i;
@@ -3112,7 +4522,76 @@ cwr_reduce(cwrobject *lz, PyObject *Py_UNUSED(ignored))
             PyTuple_SET_ITEM(indices, i, index);
         }
 
-        return Py_BuildValue("O(On)N", Py_TYPE(lz), lz->pool, lz->r, indices);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(lz->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(lz->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) indices;
+        if (_objectArg) {
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 }
 
@@ -3450,9 +4929,115 @@ static PyObject *
 permutations_reduce(permutationsobject *po, PyObject *Py_UNUSED(ignored))
 {
     if (po->result == NULL) {
-        return Py_BuildValue("O(On)", Py_TYPE(po), po->pool, po->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(po);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) po->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(po->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(po->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else if (po->stopped) {
-        return Py_BuildValue("O(()n)", Py_TYPE(po), po->r);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(po);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyTuple_New(0);
+        if (_tupleMember0 == NULL) {
+            // TODO: error handling
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(po->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(po->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     } else {
         PyObject *indices=NULL, *cycles=NULL;
         Py_ssize_t n, i;
@@ -3478,9 +5063,97 @@ permutations_reduce(permutationsobject *po, PyObject *Py_UNUSED(ignored))
                 goto err;
             PyTuple_SET_ITEM(cycles, i, index);
         }
-        return Py_BuildValue("O(On)(NN)", Py_TYPE(po),
-                             po->pool, po->r,
-                             indices, cycles);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(po);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) po->pool;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(po->r);
+        #else
+        _tupleMember1 = PyLong_FromLong(po->r);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyTuple_New(2);
+        if (_tupleMember2 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) indices;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember2, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) cycles;
+        if (_objectArg) {
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember2, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     err:
         Py_XDECREF(indices);
         Py_XDECREF(cycles);
@@ -3498,9 +5171,33 @@ permutations_setstate(permutationsobject *po, PyObject *state)
         PyErr_SetString(PyExc_TypeError, "state is not a tuple");
         return NULL;
     }
-    if (!PyArg_ParseTuple(state, "O!O!",
-                          &PyTuple_Type, &indices,
-                          &PyTuple_Type, &cycles)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("permutations_setstate", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 0);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&indices = _p;
+        }
+        {
+            PyTypeObject* _type = &PyTuple_Type;
+            PyObject* _p = PyTuple_GET_ITEM(state, 1);
+            if (!PyType_IsSubtype(Py_TYPE(_p), _type)) {
+                PyErr_Format(PyExc_TypeError, "must be %.50s, not %.50s", _type->tp_name, Py_TYPE(_p)->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&cycles = _p;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -3721,8 +5418,81 @@ accumulate_reduce(accumulateobject *lz, PyObject *Py_UNUSED(ignored))
                                    lz->initial, lz->it);
         if (it == NULL)
             return NULL;
-        return Py_BuildValue("O(NO)O", Py_TYPE(lz),
-                            it, lz->binop?lz->binop:Py_None, Py_None);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) it;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) lz->binop?lz->binop:Py_None;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) Py_None;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
     if (lz->total == Py_None) {
         PyObject *it;
@@ -3739,11 +5509,149 @@ accumulate_reduce(accumulateobject *lz, PyObject *Py_UNUSED(ignored))
                                    it, lz->binop ? lz->binop : Py_None);
         if (it == NULL)
             return NULL;
-        return Py_BuildValue("O(NiO)", &islice_type, it, 1, Py_None);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) &islice_type;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(3);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) it;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(1);
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) Py_None;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 2, _tupleMember2);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
-    return Py_BuildValue("O(OO)O", Py_TYPE(lz),
-                            lz->it, lz->binop?lz->binop:Py_None,
-                            lz->total?lz->total:Py_None);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->binop?lz->binop:Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) lz->total?lz->total:Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *
@@ -3917,8 +5825,68 @@ compress_next(compressobject *lz)
 static PyObject *
 compress_reduce(compressobject *lz, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OO)", Py_TYPE(lz),
-        lz->data, lz->selectors);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->data;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->selectors;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyMethodDef compress_methods[] = {
@@ -4070,7 +6038,68 @@ filterfalse_next(filterfalseobject *lz)
 static PyObject *
 filterfalse_reduce(filterfalseobject *lz, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OO)", Py_TYPE(lz), lz->func, lz->it);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(2);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) lz->func;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) lz->it;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyMethodDef filterfalse_methods[] = {
@@ -4318,8 +6347,111 @@ static PyObject *
 count_reduce(countobject *lz, PyObject *Py_UNUSED(ignored))
 {
     if (lz->cnt == PY_SSIZE_T_MAX)
-        return Py_BuildValue("O(OO)", Py_TYPE(lz), lz->long_cnt, lz->long_step);
-    return Py_BuildValue("O(n)", Py_TYPE(lz), lz->cnt);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) lz->long_cnt;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        PyObject* _objectArg = (PyObject*) lz->long_step;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember1 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(1);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember0 = PyLong_FromSsize_t(lz->cnt);
+    #else
+    _tupleMember0 = PyLong_FromLong(lz->cnt);
+    #endif
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyMethodDef count_methods[] = {
@@ -4467,9 +6599,112 @@ repeat_reduce(repeatobject *ro, PyObject *Py_UNUSED(ignored))
      * object, then call __setstate__ on it to set cnt
      */
     if (ro->cnt >= 0)
-        return Py_BuildValue("O(On)", Py_TYPE(ro), ro->element, ro->cnt);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(ro);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(2);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) ro->element;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(ro->cnt);
+        #else
+        _tupleMember1 = PyLong_FromLong(ro->cnt);
+        #endif
+        PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     else
-        return Py_BuildValue("O(O)", Py_TYPE(ro), ro->element);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(ro);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyTuple_New(1);
+        if (_tupleMember1 == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) ro->element;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 }
 
 static PyMethodDef repeat_methods[] = {
@@ -4731,7 +6966,59 @@ zip_longest_reduce(ziplongestobject *lz, PyObject *Py_UNUSED(ignored))
             Py_INCREF(elem);
         PyTuple_SET_ITEM(args, i, elem);
     }
-    return Py_BuildValue("ONO", Py_TYPE(lz), args, lz->fillvalue);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(lz);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) args;
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) lz->fillvalue;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 static PyObject *

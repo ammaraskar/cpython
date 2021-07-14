@@ -889,7 +889,21 @@ static PyObject *
 pyexpat_xmlparser_GetBase_impl(xmlparseobject *self)
 /*[clinic end generated code: output=2886cb21f9a8739a input=918d71c38009620e]*/
 {
-    return Py_BuildValue("z", XML_GetBase(self->itself));
+    {
+    PyObject* _builtResult;
+    {
+    const char* _strArg = (const char*) XML_GetBase(self->itself);
+    if (_strArg) {
+        _builtResult = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]
@@ -1572,7 +1586,21 @@ static PyObject *
 pyexpat_ErrorString_impl(PyObject *module, long code)
 /*[clinic end generated code: output=2feae50d166f2174 input=cc67de010d9e62b3]*/
 {
-    return Py_BuildValue("z", XML_ErrorString((int)code));
+    {
+    PyObject* _builtResult;
+    {
+    const char* _strArg = (const char*) XML_ErrorString((int)code);
+    if (_strArg) {
+        _builtResult = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /* List of methods defined in the module */
@@ -1821,8 +1849,30 @@ add_features(PyObject *mod)
 
     const XML_Feature *features = XML_GetFeatureList();
     for (size_t i = 0; features[i].feature != XML_FEATURE_END; ++i) {
-        PyObject *item = Py_BuildValue("si", features[i].name,
-                                       features[i].value);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) features[i].name;
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(features[i].value);
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        PyObject *item = _builtResult;
         if (item == NULL) {
             goto error;
         }
@@ -1891,10 +1941,29 @@ pyexpat_exec(PyObject *mod)
     }
     {
         XML_Expat_Version info = XML_ExpatVersionInfo();
-        PyObject *versionInfo = Py_BuildValue("(iii)",
-                                              info.major,
-                                              info.minor,
-                                              info.micro);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromLong(info.major);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(info.minor);
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyLong_FromLong(info.micro);
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        PyObject *versionInfo = _builtResult;
         if (PyModule_AddObject(mod, "version_info", versionInfo) < 0) {
             Py_DECREF(versionInfo);
             return -1;

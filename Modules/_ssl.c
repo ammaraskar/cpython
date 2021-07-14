@@ -5111,7 +5111,45 @@ PySSL_RAND(PyObject *module, int len, int pseudo)
     if (pseudo) {
         ok = RAND_bytes((unsigned char*)PyBytes_AS_STRING(bytes), len);
         if (ok == 0 || ok == 1)
-            return Py_BuildValue("NO", bytes, ok == 1 ? Py_True : Py_False);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(2);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            PyObject* _objectArg = (PyObject*) bytes;
+            if (_objectArg) {
+                _tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember0 = NULL;
+            }
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            PyObject* _objectArg = (PyObject*) ok == 1 ? Py_True : Py_False;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _tupleMember1 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _tupleMember1 = NULL;
+            }
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
     }
     else {
         ok = RAND_bytes((unsigned char*)PyBytes_AS_STRING(bytes), len);
@@ -5212,7 +5250,70 @@ _ssl_get_default_verify_paths_impl(PyObject *module)
     CONVERT(X509_get_default_cert_dir(), odir);
 #undef CONVERT
 
-    return Py_BuildValue("NNNN", ofile_env, ofile, odir_env, odir);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(4);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) ofile_env;
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) ofile;
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) odir_env;
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    PyObject* _objectArg = (PyObject*) odir;
+    if (_objectArg) {
+        _tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember3 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 
   error:
     Py_XDECREF(ofile_env);
@@ -5235,7 +5336,58 @@ asn1obj2py(_sslmodulestate *state, ASN1_OBJECT *obj)
     }
     sn = OBJ_nid2sn(nid);
     ln = OBJ_nid2ln(nid);
-    return Py_BuildValue("issN", nid, sn, ln, _asn1obj2py(state, obj, 1));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(4);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(nid);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    const char* _strArg = (const char*) sn;
+    if (_strArg) {
+        _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _tupleMember1 = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    const char* _strArg = (const char*) ln;
+    if (_strArg) {
+        _tupleMember2 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _tupleMember2 = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    PyObject* _objectArg = (PyObject*) _asn1obj2py(state, obj, 1);
+    if (_objectArg) {
+        _tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember3 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]

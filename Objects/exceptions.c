@@ -1500,10 +1500,35 @@ SyntaxError_init(PySyntaxErrorObject *self, PyObject *args, PyObject *kwds)
 
         self->end_lineno = NULL;
         self->end_offset = NULL;
-        if (!PyArg_ParseTuple(info, "OOOO|OO",
-                              &self->filename, &self->lineno,
-                              &self->offset, &self->text,
-                              &self->end_lineno, &self->end_offset)) {
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(info);
+            if (!_PyArg_CheckPositional("SyntaxError_init", _nargs, 4, 6)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                *&self->filename = PyTuple_GET_ITEM(info, 0);
+            }
+            {
+                *&self->lineno = PyTuple_GET_ITEM(info, 1);
+            }
+            {
+                *&self->offset = PyTuple_GET_ITEM(info, 2);
+            }
+            {
+                *&self->text = PyTuple_GET_ITEM(info, 3);
+            }
+            {
+            }
+            if (_nargs >= 5) {
+                *&self->end_lineno = PyTuple_GET_ITEM(info, 4);
+            }
+            if (_nargs >= 6) {
+                *&self->end_offset = PyTuple_GET_ITEM(info, 5);
+            }
+        }
+        _parse_exit_label:
+        if (!_parseResult) {
             Py_DECREF(info);
             return -1;
         } 
@@ -2050,9 +2075,67 @@ UnicodeEncodeError_init(PyObject *self, PyObject *args, PyObject *kwds)
     Py_CLEAR(err->object);
     Py_CLEAR(err->reason);
 
-    if (!PyArg_ParseTuple(args, "UUnnU",
-                          &err->encoding, &err->object,
-                          &err->start, &err->end, &err->reason)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("UnicodeEncodeError_init", _nargs, 5, 5)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&err->encoding = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 1)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&err->object = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&err->start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&err->start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&err->start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&err->end = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 3));
+            if (_iobj != NULL) {
+                *&err->end = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&err->end == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 4))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 4))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 4)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&err->reason = PyTuple_GET_ITEM(args, 4);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         err->encoding = err->object = err->reason = NULL;
         return -1;
     }
@@ -2148,9 +2231,60 @@ UnicodeDecodeError_init(PyObject *self, PyObject *args, PyObject *kwds)
     Py_CLEAR(ude->object);
     Py_CLEAR(ude->reason);
 
-    if (!PyArg_ParseTuple(args, "UOnnU",
-                          &ude->encoding, &ude->object,
-                          &ude->start, &ude->end, &ude->reason)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("UnicodeDecodeError_init", _nargs, 5, 5)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&ude->encoding = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&ude->object = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&ude->start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&ude->start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&ude->start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&ude->end = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 3));
+            if (_iobj != NULL) {
+                *&ude->end = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&ude->end == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 4))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 4))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 4)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&ude->reason = PyTuple_GET_ITEM(args, 4);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
              ude->encoding = ude->object = ude->reason = NULL;
              return -1;
     }
@@ -2260,9 +2394,57 @@ UnicodeTranslateError_init(PyUnicodeErrorObject *self, PyObject *args,
     Py_CLEAR(self->object);
     Py_CLEAR(self->reason);
 
-    if (!PyArg_ParseTuple(args, "UnnU",
-                          &self->object,
-                          &self->start, &self->end, &self->reason)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("UnicodeTranslateError_init", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&self->object = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&self->start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&self->start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&self->start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&self->end = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&self->end = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&self->end == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 3))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 3))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 3)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&self->reason = PyTuple_GET_ITEM(args, 3);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         self->object = self->reason = NULL;
         return -1;
     }

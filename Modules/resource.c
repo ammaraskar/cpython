@@ -182,11 +182,51 @@ static PyObject*
 rlimit2py(struct rlimit rl)
 {
     if (sizeof(rl.rlim_cur) > sizeof(long)) {
-        return Py_BuildValue("LL",
-                             (long long) rl.rlim_cur,
-                             (long long) rl.rlim_max);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromLongLong((long long) rl.rlim_cur);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLongLong((long long) rl.rlim_max);
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
-    return Py_BuildValue("ll", (long) rl.rlim_cur, (long) rl.rlim_max);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong((long) rl.rlim_cur);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong((long) rl.rlim_max);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 /*[clinic input]

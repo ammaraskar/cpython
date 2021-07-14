@@ -7300,7 +7300,28 @@ os_openpty_impl(PyObject *module)
 #endif /* HAVE_CYGWIN */
 #endif /* HAVE_OPENPTY */
 
-    return Py_BuildValue("(ii)", master_fd, slave_fd);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(master_fd);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(slave_fd);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 
 posix_error:
     posix_error();
@@ -7351,7 +7372,36 @@ os_forkpty_impl(PyObject *module)
     }
     if (pid == -1)
         return posix_error();
-    return Py_BuildValue("(Ni)", PyLong_FromPid(pid), master_fd);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) PyLong_FromPid(pid);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(master_fd);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_FORKPTY */
 
@@ -8249,7 +8299,49 @@ wait_helper(PyObject *module, pid_t pid, int status, struct rusage *ru)
         return NULL;
     }
 
-    return Py_BuildValue("NiN", PyLong_FromPid(pid), status, result);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) PyLong_FromPid(pid);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(status);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) result;
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_WAIT3 || HAVE_WAIT4 */
 
@@ -8417,7 +8509,36 @@ os_waitpid_impl(PyObject *module, pid_t pid, int options)
     if (res < 0)
         return (!async_err) ? posix_error() : NULL;
 
-    return Py_BuildValue("Ni", PyLong_FromPid(res), WAIT_STATUS_INT(status));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) PyLong_FromPid(res);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(WAIT_STATUS_INT(status));
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #elif defined(HAVE_CWAIT)
 /* MS C has a variant of waitpid() that's usable for most purposes. */
@@ -8488,7 +8609,36 @@ os_wait_impl(PyObject *module)
     if (pid < 0)
         return (!async_err) ? posix_error() : NULL;
 
-    return Py_BuildValue("Ni", PyLong_FromPid(pid), WAIT_STATUS_INT(status));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) PyLong_FromPid(pid);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(WAIT_STATUS_INT(status));
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_WAIT */
 
@@ -9933,7 +10083,19 @@ done:
         } while (ret < 0 && errno == EINTR && !(async_err = PyErr_CheckSignals()));
         if (ret < 0)
             return (!async_err) ? posix_error() : NULL;
-        return Py_BuildValue("n", ret);
+        {
+        PyObject* _builtResult;
+        {
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _builtResult = PyLong_FromSsize_t(ret);
+        #else
+        _builtResult = PyLong_FromLong(ret);
+        #endif
+        }
+        
+        return _builtResult;
+        }
+        
     }
 #endif
     off_t offset;
@@ -9980,7 +10142,19 @@ done:
     } while (ret < 0 && errno == EINTR && !(async_err = PyErr_CheckSignals()));
     if (ret < 0)
         return (!async_err) ? posix_error() : NULL;
-    return Py_BuildValue("n", ret);
+    {
+    PyObject* _builtResult;
+    {
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _builtResult = PyLong_FromSsize_t(ret);
+    #else
+    _builtResult = PyLong_FromLong(ret);
+    #endif
+    }
+    
+    return _builtResult;
+    }
+    
 #endif
 }
 #endif /* HAVE_SENDFILE */
@@ -10149,7 +10323,28 @@ os_pipe_impl(PyObject *module)
     if (res != 0)
         return PyErr_SetFromErrno(PyExc_OSError);
 #endif /* !MS_WINDOWS */
-    return Py_BuildValue("(ii)", fds[0], fds[1]);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(fds[0]);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(fds[1]);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif  /* HAVE_PIPE */
 
@@ -10180,7 +10375,28 @@ os_pipe2_impl(PyObject *module, int flags)
     res = pipe2(fds, flags);
     if (res != 0)
         return posix_error();
-    return Py_BuildValue("(ii)", fds[0], fds[1]);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyLong_FromLong(fds[0]);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(fds[1]);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_PIPE2 */
 
@@ -12577,7 +12793,33 @@ os_getloadavg_impl(PyObject *module)
         PyErr_SetString(PyExc_OSError, "Load averages are unobtainable");
         return NULL;
     } else
-        return Py_BuildValue("ddd", loadavg[0], loadavg[1], loadavg[2]);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyFloat_FromDouble(loadavg[0]);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyFloat_FromDouble(loadavg[1]);
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyFloat_FromDouble(loadavg[2]);
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 }
 #endif /* HAVE_GETLOADAVG */
 
@@ -12660,9 +12902,57 @@ os_getresuid_impl(PyObject *module)
     uid_t ruid, euid, suid;
     if (getresuid(&ruid, &euid, &suid) < 0)
         return posix_error();
-    return Py_BuildValue("(NNN)", _PyLong_FromUid(ruid),
-                                  _PyLong_FromUid(euid),
-                                  _PyLong_FromUid(suid));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromUid(ruid);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromUid(euid);
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromUid(suid);
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_GETRESUID */
 
@@ -12681,9 +12971,57 @@ os_getresgid_impl(PyObject *module)
     gid_t rgid, egid, sgid;
     if (getresgid(&rgid, &egid, &sgid) < 0)
         return posix_error();
-    return Py_BuildValue("(NNN)", _PyLong_FromGid(rgid),
-                                  _PyLong_FromGid(egid),
-                                  _PyLong_FromGid(sgid));
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(3);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromGid(rgid);
+    if (_objectArg) {
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromGid(egid);
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    PyObject* _objectArg = (PyObject*) _PyLong_FromGid(sgid);
+    if (_objectArg) {
+        _tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember2 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 #endif /* HAVE_GETRESGID */
 

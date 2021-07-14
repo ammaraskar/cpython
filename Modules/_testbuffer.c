@@ -1925,7 +1925,29 @@ slice_indices(PyObject *self, PyObject *args)
     Py_ssize_t s[4]; /* start, stop, step, slicelength */
     Py_ssize_t i, len;
 
-    if (!PyArg_ParseTuple(args, "On", &key, &len)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("slice_indices", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&key = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&len = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&len = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&len == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (!PySlice_Check(key)) {
@@ -2311,7 +2333,21 @@ get_pointer(PyObject *self, PyObject *args)
     Py_ssize_t i;
     void *ptr;
 
-    if (!PyArg_ParseTuple(args, "OO", &bufobj, &seq)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_pointer", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&bufobj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&seq = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2396,7 +2432,24 @@ get_contiguous(PyObject *self, PyObject *args)
     long type;
     char ord;
 
-    if (!PyArg_ParseTuple(args, "OOO", &obj, &buffertype, &order)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get_contiguous", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&buffertype = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            *&order = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2435,7 +2488,34 @@ py_buffer_to_contiguous(PyObject *self, PyObject *args)
     Py_buffer view;
     char *buf = NULL;
 
-    if (!PyArg_ParseTuple(args, "OOi", &obj, &order, &flags)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("py_buffer_to_contiguous", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&order = PyTuple_GET_ITEM(args, 1);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2507,7 +2587,21 @@ cmp_contig(PyObject *self, PyObject *args)
     PyObject *ret;
     int equal = 0;
 
-    if (!PyArg_ParseTuple(args, "OO", &b1, &b2)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("cmp_contig", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&b1 = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&b2 = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -2572,7 +2666,21 @@ is_contiguous(PyObject *self, PyObject *args)
     Py_buffer view, *base;
     char ord;
 
-    if (!PyArg_ParseTuple(args, "OO", &obj, &order)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("is_contiguous", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&obj = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&order = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 

@@ -1,0 +1,1257 @@
+[
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Programs/python.o /home/ammar/cpython/Programs/python.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Programs/python.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/token.o /home/ammar/cpython/Parser/token.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/token.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/pegen.o /home/ammar/cpython/Parser/pegen.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/pegen.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/parser.o /home/ammar/cpython/Parser/parser.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/parser.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/string_parser.o /home/ammar/cpython/Parser/string_parser.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/string_parser.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/peg_api.o /home/ammar/cpython/Parser/peg_api.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/peg_api.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/myreadline.o /home/ammar/cpython/Parser/myreadline.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/myreadline.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Parser/tokenizer.o /home/ammar/cpython/Parser/tokenizer.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Parser/tokenizer.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/abstract.o /home/ammar/cpython/Objects/abstract.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/abstract.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/accu.o /home/ammar/cpython/Objects/accu.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/accu.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/boolobject.o /home/ammar/cpython/Objects/boolobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/boolobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/bytes_methods.o /home/ammar/cpython/Objects/bytes_methods.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/bytes_methods.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/bytearrayobject.o /home/ammar/cpython/Objects/bytearrayobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/bytearrayobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/bytesobject.o /home/ammar/cpython/Objects/bytesobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/bytesobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/call.o /home/ammar/cpython/Objects/call.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/call.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/capsule.o /home/ammar/cpython/Objects/capsule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/capsule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/cellobject.o /home/ammar/cpython/Objects/cellobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/cellobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/classobject.o /home/ammar/cpython/Objects/classobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/classobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/codeobject.o /home/ammar/cpython/Objects/codeobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/codeobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/complexobject.o /home/ammar/cpython/Objects/complexobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/complexobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/descrobject.o /home/ammar/cpython/Objects/descrobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/descrobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/enumobject.o /home/ammar/cpython/Objects/enumobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/enumobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/exceptions.o /home/ammar/cpython/Objects/exceptions.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/exceptions.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/genericaliasobject.o /home/ammar/cpython/Objects/genericaliasobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/genericaliasobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/genobject.o /home/ammar/cpython/Objects/genobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/genobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/fileobject.o /home/ammar/cpython/Objects/fileobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/fileobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/floatobject.o /home/ammar/cpython/Objects/floatobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/floatobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/frameobject.o /home/ammar/cpython/Objects/frameobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/frameobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/funcobject.o /home/ammar/cpython/Objects/funcobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/funcobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/interpreteridobject.o /home/ammar/cpython/Objects/interpreteridobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/interpreteridobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/iterobject.o /home/ammar/cpython/Objects/iterobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/iterobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/listobject.o /home/ammar/cpython/Objects/listobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/listobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/longobject.o /home/ammar/cpython/Objects/longobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/longobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/dictobject.o /home/ammar/cpython/Objects/dictobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/dictobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/odictobject.o /home/ammar/cpython/Objects/odictobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/odictobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/memoryobject.o /home/ammar/cpython/Objects/memoryobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/memoryobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/methodobject.o /home/ammar/cpython/Objects/methodobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/methodobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/moduleobject.o /home/ammar/cpython/Objects/moduleobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/moduleobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/namespaceobject.o /home/ammar/cpython/Objects/namespaceobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/namespaceobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/object.o /home/ammar/cpython/Objects/object.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/object.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/obmalloc.o /home/ammar/cpython/Objects/obmalloc.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/obmalloc.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/picklebufobject.o /home/ammar/cpython/Objects/picklebufobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/picklebufobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/rangeobject.o /home/ammar/cpython/Objects/rangeobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/rangeobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/setobject.o /home/ammar/cpython/Objects/setobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/setobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/sliceobject.o /home/ammar/cpython/Objects/sliceobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/sliceobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/structseq.o /home/ammar/cpython/Objects/structseq.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/structseq.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/tupleobject.o /home/ammar/cpython/Objects/tupleobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/tupleobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/typeobject.o /home/ammar/cpython/Objects/typeobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/typeobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/unicodeobject.o /home/ammar/cpython/Objects/unicodeobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/unicodeobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/unicodectype.o /home/ammar/cpython/Objects/unicodectype.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/unicodectype.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/unionobject.o /home/ammar/cpython/Objects/unionobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/unionobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Objects/weakrefobject.o /home/ammar/cpython/Objects/weakrefobject.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Objects/weakrefobject.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/_warnings.o /home/ammar/cpython/Python/_warnings.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/_warnings.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/Python-ast.o /home/ammar/cpython/Python/Python-ast.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/Python-ast.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/asdl.o /home/ammar/cpython/Python/asdl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/asdl.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/ast.o /home/ammar/cpython/Python/ast.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/ast.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/ast_opt.o /home/ammar/cpython/Python/ast_opt.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/ast_opt.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/ast_unparse.o /home/ammar/cpython/Python/ast_unparse.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/ast_unparse.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/bltinmodule.o /home/ammar/cpython/Python/bltinmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/bltinmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/ceval.o /home/ammar/cpython/Python/ceval.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/ceval.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/codecs.o /home/ammar/cpython/Python/codecs.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/codecs.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/compile.o /home/ammar/cpython/Python/compile.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/compile.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/context.o /home/ammar/cpython/Python/context.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/context.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/dynamic_annotations.o /home/ammar/cpython/Python/dynamic_annotations.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/dynamic_annotations.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/errors.o /home/ammar/cpython/Python/errors.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/errors.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/frozenmain.o /home/ammar/cpython/Python/frozenmain.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/frozenmain.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/future.o /home/ammar/cpython/Python/future.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/future.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/getargs.o /home/ammar/cpython/Python/getargs.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getargs.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/getcompiler.o /home/ammar/cpython/Python/getcompiler.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getcompiler.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/getcopyright.o /home/ammar/cpython/Python/getcopyright.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getcopyright.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DPLATFORM=\\\"linux\\\" -o Python/getplatform.o /home/ammar/cpython/Python/getplatform.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getplatform.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/getversion.o /home/ammar/cpython/Python/getversion.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getversion.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/hamt.o /home/ammar/cpython/Python/hamt.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/hamt.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/hashtable.o /home/ammar/cpython/Python/hashtable.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/hashtable.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/import.o /home/ammar/cpython/Python/import.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/import.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -I/home/ammar/cpython -o Python/importdl.o /home/ammar/cpython/Python/importdl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/importdl.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DPLATLIBDIR=\\\"lib\\\" -o Python/initconfig.o /home/ammar/cpython/Python/initconfig.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/initconfig.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/marshal.o /home/ammar/cpython/Python/marshal.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/marshal.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/modsupport.o /home/ammar/cpython/Python/modsupport.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/modsupport.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/mysnprintf.o /home/ammar/cpython/Python/mysnprintf.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/mysnprintf.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/mystrtoul.o /home/ammar/cpython/Python/mystrtoul.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/mystrtoul.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pathconfig.o /home/ammar/cpython/Python/pathconfig.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pathconfig.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/preconfig.o /home/ammar/cpython/Python/preconfig.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/preconfig.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pyarena.o /home/ammar/cpython/Python/pyarena.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pyarena.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pyctype.o /home/ammar/cpython/Python/pyctype.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pyctype.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pyfpe.o /home/ammar/cpython/Python/pyfpe.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pyfpe.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pyhash.o /home/ammar/cpython/Python/pyhash.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pyhash.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pylifecycle.o /home/ammar/cpython/Python/pylifecycle.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pylifecycle.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pymath.o /home/ammar/cpython/Python/pymath.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pymath.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pystate.o /home/ammar/cpython/Python/pystate.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pystate.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pythonrun.o /home/ammar/cpython/Python/pythonrun.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pythonrun.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pytime.o /home/ammar/cpython/Python/pytime.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pytime.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/bootstrap_hash.o /home/ammar/cpython/Python/bootstrap_hash.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/bootstrap_hash.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/specialize.o /home/ammar/cpython/Python/specialize.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/specialize.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/structmember.o /home/ammar/cpython/Python/structmember.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/structmember.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/symtable.o /home/ammar/cpython/Python/symtable.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/symtable.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DABIFLAGS=\\\"\\\" -DMULTIARCH=\\\"x86_64-linux-gnu\\\" -o Python/sysmodule.o /home/ammar/cpython/Python/sysmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/sysmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/thread.o /home/ammar/cpython/Python/thread.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/thread.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/traceback.o /home/ammar/cpython/Python/traceback.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/traceback.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/getopt.o /home/ammar/cpython/Python/getopt.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/getopt.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pystrcmp.o /home/ammar/cpython/Python/pystrcmp.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pystrcmp.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pystrtod.o /home/ammar/cpython/Python/pystrtod.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pystrtod.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/pystrhex.o /home/ammar/cpython/Python/pystrhex.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/pystrhex.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/dtoa.o /home/ammar/cpython/Python/dtoa.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/dtoa.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/formatter_unicode.o /home/ammar/cpython/Python/formatter_unicode.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/formatter_unicode.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/fileutils.o /home/ammar/cpython/Python/fileutils.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/fileutils.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/suggestions.o /home/ammar/cpython/Python/suggestions.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/suggestions.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DSOABI=\\\"cpython-311-x86_64-linux-gnu\\\" -o Python/dynload_shlib.o /home/ammar/cpython/Python/dynload_shlib.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/dynload_shlib.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Modules/config.o /home/ammar/cpython/Modules/config.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/config.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DPYTHONPATH=\\\"\\\" -DPREFIX=\\\"/usr/local\\\" -DEXEC_PREFIX=\\\"/usr/local\\\" -DVERSION=\\\"3.11\\\" -DVPATH=\\\"\\\" -o Modules/getpath.o /home/ammar/cpython/Modules/getpath.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/getpath.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Modules/main.o /home/ammar/cpython/Modules/main.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/main.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Modules/gcmodule.o /home/ammar/cpython/Modules/gcmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/gcmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -o Modules/posixmodule.o /home/ammar/cpython/Modules/posixmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/posixmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/errnomodule.o /home/ammar/cpython/Modules/errnomodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/errnomodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/pwdmodule.o /home/ammar/cpython/Modules/pwdmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/pwdmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -o Modules/_sre.o /home/ammar/cpython/Modules/_sre.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sre.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/_codecsmodule.o /home/ammar/cpython/Modules/_codecsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_codecsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/_weakref.o /home/ammar/cpython/Modules/_weakref.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_weakref.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -o Modules/_functoolsmodule.o /home/ammar/cpython/Modules/_functoolsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_functoolsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -o Modules/_operator.o /home/ammar/cpython/Modules/_operator.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_operator.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/_collectionsmodule.o /home/ammar/cpython/Modules/_collectionsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_collectionsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -o Modules/_abc.o /home/ammar/cpython/Modules/_abc.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_abc.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/itertoolsmodule.o /home/ammar/cpython/Modules/itertoolsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/itertoolsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/atexitmodule.o /home/ammar/cpython/Modules/atexitmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/atexitmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -o Modules/signalmodule.o /home/ammar/cpython/Modules/signalmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/signalmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/_stat.o /home/ammar/cpython/Modules/_stat.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_stat.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -o Modules/timemodule.o /home/ammar/cpython/Modules/timemodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/timemodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -o Modules/_threadmodule.o /home/ammar/cpython/Modules/_threadmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_threadmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -o Modules/_localemodule.o /home/ammar/cpython/Modules/_localemodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_localemodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/_iomodule.o /home/ammar/cpython/Modules/_io/_iomodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/_iomodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/iobase.o /home/ammar/cpython/Modules/_io/iobase.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/iobase.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/fileio.o /home/ammar/cpython/Modules/_io/fileio.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/fileio.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/bytesio.o /home/ammar/cpython/Modules/_io/bytesio.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/bytesio.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/bufferedio.o /home/ammar/cpython/Modules/_io/bufferedio.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/bufferedio.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/textio.o /home/ammar/cpython/Modules/_io/textio.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/textio.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -DPy_BUILD_CORE_BUILTIN -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_io -o Modules/stringio.o /home/ammar/cpython/Modules/_io/stringio.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_io/stringio.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/faulthandler.o /home/ammar/cpython/Modules/faulthandler.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/faulthandler.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/_tracemalloc.o /home/ammar/cpython/Modules/_tracemalloc.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_tracemalloc.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/symtablemodule.o /home/ammar/cpython/Modules/symtablemodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/symtablemodule.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE_BUILTIN -o Modules/xxsubtype.o /home/ammar/cpython/Modules/xxsubtype.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/xxsubtype.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Python/frozen.o /home/ammar/cpython/Python/frozen.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Python/frozen.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Modules/_math.o /home/ammar/cpython/Modules/_math.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_math.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -o Programs/_testembed.o /home/ammar/cpython/Programs/_testembed.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Programs/_testembed.c"
+    },
+    {
+        "command": "cc -c -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython -I/home/ammar/cpython/Include -DPy_BUILD_CORE -DGITVERSION=\\\"e14d5ae\\\" -DGITTAG=\\\"heads/main\\\" -DGITBRANCH=\\\"main\\\" -o Modules/getbuildinfo.o /home/ammar/cpython/Modules/getbuildinfo.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/getbuildinfo.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_struct.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_struct.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_struct.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/arraymodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/arraymodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/arraymodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/mathmodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/mathmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/mathmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cmathmodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/cmathmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cmathmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_datetimemodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_datetimemodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_datetimemodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_zoneinfo.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_zoneinfo.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_zoneinfo.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_contextvarsmodule.o /home/ammar/cpython/Modules/_contextvarsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_contextvarsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_randommodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_randommodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_randommodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_heapqmodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_heapqmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_heapqmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_pickle.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_pickle.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_pickle.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_bisectmodule.o /home/ammar/cpython/Modules/_bisectmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_bisectmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_json.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_json.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_json.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/unicodedata.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/unicodedata.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/unicodedata.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_lsprof.o /home/ammar/cpython/Modules/_lsprof.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_lsprof.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_opcode.o /home/ammar/cpython/Modules/_opcode.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_opcode.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_asynciomodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_asynciomodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_asynciomodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_statisticsmodule.o /home/ammar/cpython/Modules/_statisticsmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_statisticsmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_queuemodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_queuemodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_queuemodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/grpmodule.o /home/ammar/cpython/Modules/grpmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/grpmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/fcntlmodule.o /home/ammar/cpython/Modules/fcntlmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/fcntlmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/mmapmodule.o /home/ammar/cpython/Modules/mmapmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/mmapmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_xxsubinterpretersmodule.o /home/ammar/cpython/Modules/_xxsubinterpretersmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_xxsubinterpretersmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/spwdmodule.o /home/ammar/cpython/Modules/spwdmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/spwdmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/selectmodule.o /home/ammar/cpython/Modules/selectmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/selectmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_csv.o /home/ammar/cpython/Modules/_csv.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_csv.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_posixsubprocess.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_posixsubprocess.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_posixsubprocess.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_testbuffer.o /home/ammar/cpython/Modules/_testbuffer.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_testbuffer.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/syslogmodule.o /home/ammar/cpython/Modules/syslogmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/syslogmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/audioop.o /home/ammar/cpython/Modules/audioop.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/audioop.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_testimportmultiple.o /home/ammar/cpython/Modules/_testimportmultiple.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_testimportmultiple.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_testmultiphase.o /home/ammar/cpython/Modules/_testmultiphase.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_testmultiphase.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_xxtestfuzz/_xxtestfuzz.o /home/ammar/cpython/Modules/_xxtestfuzz/_xxtestfuzz.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_xxtestfuzz/_xxtestfuzz.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_cryptmodule.o /home/ammar/cpython/Modules/_cryptmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_cryptmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/socketmodule.o /home/ammar/cpython/Modules/socketmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/socketmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/sha512module.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/sha512module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/sha512module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_testinternalcapi.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_testinternalcapi.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_testinternalcapi.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ssl.o /home/ammar/cpython/Modules/_ssl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ssl.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_NCURSESW=1 -I/usr/include/ncursesw -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_cursesmodule.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/_cursesmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_cursesmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_hashopenssl.o /home/ammar/cpython/Modules/_hashopenssl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_hashopenssl.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/connection.o /home/ammar/cpython/Modules/_sqlite/connection.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/connection.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_testcapimodule.o /home/ammar/cpython/Modules/_testcapimodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_testcapimodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_blake2/blake2b_impl.o /home/ammar/cpython/Modules/_blake2/blake2b_impl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_blake2/blake2b_impl.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/sha1module.o /home/ammar/cpython/Modules/sha1module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/sha1module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/binascii.o -DUSE_ZLIB_CRC32 /home/ammar/cpython/Modules/binascii.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/binascii.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_EXPAT_CONFIG_H=1 -DXML_POOR_ENTROPY=1 -DUSE_PYEXPAT_CAPI -I/home/ammar/cpython/Modules/expat -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/expat/xmlparse.o -Wno-unreachable-code /home/ammar/cpython/Modules/expat/xmlparse.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/expat/xmlparse.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_tw.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_tw.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_tw.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/termios.o /home/ammar/cpython/Modules/termios.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/termios.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sha3/sha3module.o /home/ammar/cpython/Modules/_sha3/sha3module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sha3/sha3module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_cn.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_cn.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_cn.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_multiprocessing -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_multiprocessing/posixshmem.o /home/ammar/cpython/Modules/_multiprocessing/posixshmem.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_multiprocessing/posixshmem.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/sha256module.o -DPy_BUILD_CORE_MODULE /home/ammar/cpython/Modules/sha256module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/sha256module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/xxlimited_35.o /home/ammar/cpython/Modules/xxlimited_35.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/xxlimited_35.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_BERKDB_H -DDB_DBM_HSEARCH -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_dbmmodule.o /home/ammar/cpython/Modules/_dbmmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_dbmmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_kr.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_kr.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_kr.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_NCURSESW=1 -I/usr/include/ncursesw -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_curses_panel.o /home/ammar/cpython/Modules/_curses_panel.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_curses_panel.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_EXPAT_CONFIG_H=1 -DXML_POOR_ENTROPY=1 -DUSE_PYEXPAT_CAPI -I/home/ammar/cpython/Modules/expat -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_elementtree.o /home/ammar/cpython/Modules/_elementtree.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_elementtree.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_multiprocessing -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_multiprocessing/multiprocessing.o /home/ammar/cpython/Modules/_multiprocessing/multiprocessing.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_multiprocessing/multiprocessing.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/uuid -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_uuidmodule.o /home/ammar/cpython/Modules/_uuidmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_uuidmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/x86_64-linux-gnu -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/_ctypes.o -DPy_BUILD_CORE_MODULE -DHAVE_FFI_PREP_CIF_VAR=1 -DHAVE_FFI_PREP_CLOSURE_LOC=1 -DHAVE_FFI_CLOSURE_ALLOC=1 /home/ammar/cpython/Modules/_ctypes/_ctypes.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/_ctypes.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/multibytecodec.o /home/ammar/cpython/Modules/cjkcodecs/multibytecodec.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/multibytecodec.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_bz2module.o /home/ammar/cpython/Modules/_bz2module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_bz2module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_hk.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_hk.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_hk.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/readline.o /home/ammar/cpython/Modules/readline.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/readline.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/zlibmodule.o /home/ammar/cpython/Modules/zlibmodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/zlibmodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/_decimal.o /home/ammar/cpython/Modules/_decimal/_decimal.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/_decimal.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_iso2022.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_iso2022.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_iso2022.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/resource.o /home/ammar/cpython/Modules/resource.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/resource.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/xxlimited.o /home/ammar/cpython/Modules/xxlimited.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/xxlimited.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_lzmamodule.o /home/ammar/cpython/Modules/_lzmamodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_lzmamodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_xxtestfuzz/fuzzer.o /home/ammar/cpython/Modules/_xxtestfuzz/fuzzer.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_xxtestfuzz/fuzzer.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/cjkcodecs/_codecs_jp.o /home/ammar/cpython/Modules/cjkcodecs/_codecs_jp.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/cjkcodecs/_codecs_jp.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/md5module.o /home/ammar/cpython/Modules/md5module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/md5module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/_ctypes_test.o /home/ammar/cpython/Modules/_ctypes/_ctypes_test.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/_ctypes_test.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/ossaudiodev.o /home/ammar/cpython/Modules/ossaudiodev.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/ossaudiodev.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/nismodule.o /home/ammar/cpython/Modules/nismodule.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/nismodule.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Modules/_multiprocessing -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_multiprocessing/semaphore.o /home/ammar/cpython/Modules/_multiprocessing/semaphore.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_multiprocessing/semaphore.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/rotatingtree.o /home/ammar/cpython/Modules/rotatingtree.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/rotatingtree.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_blake2/blake2module.o /home/ammar/cpython/Modules/_blake2/blake2module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_blake2/blake2module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/cursor.o /home/ammar/cpython/Modules/_sqlite/cursor.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/cursor.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_blake2/blake2s_impl.o /home/ammar/cpython/Modules/_blake2/blake2s_impl.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_blake2/blake2s_impl.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/microprotocols.o /home/ammar/cpython/Modules/_sqlite/microprotocols.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/microprotocols.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/module.o /home/ammar/cpython/Modules/_sqlite/module.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/module.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/prepare_protocol.o /home/ammar/cpython/Modules/_sqlite/prepare_protocol.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/prepare_protocol.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/x86_64-linux-gnu -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/callbacks.o -DPy_BUILD_CORE_MODULE -DHAVE_FFI_PREP_CIF_VAR=1 -DHAVE_FFI_PREP_CLOSURE_LOC=1 -DHAVE_FFI_CLOSURE_ALLOC=1 /home/ammar/cpython/Modules/_ctypes/callbacks.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/callbacks.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/row.o /home/ammar/cpython/Modules/_sqlite/row.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/row.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/x86_64-linux-gnu -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/callproc.o -DPy_BUILD_CORE_MODULE -DHAVE_FFI_PREP_CIF_VAR=1 -DHAVE_FFI_PREP_CLOSURE_LOC=1 -DHAVE_FFI_CLOSURE_ALLOC=1 /home/ammar/cpython/Modules/_ctypes/callproc.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/callproc.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/statement.o /home/ammar/cpython/Modules/_sqlite/statement.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/statement.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DSQLITE_OMIT_LOAD_EXTENSION=1 -I/home/ammar/cpython/Modules/_sqlite -I/usr/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_sqlite/util.o /home/ammar/cpython/Modules/_sqlite/util.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_sqlite/util.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/x86_64-linux-gnu -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/cfield.o -DPy_BUILD_CORE_MODULE -DHAVE_FFI_PREP_CIF_VAR=1 -DHAVE_FFI_PREP_CLOSURE_LOC=1 -DHAVE_FFI_CLOSURE_ALLOC=1 /home/ammar/cpython/Modules/_ctypes/cfield.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/cfield.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_EXPAT_CONFIG_H=1 -DXML_POOR_ENTROPY=1 -DUSE_PYEXPAT_CAPI -I/home/ammar/cpython/Modules/expat -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/expat/xmlrole.o -Wno-unreachable-code /home/ammar/cpython/Modules/expat/xmlrole.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/expat/xmlrole.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_EXPAT_CONFIG_H=1 -DXML_POOR_ENTROPY=1 -DUSE_PYEXPAT_CAPI -I/home/ammar/cpython/Modules/expat -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/expat/xmltok.o -Wno-unreachable-code /home/ammar/cpython/Modules/expat/xmltok.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/expat/xmltok.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/basearith.o /home/ammar/cpython/Modules/_decimal/libmpdec/basearith.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/basearith.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -I/usr/include/x86_64-linux-gnu -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_ctypes/stgdict.o -DPy_BUILD_CORE_MODULE -DHAVE_FFI_PREP_CIF_VAR=1 -DHAVE_FFI_PREP_CLOSURE_LOC=1 -DHAVE_FFI_CLOSURE_ALLOC=1 /home/ammar/cpython/Modules/_ctypes/stgdict.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_ctypes/stgdict.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/constants.o /home/ammar/cpython/Modules/_decimal/libmpdec/constants.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/constants.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/context.o /home/ammar/cpython/Modules/_decimal/libmpdec/context.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/context.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/convolute.o /home/ammar/cpython/Modules/_decimal/libmpdec/convolute.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/convolute.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/crt.o /home/ammar/cpython/Modules/_decimal/libmpdec/crt.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/crt.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/difradix2.o /home/ammar/cpython/Modules/_decimal/libmpdec/difradix2.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/difradix2.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/fnt.o /home/ammar/cpython/Modules/_decimal/libmpdec/fnt.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/fnt.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/fourstep.o /home/ammar/cpython/Modules/_decimal/libmpdec/fourstep.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/fourstep.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/io.o /home/ammar/cpython/Modules/_decimal/libmpdec/io.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/io.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DHAVE_EXPAT_CONFIG_H=1 -DXML_POOR_ENTROPY=1 -DUSE_PYEXPAT_CAPI -I/home/ammar/cpython/Modules/expat -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/pyexpat.o -Wno-unreachable-code /home/ammar/cpython/Modules/pyexpat.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/pyexpat.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/mpalloc.o /home/ammar/cpython/Modules/_decimal/libmpdec/mpalloc.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/mpalloc.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/mpdecimal.o /home/ammar/cpython/Modules/_decimal/libmpdec/mpdecimal.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/mpdecimal.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/numbertheory.o /home/ammar/cpython/Modules/_decimal/libmpdec/numbertheory.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/numbertheory.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/sixstep.o /home/ammar/cpython/Modules/_decimal/libmpdec/sixstep.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/sixstep.c"
+    },
+    {
+        "command": "cc -c -pthread -fPIC -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers -Werror=implicit-function-declaration -fvisibility=hidden -I/home/ammar/cpython/Include/internal -DCONFIG_64=1 -DASM=1 -I/home/ammar/cpython/Modules/_decimal/libmpdec -I/home/ammar/cpython/Include -I/home/ammar/cpython -I/usr/include/x86_64-linux-gnu -I/usr/local/include -I/home/ammar/cpython/Include -I/home/ammar/cpython -o build/temp.linux-x86_64-3.11/home/ammar/cpython/Modules/_decimal/libmpdec/transpose.o /home/ammar/cpython/Modules/_decimal/libmpdec/transpose.c",
+        "directory": "/home/ammar/cpython",
+        "file": "/home/ammar/cpython/Modules/_decimal/libmpdec/transpose.c"
+    }
+]

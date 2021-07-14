@@ -1333,7 +1333,28 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
        case AF_NETLINK:
        {
            struct sockaddr_nl *a = (struct sockaddr_nl *) addr;
-           return Py_BuildValue("II", a->nl_pid, a->nl_groups);
+           {
+           PyObject* _builtResult;
+           {
+           _builtResult = PyTuple_New(2);
+           if (_builtResult == NULL) {
+               // TODO: error handling
+           }
+           {
+           PyObject* _tupleMember0;
+           _tupleMember0 = PyLong_FromUnsignedLong(a->nl_pid);
+           PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+           }
+           {
+           PyObject* _tupleMember1;
+           _tupleMember1 = PyLong_FromUnsignedLong(a->nl_groups);
+           PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+           }
+           }
+           
+           return _builtResult;
+           }
+           
        }
 #endif /* AF_NETLINK */
 
@@ -1349,7 +1370,28 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
        case AF_VSOCK:
        {
            struct sockaddr_vm *a = (struct sockaddr_vm *) addr;
-           return Py_BuildValue("II", a->svm_cid, a->svm_port);
+           {
+           PyObject* _builtResult;
+           {
+           _builtResult = PyTuple_New(2);
+           if (_builtResult == NULL) {
+               // TODO: error handling
+           }
+           {
+           PyObject* _tupleMember0;
+           _tupleMember0 = PyLong_FromUnsignedLong(a->svm_cid);
+           PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+           }
+           {
+           PyObject* _tupleMember1;
+           _tupleMember1 = PyLong_FromUnsignedLong(a->svm_port);
+           PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+           }
+           }
+           
+           return _builtResult;
+           }
+           
        }
 #endif /* AF_VSOCK */
 
@@ -1447,13 +1489,55 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
             if (ioctl(sockfd, SIOCGIFNAME, &ifr) == 0)
                 ifname = ifr.ifr_name;
         }
-        return Py_BuildValue("shbhy#",
-                             ifname,
-                             ntohs(a->sll_protocol),
-                             a->sll_pkttype,
-                             a->sll_hatype,
-                             a->sll_addr,
-                             (Py_ssize_t)a->sll_halen);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(5);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) ifname;
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(ntohs(a->sll_protocol));
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyLong_FromLong(a->sll_pkttype);
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        {
+        PyObject* _tupleMember3;
+        _tupleMember3 = PyLong_FromLong(a->sll_hatype);
+        PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+        }
+        {
+        PyObject* _tupleMember4;
+        const char* _strArg = (const char*) a->sll_addr;
+        if (_strArg) {
+            _tupleMember4 = PyBytes_FromStringAndSize(_strArg, (Py_ssize_t)a->sll_halen);
+        } else {
+            _tupleMember4 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 4, _tupleMember4);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 #endif /* HAVE_NETPACKET_PACKET_H && SIOCGIFNAME */
 
@@ -1462,26 +1546,119 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
     {
         struct sockaddr_tipc *a = (struct sockaddr_tipc *) addr;
         if (a->addrtype == TIPC_ADDR_NAMESEQ) {
-            return Py_BuildValue("IIIII",
-                            a->addrtype,
-                            a->addr.nameseq.type,
-                            a->addr.nameseq.lower,
-                            a->addr.nameseq.upper,
-                            a->scope);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(5);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            _tupleMember0 = PyLong_FromUnsignedLong(a->addrtype);
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyLong_FromUnsignedLong(a->addr.nameseq.type);
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            {
+            PyObject* _tupleMember2;
+            _tupleMember2 = PyLong_FromUnsignedLong(a->addr.nameseq.lower);
+            PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+            }
+            {
+            PyObject* _tupleMember3;
+            _tupleMember3 = PyLong_FromUnsignedLong(a->addr.nameseq.upper);
+            PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+            }
+            {
+            PyObject* _tupleMember4;
+            _tupleMember4 = PyLong_FromUnsignedLong(a->scope);
+            PyTuple_SET_ITEM(_builtResult, 4, _tupleMember4);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         } else if (a->addrtype == TIPC_ADDR_NAME) {
-            return Py_BuildValue("IIIII",
-                            a->addrtype,
-                            a->addr.name.name.type,
-                            a->addr.name.name.instance,
-                            a->addr.name.name.instance,
-                            a->scope);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(5);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            _tupleMember0 = PyLong_FromUnsignedLong(a->addrtype);
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyLong_FromUnsignedLong(a->addr.name.name.type);
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            {
+            PyObject* _tupleMember2;
+            _tupleMember2 = PyLong_FromUnsignedLong(a->addr.name.name.instance);
+            PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+            }
+            {
+            PyObject* _tupleMember3;
+            _tupleMember3 = PyLong_FromUnsignedLong(a->addr.name.name.instance);
+            PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+            }
+            {
+            PyObject* _tupleMember4;
+            _tupleMember4 = PyLong_FromUnsignedLong(a->scope);
+            PyTuple_SET_ITEM(_builtResult, 4, _tupleMember4);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         } else if (a->addrtype == TIPC_ADDR_ID) {
-            return Py_BuildValue("IIIII",
-                            a->addrtype,
-                            a->addr.id.node,
-                            a->addr.id.ref,
-                            0,
-                            a->scope);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(5);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            _tupleMember0 = PyLong_FromUnsignedLong(a->addrtype);
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyLong_FromUnsignedLong(a->addr.id.node);
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            {
+            PyObject* _tupleMember2;
+            _tupleMember2 = PyLong_FromUnsignedLong(a->addr.id.ref);
+            PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+            }
+            {
+            PyObject* _tupleMember3;
+            _tupleMember3 = PyLong_FromUnsignedLong(0);
+            PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+            }
+            {
+            PyObject* _tupleMember4;
+            _tupleMember4 = PyLong_FromUnsignedLong(a->scope);
+            PyTuple_SET_ITEM(_builtResult, 4, _tupleMember4);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         } else {
             PyErr_SetString(PyExc_ValueError,
                             "Invalid address type");
@@ -1507,10 +1684,33 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
 #ifdef CAN_ISOTP
           case CAN_ISOTP:
           {
-              return Py_BuildValue("O&kk", PyUnicode_DecodeFSDefault,
-                                          ifname,
-                                          a->can_addr.tp.rx_id,
-                                          a->can_addr.tp.tx_id);
+              {
+              PyObject* _builtResult;
+              {
+              _builtResult = PyTuple_New(3);
+              if (_builtResult == NULL) {
+                  // TODO: error handling
+              }
+              {
+              PyObject* _tupleMember0;
+              _tupleMember0 = ifname( PyUnicode_DecodeFSDefault );
+              PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+              }
+              {
+              PyObject* _tupleMember1;
+              _tupleMember1 = PyLong_FromUnsignedLong(a->can_addr.tp.rx_id);
+              PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+              }
+              {
+              PyObject* _tupleMember2;
+              _tupleMember2 = PyLong_FromUnsignedLong(a->can_addr.tp.tx_id);
+              PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+              }
+              }
+              
+              return _builtResult;
+              }
+              
           }
 #endif /* CAN_ISOTP */
 #ifdef CAN_J1939
@@ -1525,8 +1725,23 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
 #endif /* CAN_J1939 */
           default:
           {
-              return Py_BuildValue("(O&)", PyUnicode_DecodeFSDefault,
-                                        ifname);
+              {
+              PyObject* _builtResult;
+              {
+              _builtResult = PyTuple_New(1);
+              if (_builtResult == NULL) {
+                  // TODO: error handling
+              }
+              {
+              PyObject* _tupleMember0;
+              _tupleMember0 = ifname( PyUnicode_DecodeFSDefault );
+              PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+              }
+              }
+              
+              return _builtResult;
+              }
+              
           }
         }
     }
@@ -1553,15 +1768,52 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
     case AF_ALG:
     {
         struct sockaddr_alg *a = (struct sockaddr_alg *)addr;
-        return Py_BuildValue("s#s#HH",
-            a->salg_type,
-            strnlen((const char*)a->salg_type,
-                    sizeof(a->salg_type)),
-            a->salg_name,
-            strnlen((const char*)a->salg_name,
-                    sizeof(a->salg_name)),
-            a->salg_feat,
-            a->salg_mask);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(4);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        const char* _strArg = (const char*) a->salg_type;
+        if (_strArg) {
+            _tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strnlen((const char*)a->salg_type,
+                            sizeof(a->salg_type)));
+        } else {
+            _tupleMember0 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) a->salg_name;
+        if (_strArg) {
+            _tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strnlen((const char*)a->salg_name,
+                            sizeof(a->salg_name)));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        _tupleMember2 = PyLong_FromLong(a->salg_feat);
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        {
+        PyObject* _tupleMember3;
+        _tupleMember3 = PyLong_FromLong(a->salg_mask);
+        PyTuple_SET_ITEM(_builtResult, 3, _tupleMember3);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
     }
 #endif /* HAVE_SOCKADDR_ALG */
 
@@ -1570,10 +1822,34 @@ makesockaddr(SOCKET_T sockfd, struct sockaddr *addr, size_t addrlen, int proto)
     default:
         /* If we don't know the address family, don't raise an
            exception -- return it as an (int, bytes) tuple. */
-        return Py_BuildValue("iy#",
-                             addr->sa_family,
-                             addr->sa_data,
-                             sizeof(addr->sa_data));
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromLong(addr->sa_family);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        const char* _strArg = (const char*) addr->sa_data;
+        if (_strArg) {
+            _tupleMember1 = PyBytes_FromStringAndSize(_strArg, sizeof(addr->sa_data));
+        } else {
+            _tupleMember1 = Py_None;
+            Py_INCREF(_builtResult);
+        }
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 
     }
 }
@@ -3039,8 +3315,56 @@ sock_getsockopt(PySocketSockObject *s, PyObject *args)
     int flag = 0;
     socklen_t flagsize;
 
-    if (!PyArg_ParseTuple(args, "ii|i:getsockopt",
-                          &level, &optname, &buflen))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getsockopt", _nargs, 2, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&level = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&optname = _ival;
+        }
+        {
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&buflen = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (buflen == 0) {
@@ -3411,7 +3735,30 @@ sock_listen(PySocketSockObject *s, PyObject *args)
     int backlog = Py_MIN(SOMAXCONN, 128);
     int res;
 
-    if (!PyArg_ParseTuple(args, "|i:listen", &backlog))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("listen", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&backlog = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     Py_BEGIN_ALLOW_THREADS
@@ -3499,7 +3846,41 @@ sock_recv(PySocketSockObject *s, PyObject *args)
     int flags = 0;
     PyObject *buf;
 
-    if (!PyArg_ParseTuple(args, "n|i:recv", &recvlen, &flags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("recv", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&recvlen = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&recvlen = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&recvlen == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (recvlen < 0) {
@@ -3685,7 +4066,41 @@ sock_recvfrom(PySocketSockObject *s, PyObject *args)
     int flags = 0;
     Py_ssize_t recvlen, outlen;
 
-    if (!PyArg_ParseTuple(args, "n|i:recvfrom", &recvlen, &flags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("recvfrom", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&recvlen = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&recvlen = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&recvlen == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (recvlen < 0) {
@@ -3774,7 +4189,40 @@ sock_recvfrom_into(PySocketSockObject *s, PyObject *args, PyObject* kwds)
     PyBuffer_Release(&pbuf);
     /* Return the number of bytes read and the address.  Note that we do
        not do anything special here in the case that readlen < recvlen. */
-    return Py_BuildValue("nN", readlen, addr);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _tupleMember0 = PyLong_FromSsize_t(readlen);
+    #else
+    _tupleMember0 = PyLong_FromLong(readlen);
+    #endif
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    PyObject* _objectArg = (PyObject*) addr;
+    if (_objectArg) {
+        _tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember1 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 PyDoc_STRVAR(recvfrom_into_doc,
@@ -3964,7 +4412,52 @@ sock_recvmsg(PySocketSockObject *s, PyObject *args)
     struct iovec iov;
     PyObject *buf = NULL, *retval = NULL;
 
-    if (!PyArg_ParseTuple(args, "n|ni:recvmsg", &bufsize, &ancbufsize, &flags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("recvmsg", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&bufsize = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&bufsize = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&bufsize == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&ancbufsize = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&ancbufsize = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&ancbufsize == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (bufsize < 0) {
@@ -4033,8 +4526,44 @@ sock_recvmsg_into(PySocketSockObject *s, PyObject *args)
     Py_buffer *bufs = NULL;
     PyObject *buffers_arg, *fast, *retval = NULL;
 
-    if (!PyArg_ParseTuple(args, "O|ni:recvmsg_into",
-                          &buffers_arg, &ancbufsize, &flags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("recvmsg_into", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&buffers_arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&ancbufsize = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&ancbufsize = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&ancbufsize == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if ((fast = PySequence_Fast(buffers_arg,
@@ -4437,8 +4966,39 @@ sock_sendmsg(PySocketSockObject *s, PyObject *args)
         *cmsg_fast = NULL, *retval = NULL;
     struct sock_sendmsg ctx;
 
-    if (!PyArg_ParseTuple(args, "O|OiO:sendmsg",
-                          &data_arg, &cmsg_arg, &flags, &addr_arg)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("sendmsg", _nargs, 1, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&data_arg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&cmsg_arg = PyTuple_GET_ITEM(args, 1);
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+        if (_nargs >= 4) {
+            *&addr_arg = PyTuple_GET_ITEM(args, 3);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5448,7 +6008,22 @@ socket_sethostname(PyObject *self, PyObject *args)
 extern int sethostname(const char *, size_t);
 #endif
 
-    if (!PyArg_ParseTuple(args, "S:sethostname", &hnobj)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("sethostname", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyBytes_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be bytes, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&hnobj = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         PyErr_Clear();
         if (!PyArg_ParseTuple(args, "O&:sethostname",
                 PyUnicode_FSConverter, &hnobj))
@@ -5825,7 +6400,53 @@ socket_getservbyname(PyObject *self, PyObject *args)
 {
     const char *name, *proto=NULL;
     struct servent *sp;
-    if (!PyArg_ParseTuple(args, "s|s:getservbyname", &name, &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getservbyname", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&proto = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (PySys_Audit("socket.getservbyname", "ss", name, proto) < 0) {
@@ -5861,7 +6482,48 @@ socket_getservbyport(PyObject *self, PyObject *args)
     int port;
     const char *proto=NULL;
     struct servent *sp;
-    if (!PyArg_ParseTuple(args, "i|s:getservbyport", &port, &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getservbyport", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&port = _ival;
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&proto = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (port < 0 || port > 0xffff) {
         PyErr_SetString(
@@ -5901,7 +6563,33 @@ socket_getprotobyname(PyObject *self, PyObject *args)
 {
     const char *name;
     struct protoent *sp;
-    if (!PyArg_ParseTuple(args, "s:getprotobyname", &name))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getprotobyname", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_BEGIN_ALLOW_THREADS
     sp = getprotobyname(name);
@@ -6021,8 +6709,56 @@ socket_socketpair(PyObject *self, PyObject *args)
 #else
     family = AF_INET;
 #endif
-    if (!PyArg_ParseTuple(args, "|iii:socketpair",
-                          &family, &type, &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("socketpair", _nargs, 0, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&family = _ival;
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&type = _ival;
+        }
+        if (_nargs >= 3) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&proto = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     /* Create a pair of socket fds */
@@ -6092,7 +6828,28 @@ socket_ntohs(PyObject *self, PyObject *args)
 {
     int x;
 
-    if (!PyArg_ParseTuple(args, "i:ntohs", &x)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("ntohs", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&x = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (x < 0) {
@@ -6155,7 +6912,28 @@ socket_htons(PyObject *self, PyObject *args)
 {
     int x;
 
-    if (!PyArg_ParseTuple(args, "i:htons", &x)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("htons", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&x = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
     if (x < 0) {
@@ -6236,7 +7014,33 @@ socket_inet_aton(PyObject *self, PyObject *args)
 #endif
     const char *ip_addr;
 
-    if (!PyArg_ParseTuple(args, "s:inet_aton", &ip_addr))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("inet_aton", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&ip_addr = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
 
@@ -6334,7 +7138,46 @@ socket_inet_pton(PyObject *self, PyObject *args)
 #else
     char packed[sizeof(struct in_addr)];
 #endif
-    if (!PyArg_ParseTuple(args, "is:inet_pton", &af, &ip)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("inet_pton", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&af = _ival;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&ip = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -6571,7 +7414,31 @@ socket_getnameinfo(PyObject *self, PyObject *args)
     PyObject *name;
 
     flags = flowinfo = scope_id = 0;
-    if (!PyArg_ParseTuple(args, "Oi:getnameinfo", &sa, &flags))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("getnameinfo", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&sa = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&flags = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (!PyTuple_Check(sa)) {
         PyErr_SetString(PyExc_TypeError,
@@ -6763,8 +7630,24 @@ socket_if_nameindex(PyObject *self, PyObject *arg)
             } while (*to_sanitize++ != '\0');
         }
 #endif
-        PyObject *ni_tuple = Py_BuildValue("IO&",
-                ni[i].if_index, PyUnicode_DecodeFSDefault, ni[i].if_name);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        _tupleMember0 = PyLong_FromUnsignedLong(ni[i].if_index);
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = ni[i].if_name( PyUnicode_DecodeFSDefault );
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        PyObject *ni_tuple = _builtResult;
 
         if (ni_tuple == NULL || PyList_Append(list, ni_tuple) == -1) {
             Py_XDECREF(ni_tuple);
@@ -6853,7 +7736,26 @@ socket_CMSG_LEN(PyObject *self, PyObject *args)
     Py_ssize_t length;
     size_t result;
 
-    if (!PyArg_ParseTuple(args, "n:CMSG_LEN", &length))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("CMSG_LEN", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&length = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&length = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&length == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (length < 0 || !get_CMSG_LEN(length, &result)) {
         PyErr_Format(PyExc_OverflowError, "CMSG_LEN() argument out of range");
@@ -6883,7 +7785,26 @@ socket_CMSG_SPACE(PyObject *self, PyObject *args)
     Py_ssize_t length;
     size_t result;
 
-    if (!PyArg_ParseTuple(args, "n:CMSG_SPACE", &length))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("CMSG_SPACE", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&length = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&length = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&length == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (length < 0 || !get_CMSG_SPACE(length, &result)) {
         PyErr_SetString(PyExc_OverflowError,

@@ -1167,10 +1167,47 @@ compute_cr_origin(int origin_depth)
     frame = PyEval_GetFrame();
     for (int i = 0; i < frame_count; ++i) {
         PyCodeObject *code = PyFrame_GetCode(frame);
-        PyObject *frameinfo = Py_BuildValue("OiO",
-                                            code->co_filename,
-                                            PyFrame_GetLineNumber(frame),
-                                            code->co_name);
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(3);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) code->co_filename;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        _tupleMember1 = PyLong_FromLong(PyFrame_GetLineNumber(frame));
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        {
+        PyObject* _tupleMember2;
+        PyObject* _objectArg = (PyObject*) code->co_name;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember2 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 2, _tupleMember2);
+        }
+        }
+        PyObject *frameinfo = _builtResult;
         Py_DECREF(code);
         if (!frameinfo) {
             Py_DECREF(cr_origin);

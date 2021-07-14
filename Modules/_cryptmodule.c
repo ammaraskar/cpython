@@ -45,7 +45,21 @@ crypt_crypt_impl(PyObject *module, const char *word, const char *salt)
     if (crypt_result == NULL) {
         return PyErr_SetFromErrno(PyExc_OSError);
     }
-    return Py_BuildValue("s", crypt_result);
+    {
+    PyObject* _builtResult;
+    {
+    const char* _strArg = (const char*) crypt_result;
+    if (_strArg) {
+        _builtResult = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult = Py_None;
+        Py_INCREF(_builtResult);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 

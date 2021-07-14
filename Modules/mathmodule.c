@@ -2161,7 +2161,28 @@ math_frexp_impl(PyObject *module, double x)
     else {
         x = frexp(x, &i);
     }
-    return Py_BuildValue("(di)", x, i);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyFloat_FromDouble(x);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(i);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 
@@ -2245,14 +2266,77 @@ math_modf_impl(PyObject *module, double x)
        infinities, so we take care of special cases directly. */
     if (!Py_IS_FINITE(x)) {
         if (Py_IS_INFINITY(x))
-            return Py_BuildValue("(dd)", copysign(0., x), x);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(2);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            _tupleMember0 = PyFloat_FromDouble(copysign(0., x));
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyFloat_FromDouble(x);
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
         else if (Py_IS_NAN(x))
-            return Py_BuildValue("(dd)", x, x);
+            {
+            PyObject* _builtResult;
+            {
+            _builtResult = PyTuple_New(2);
+            if (_builtResult == NULL) {
+                // TODO: error handling
+            }
+            {
+            PyObject* _tupleMember0;
+            _tupleMember0 = PyFloat_FromDouble(x);
+            PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+            }
+            {
+            PyObject* _tupleMember1;
+            _tupleMember1 = PyFloat_FromDouble(x);
+            PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+            }
+            }
+            
+            return _builtResult;
+            }
+            
     }
 
     errno = 0;
     x = modf(x, &y);
-    return Py_BuildValue("(dd)", x, y);
+    {
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    _tupleMember0 = PyFloat_FromDouble(x);
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyFloat_FromDouble(y);
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    
+    return _builtResult;
+    }
+    
 }
 
 

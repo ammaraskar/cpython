@@ -1211,7 +1211,40 @@ pattern_subx(_sremodulestate* module_state,
     }
 
     if (subn)
-        return Py_BuildValue("Nn", item, n);
+        {
+        PyObject* _builtResult;
+        {
+        _builtResult = PyTuple_New(2);
+        if (_builtResult == NULL) {
+            // TODO: error handling
+        }
+        {
+        PyObject* _tupleMember0;
+        PyObject* _objectArg = (PyObject*) item;
+        if (_objectArg) {
+            _tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _tupleMember0 = NULL;
+        }
+        PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+        }
+        {
+        PyObject* _tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _tupleMember1 = PyLong_FromSsize_t(n);
+        #else
+        _tupleMember1 = PyLong_FromLong(n);
+        #endif
+        PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+        }
+        }
+        
+        return _builtResult;
+        }
+        
 
     return item;
 

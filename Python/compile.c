@@ -5703,9 +5703,84 @@ compiler_error(struct compiler *c, const char *format, ...)
         Py_INCREF(Py_None);
         loc = Py_None;
     }
-    PyObject *args = Py_BuildValue("O(OiiOii)", msg, c->c_filename,
-                                   c->u->u_lineno, c->u->u_col_offset + 1, loc,
-                                   c->u->u_end_lineno, c->u->u_end_col_offset + 1);
+    PyObject* _builtResult;
+    {
+    _builtResult = PyTuple_New(2);
+    if (_builtResult == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) msg;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_builtResult, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyTuple_New(6);
+    if (_tupleMember1 == NULL) {
+        // TODO: error handling
+    }
+    {
+    PyObject* _tupleMember0;
+    PyObject* _objectArg = (PyObject*) c->c_filename;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember0 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 0, _tupleMember0);
+    }
+    {
+    PyObject* _tupleMember1;
+    _tupleMember1 = PyLong_FromLong(c->u->u_lineno);
+    PyTuple_SET_ITEM(_tupleMember1, 1, _tupleMember1);
+    }
+    {
+    PyObject* _tupleMember2;
+    _tupleMember2 = PyLong_FromLong(c->u->u_col_offset + 1);
+    PyTuple_SET_ITEM(_tupleMember1, 2, _tupleMember2);
+    }
+    {
+    PyObject* _tupleMember3;
+    PyObject* _objectArg = (PyObject*) loc;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _tupleMember3 = NULL;
+    }
+    PyTuple_SET_ITEM(_tupleMember1, 3, _tupleMember3);
+    }
+    {
+    PyObject* _tupleMember4;
+    _tupleMember4 = PyLong_FromLong(c->u->u_end_lineno);
+    PyTuple_SET_ITEM(_tupleMember1, 4, _tupleMember4);
+    }
+    {
+    PyObject* _tupleMember5;
+    _tupleMember5 = PyLong_FromLong(c->u->u_end_col_offset + 1);
+    PyTuple_SET_ITEM(_tupleMember1, 5, _tupleMember5);
+    }
+    PyTuple_SET_ITEM(_builtResult, 1, _tupleMember1);
+    }
+    }
+    PyObject *args = _builtResult;
     Py_DECREF(msg);
     if (args == NULL) {
         goto exit;

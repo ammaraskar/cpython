@@ -2803,7 +2803,20 @@ ctx_create_decimal(PyObject *context, PyObject *args)
 {
     PyObject *v = NULL;
 
-    if (!PyArg_ParseTuple(args, "|O", &v)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("ctx_create_decimal", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            *&v = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -3228,7 +3241,23 @@ dec_format(PyObject *dec, PyObject *args)
 
 
     CURRENT_CONTEXT(context);
-    if (!PyArg_ParseTuple(args, "O|O", &fmtarg, &override)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("dec_format", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&fmtarg = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&override = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -3642,7 +3671,20 @@ PyDec_Round(PyObject *dec, PyObject *args)
 
 
     CURRENT_CONTEXT(context);
-    if (!PyArg_ParseTuple(args, "|O", &x)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("PyDec_Round", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            *&x = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5085,7 +5127,21 @@ ctx_mpd_qdivmod(PyObject *context, PyObject *args)
     uint32_t status = 0;
     PyObject *ret;
 
-    if (!PyArg_ParseTuple(args, "OO", &v, &w)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("ctx_mpd_qdivmod", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&v = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&w = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5363,7 +5419,21 @@ ctx_mpd_qcopy_sign(PyObject *context, PyObject *args)
     PyObject *result;
     uint32_t status = 0;
 
-    if (!PyArg_ParseTuple(args, "OO", &v, &w)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("ctx_mpd_qcopy_sign", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&v = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&w = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -5402,7 +5472,21 @@ ctx_mpd_same_quantum(PyObject *context, PyObject *args)
     PyObject *a, *b;
     PyObject *result;
 
-    if (!PyArg_ParseTuple(args, "OO", &v, &w)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("ctx_mpd_same_quantum", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&v = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            *&w = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
