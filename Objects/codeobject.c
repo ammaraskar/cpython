@@ -1011,11 +1011,55 @@ positionsiter_next(positionsiterator* pi)
     }
 
     pi->pi_offset += 2;
-    return Py_BuildValue("(O&O&O&O&)",
-        _source_offset_converter, &start_line,
-        _source_offset_converter, &end_line,
-        _source_offset_converter, &start_col,
-        _source_offset_converter, &end_col);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(4);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = _source_offset_converter( &start_line );
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = _source_offset_converter( &end_line );
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2;
+    _builtResult1_tupleMember2 = _source_offset_converter( &start_col );
+    if (_builtResult1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+    }
+    {
+    PyObject* _builtResult1_tupleMember3;
+    _builtResult1_tupleMember3 = _source_offset_converter( &end_col );
+    if (_builtResult1_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 3, _builtResult1_tupleMember3);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyTypeObject PositionsIterator = {

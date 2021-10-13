@@ -872,9 +872,112 @@ ast_type_reduce(PyObject *self, PyObject *unused)
         return NULL;
     }
     if (dict) {
-        return Py_BuildValue("O()N", Py_TYPE(self), dict);
+        {
+        PyObject* _builtResult2 = NULL;
+        {
+        _builtResult2 = PyTuple_New(3);
+        if (_builtResult2 == NULL) {
+            goto _builtResult2_cleanup;
+        }
+        {
+        PyObject* _builtResult2_tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult2_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult2_tupleMember0 = NULL;
+        }
+        if (_builtResult2_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult2);
+            goto _builtResult2_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+        }
+        {
+        PyObject* _builtResult2_tupleMember1;
+        _builtResult2_tupleMember1 = PyTuple_New(0);
+        if (_builtResult2_tupleMember1 == NULL) {
+            goto _builtResult2_tupleMember1_cleanup;
+        }
+        _builtResult2_tupleMember1_cleanup: ;
+        if (_builtResult2_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult2);
+            goto _builtResult2_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+        }
+        {
+        PyObject* _builtResult2_tupleMember2;
+        PyObject* _objectArg = (PyObject*) dict;
+        if (_objectArg) {
+            _builtResult2_tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult2_tupleMember2 = NULL;
+        }
+        if (_builtResult2_tupleMember2 == NULL) {
+            Py_CLEAR(_builtResult2);
+            goto _builtResult2_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult2, 2, _builtResult2_tupleMember2);
+        }
+        _builtResult2_cleanup: ;
+        }
+        
+        return _builtResult2;
+        }
+        
     }
-    return Py_BuildValue("O()", Py_TYPE(self));
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyTuple_New(0);
+    if (_builtResult1_tupleMember1 == NULL) {
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    _builtResult1_tupleMember1_cleanup: ;
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyMemberDef ast_type_members[] = {

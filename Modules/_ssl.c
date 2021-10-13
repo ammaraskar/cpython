@@ -458,7 +458,35 @@ fill_and_set_sslerror(_sslmodulestate *state,
 
         lib = ERR_GET_LIB(errcode);
         reason = ERR_GET_REASON(errcode);
-        key = Py_BuildValue("ii", lib, reason);
+        {
+        PyObject* _builtResult2 = NULL;
+        {
+        _builtResult2 = PyTuple_New(2);
+        if (_builtResult2 == NULL) {
+            goto _builtResult2_cleanup;
+        }
+        {
+        PyObject* _builtResult2_tupleMember0;
+        _builtResult2_tupleMember0 = PyLong_FromLong(lib);
+        if (_builtResult2_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult2);
+            goto _builtResult2_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+        }
+        {
+        PyObject* _builtResult2_tupleMember1;
+        _builtResult2_tupleMember1 = PyLong_FromLong(reason);
+        if (_builtResult2_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult2);
+            goto _builtResult2_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+        }
+        _builtResult2_cleanup: ;
+        }
+        key = _builtResult2;
+        } 
         if (key == NULL)
             goto fail;
         reason_obj = PyDict_GetItemWithError(state->err_codes_to_names, key);
@@ -534,7 +562,43 @@ fill_and_set_sslerror(_sslmodulestate *state,
     if (msg == NULL)
         goto fail;
 
-    init_value = Py_BuildValue("iN", ERR_GET_REASON(ssl_errno), msg);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = PyLong_FromLong(ERR_GET_REASON(ssl_errno));
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    PyObject* _objectArg = (PyObject*) msg;
+    if (_objectArg) {
+        _builtResult1_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1 = NULL;
+    }
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    init_value = _builtResult1;
+    } 
     if (init_value == NULL)
         goto fail;
 
@@ -1062,7 +1126,49 @@ _create_tuple_for_attribute(_sslmodulestate *state,
         _setSSLError(state, NULL, 0, __FILE__, __LINE__);
         return NULL;
     }
-    attr = Py_BuildValue("Ns#", _asn1obj2py(state, name, 0), valuebuf, buflen);
+    {
+    PyObject* _builtResult3 = NULL;
+    {
+    _builtResult3 = PyTuple_New(2);
+    if (_builtResult3 == NULL) {
+        goto _builtResult3_cleanup;
+    }
+    {
+    PyObject* _builtResult3_tupleMember0;
+    PyObject* _objectArg = (PyObject*) _asn1obj2py(state, name, 0);
+    if (_objectArg) {
+        _builtResult3_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult3_tupleMember0 = NULL;
+    }
+    if (_builtResult3_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 0, _builtResult3_tupleMember0);
+    }
+    {
+    PyObject* _builtResult3_tupleMember1;
+    const char* _strArg = (const char*) valuebuf;
+    if (_strArg) {
+        _builtResult3_tupleMember1 = PyUnicode_FromStringAndSize(_strArg, buflen);
+    } else {
+        _builtResult3_tupleMember1 = Py_None;
+        Py_INCREF(_builtResult3_tupleMember1);
+    }
+    if (_builtResult3_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 1, _builtResult3_tupleMember1);
+    }
+    _builtResult3_cleanup: ;
+    }
+    attr = _builtResult3;
+    } 
     OPENSSL_free(valuebuf);
     return attr;
 }
@@ -5117,7 +5223,54 @@ PySSL_RAND(PyObject *module, int len, int pseudo)
     if (pseudo) {
         ok = RAND_bytes((unsigned char*)PyBytes_AS_STRING(bytes), len);
         if (ok == 0 || ok == 1)
-            return Py_BuildValue("NO", bytes, ok == 1 ? Py_True : Py_False);
+            {
+            PyObject* _builtResult7 = NULL;
+            {
+            _builtResult7 = PyTuple_New(2);
+            if (_builtResult7 == NULL) {
+                goto _builtResult7_cleanup;
+            }
+            {
+            PyObject* _builtResult7_tupleMember0;
+            PyObject* _objectArg = (PyObject*) bytes;
+            if (_objectArg) {
+                _builtResult7_tupleMember0 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _builtResult7_tupleMember0 = NULL;
+            }
+            if (_builtResult7_tupleMember0 == NULL) {
+                Py_CLEAR(_builtResult7);
+                goto _builtResult7_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult7, 0, _builtResult7_tupleMember0);
+            }
+            {
+            PyObject* _builtResult7_tupleMember1;
+            PyObject* _objectArg = (PyObject*) ok == 1 ? Py_True : Py_False;
+            if (_objectArg) {
+                Py_INCREF(_objectArg);
+                _builtResult7_tupleMember1 = _objectArg;
+            } else {
+                if (!PyErr_Occurred()) {
+                    PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+                }
+                _builtResult7_tupleMember1 = NULL;
+            }
+            if (_builtResult7_tupleMember1 == NULL) {
+                Py_CLEAR(_builtResult7);
+                goto _builtResult7_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult7, 1, _builtResult7_tupleMember1);
+            }
+            _builtResult7_cleanup: ;
+            }
+            
+            return _builtResult7;
+            }
+            
     }
     else {
         ok = RAND_bytes((unsigned char*)PyBytes_AS_STRING(bytes), len);
@@ -5128,7 +5281,41 @@ PySSL_RAND(PyObject *module, int len, int pseudo)
 
     err = ERR_get_error();
     errstr = ERR_reason_error_string(err);
-    v = Py_BuildValue("(ks)", err, errstr);
+    {
+    PyObject* _builtResult6 = NULL;
+    {
+    _builtResult6 = PyTuple_New(2);
+    if (_builtResult6 == NULL) {
+        goto _builtResult6_cleanup;
+    }
+    {
+    PyObject* _builtResult6_tupleMember0;
+    _builtResult6_tupleMember0 = PyLong_FromUnsignedLong(err);
+    if (_builtResult6_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult6);
+        goto _builtResult6_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult6, 0, _builtResult6_tupleMember0);
+    }
+    {
+    PyObject* _builtResult6_tupleMember1;
+    const char* _strArg = (const char*) errstr;
+    if (_strArg) {
+        _builtResult6_tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult6_tupleMember1 = Py_None;
+        Py_INCREF(_builtResult6_tupleMember1);
+    }
+    if (_builtResult6_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult6);
+        goto _builtResult6_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult6, 1, _builtResult6_tupleMember1);
+    }
+    _builtResult6_cleanup: ;
+    }
+    v = _builtResult6;
+    } 
     if (v != NULL) {
         PyErr_SetObject(get_ssl_state(module)->PySSLErrorObject, v);
         Py_DECREF(v);
@@ -5218,7 +5405,87 @@ _ssl_get_default_verify_paths_impl(PyObject *module)
     CONVERT(X509_get_default_cert_dir(), odir);
 #undef CONVERT
 
-    return Py_BuildValue("NNNN", ofile_env, ofile, odir_env, odir);
+    {
+    PyObject* _builtResult8 = NULL;
+    {
+    _builtResult8 = PyTuple_New(4);
+    if (_builtResult8 == NULL) {
+        goto _builtResult8_cleanup;
+    }
+    {
+    PyObject* _builtResult8_tupleMember0;
+    PyObject* _objectArg = (PyObject*) ofile_env;
+    if (_objectArg) {
+        _builtResult8_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult8_tupleMember0 = NULL;
+    }
+    if (_builtResult8_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult8);
+        goto _builtResult8_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult8, 0, _builtResult8_tupleMember0);
+    }
+    {
+    PyObject* _builtResult8_tupleMember1;
+    PyObject* _objectArg = (PyObject*) ofile;
+    if (_objectArg) {
+        _builtResult8_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult8_tupleMember1 = NULL;
+    }
+    if (_builtResult8_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult8);
+        goto _builtResult8_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult8, 1, _builtResult8_tupleMember1);
+    }
+    {
+    PyObject* _builtResult8_tupleMember2;
+    PyObject* _objectArg = (PyObject*) odir_env;
+    if (_objectArg) {
+        _builtResult8_tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult8_tupleMember2 = NULL;
+    }
+    if (_builtResult8_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult8);
+        goto _builtResult8_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult8, 2, _builtResult8_tupleMember2);
+    }
+    {
+    PyObject* _builtResult8_tupleMember3;
+    PyObject* _objectArg = (PyObject*) odir;
+    if (_objectArg) {
+        _builtResult8_tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult8_tupleMember3 = NULL;
+    }
+    if (_builtResult8_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult8);
+        goto _builtResult8_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult8, 3, _builtResult8_tupleMember3);
+    }
+    _builtResult8_cleanup: ;
+    }
+    
+    return _builtResult8;
+    }
+    
 
   error:
     Py_XDECREF(ofile_env);
@@ -5241,7 +5508,75 @@ asn1obj2py(_sslmodulestate *state, ASN1_OBJECT *obj)
     }
     sn = OBJ_nid2sn(nid);
     ln = OBJ_nid2ln(nid);
-    return Py_BuildValue("issN", nid, sn, ln, _asn1obj2py(state, obj, 1));
+    {
+    PyObject* _builtResult9 = NULL;
+    {
+    _builtResult9 = PyTuple_New(4);
+    if (_builtResult9 == NULL) {
+        goto _builtResult9_cleanup;
+    }
+    {
+    PyObject* _builtResult9_tupleMember0;
+    _builtResult9_tupleMember0 = PyLong_FromLong(nid);
+    if (_builtResult9_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult9);
+        goto _builtResult9_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult9, 0, _builtResult9_tupleMember0);
+    }
+    {
+    PyObject* _builtResult9_tupleMember1;
+    const char* _strArg = (const char*) sn;
+    if (_strArg) {
+        _builtResult9_tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult9_tupleMember1 = Py_None;
+        Py_INCREF(_builtResult9_tupleMember1);
+    }
+    if (_builtResult9_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult9);
+        goto _builtResult9_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult9, 1, _builtResult9_tupleMember1);
+    }
+    {
+    PyObject* _builtResult9_tupleMember2;
+    const char* _strArg = (const char*) ln;
+    if (_strArg) {
+        _builtResult9_tupleMember2 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult9_tupleMember2 = Py_None;
+        Py_INCREF(_builtResult9_tupleMember2);
+    }
+    if (_builtResult9_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult9);
+        goto _builtResult9_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult9, 2, _builtResult9_tupleMember2);
+    }
+    {
+    PyObject* _builtResult9_tupleMember3;
+    PyObject* _objectArg = (PyObject*) _asn1obj2py(state, obj, 1);
+    if (_objectArg) {
+        _builtResult9_tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult9_tupleMember3 = NULL;
+    }
+    if (_builtResult9_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult9);
+        goto _builtResult9_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult9, 3, _builtResult9_tupleMember3);
+    }
+    _builtResult9_cleanup: ;
+    }
+    
+    return _builtResult9;
+    }
+    
 }
 
 /*[clinic input]
@@ -6012,7 +6347,35 @@ sslmodule_init_errorcodes(PyObject *module)
     while (errcode->mnemonic != NULL) {
         PyObject *mnemo, *key;
         mnemo = PyUnicode_FromString(errcode->mnemonic);
-        key = Py_BuildValue("ii", errcode->library, errcode->reason);
+        {
+        PyObject* _builtResult10 = NULL;
+        {
+        _builtResult10 = PyTuple_New(2);
+        if (_builtResult10 == NULL) {
+            goto _builtResult10_cleanup;
+        }
+        {
+        PyObject* _builtResult10_tupleMember0;
+        _builtResult10_tupleMember0 = PyLong_FromLong(errcode->library);
+        if (_builtResult10_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult10);
+            goto _builtResult10_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult10, 0, _builtResult10_tupleMember0);
+        }
+        {
+        PyObject* _builtResult10_tupleMember1;
+        _builtResult10_tupleMember1 = PyLong_FromLong(errcode->reason);
+        if (_builtResult10_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult10);
+            goto _builtResult10_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult10, 1, _builtResult10_tupleMember1);
+        }
+        _builtResult10_cleanup: ;
+        }
+        key = _builtResult10;
+        } 
         if (mnemo == NULL || key == NULL)
             return -1;
         if (PyDict_SetItem(state->err_codes_to_names, key, mnemo))
@@ -6082,7 +6445,62 @@ sslmodule_init_versioninfo(PyObject *m)
         return -1;
 
     parse_openssl_version(libver, &major, &minor, &fix, &patch, &status);
-    r = Py_BuildValue("IIIII", major, minor, fix, patch, status);
+    {
+    PyObject* _builtResult11 = NULL;
+    {
+    _builtResult11 = PyTuple_New(5);
+    if (_builtResult11 == NULL) {
+        goto _builtResult11_cleanup;
+    }
+    {
+    PyObject* _builtResult11_tupleMember0;
+    _builtResult11_tupleMember0 = PyLong_FromUnsignedLong(major);
+    if (_builtResult11_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult11);
+        goto _builtResult11_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult11, 0, _builtResult11_tupleMember0);
+    }
+    {
+    PyObject* _builtResult11_tupleMember1;
+    _builtResult11_tupleMember1 = PyLong_FromUnsignedLong(minor);
+    if (_builtResult11_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult11);
+        goto _builtResult11_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult11, 1, _builtResult11_tupleMember1);
+    }
+    {
+    PyObject* _builtResult11_tupleMember2;
+    _builtResult11_tupleMember2 = PyLong_FromUnsignedLong(fix);
+    if (_builtResult11_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult11);
+        goto _builtResult11_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult11, 2, _builtResult11_tupleMember2);
+    }
+    {
+    PyObject* _builtResult11_tupleMember3;
+    _builtResult11_tupleMember3 = PyLong_FromUnsignedLong(patch);
+    if (_builtResult11_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult11);
+        goto _builtResult11_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult11, 3, _builtResult11_tupleMember3);
+    }
+    {
+    PyObject* _builtResult11_tupleMember4;
+    _builtResult11_tupleMember4 = PyLong_FromUnsignedLong(status);
+    if (_builtResult11_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult11);
+        goto _builtResult11_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult11, 4, _builtResult11_tupleMember4);
+    }
+    _builtResult11_cleanup: ;
+    }
+    r = _builtResult11;
+    } 
     if (r == NULL || PyModule_AddObject(m, "OPENSSL_VERSION_INFO", r))
         return -1;
 
@@ -6092,7 +6510,62 @@ sslmodule_init_versioninfo(PyObject *m)
 
     libver = OPENSSL_VERSION_NUMBER;
     parse_openssl_version(libver, &major, &minor, &fix, &patch, &status);
-    r = Py_BuildValue("IIIII", major, minor, fix, patch, status);
+    {
+    PyObject* _builtResult12 = NULL;
+    {
+    _builtResult12 = PyTuple_New(5);
+    if (_builtResult12 == NULL) {
+        goto _builtResult12_cleanup;
+    }
+    {
+    PyObject* _builtResult12_tupleMember0;
+    _builtResult12_tupleMember0 = PyLong_FromUnsignedLong(major);
+    if (_builtResult12_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 0, _builtResult12_tupleMember0);
+    }
+    {
+    PyObject* _builtResult12_tupleMember1;
+    _builtResult12_tupleMember1 = PyLong_FromUnsignedLong(minor);
+    if (_builtResult12_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 1, _builtResult12_tupleMember1);
+    }
+    {
+    PyObject* _builtResult12_tupleMember2;
+    _builtResult12_tupleMember2 = PyLong_FromUnsignedLong(fix);
+    if (_builtResult12_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 2, _builtResult12_tupleMember2);
+    }
+    {
+    PyObject* _builtResult12_tupleMember3;
+    _builtResult12_tupleMember3 = PyLong_FromUnsignedLong(patch);
+    if (_builtResult12_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 3, _builtResult12_tupleMember3);
+    }
+    {
+    PyObject* _builtResult12_tupleMember4;
+    _builtResult12_tupleMember4 = PyLong_FromUnsignedLong(status);
+    if (_builtResult12_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 4, _builtResult12_tupleMember4);
+    }
+    _builtResult12_cleanup: ;
+    }
+    r = _builtResult12;
+    } 
     if (r == NULL || PyModule_AddObject(m, "_OPENSSL_API_VERSION", r))
         return -1;
 

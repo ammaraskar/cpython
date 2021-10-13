@@ -50,7 +50,20 @@ static PyObject *
 Example_demo(ExampleObject *self, PyObject *args)
 {
     PyObject *o = NULL;
-    if (!PyArg_ParseTuple(args, "|O:demo", &o))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("demo", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            *&o = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (o != NULL && PyUnicode_Check(o)) {
         Py_INCREF(o);
@@ -282,7 +295,29 @@ testexport_foo(PyObject *self, PyObject *args)
 {
     long i, j;
     long res;
-    if (!PyArg_ParseTuple(args, "ll:foo", &i, &j))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("foo", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&i = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&j = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     res = i + j;
     return PyLong_FromLong(res);
@@ -303,7 +338,28 @@ call_state_registration_func(PyObject *mod, PyObject *args)
     if (def == NULL) {
         return NULL;
     }
-    if (!PyArg_ParseTuple(args, "i:call_state_registration_func", &i))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("call_state_registration_func", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&i = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     switch (i) {
         case 0:
@@ -488,7 +544,29 @@ nonmodule_bar(PyObject *self, PyObject *args)
 {
     long i, j;
     long res;
-    if (!PyArg_ParseTuple(args, "ll:bar", &i, &j))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("bar", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&i = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&j = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     res = i - j;
     return PyLong_FromLong(res);

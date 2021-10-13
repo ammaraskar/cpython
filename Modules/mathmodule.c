@@ -2161,7 +2161,37 @@ math_frexp_impl(PyObject *module, double x)
     else {
         x = frexp(x, &i);
     }
-    return Py_BuildValue("(di)", x, i);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = PyFloat_FromDouble(x);
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyLong_FromLong(i);
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 
@@ -2245,14 +2275,104 @@ math_modf_impl(PyObject *module, double x)
        infinities, so we take care of special cases directly. */
     if (!Py_IS_FINITE(x)) {
         if (Py_IS_INFINITY(x))
-            return Py_BuildValue("(dd)", copysign(0., x), x);
+            {
+            PyObject* _builtResult3 = NULL;
+            {
+            _builtResult3 = PyTuple_New(2);
+            if (_builtResult3 == NULL) {
+                goto _builtResult3_cleanup;
+            }
+            {
+            PyObject* _builtResult3_tupleMember0;
+            _builtResult3_tupleMember0 = PyFloat_FromDouble(copysign(0., x));
+            if (_builtResult3_tupleMember0 == NULL) {
+                Py_CLEAR(_builtResult3);
+                goto _builtResult3_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult3, 0, _builtResult3_tupleMember0);
+            }
+            {
+            PyObject* _builtResult3_tupleMember1;
+            _builtResult3_tupleMember1 = PyFloat_FromDouble(x);
+            if (_builtResult3_tupleMember1 == NULL) {
+                Py_CLEAR(_builtResult3);
+                goto _builtResult3_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult3, 1, _builtResult3_tupleMember1);
+            }
+            _builtResult3_cleanup: ;
+            }
+            
+            return _builtResult3;
+            }
+            
         else if (Py_IS_NAN(x))
-            return Py_BuildValue("(dd)", x, x);
+            {
+            PyObject* _builtResult4 = NULL;
+            {
+            _builtResult4 = PyTuple_New(2);
+            if (_builtResult4 == NULL) {
+                goto _builtResult4_cleanup;
+            }
+            {
+            PyObject* _builtResult4_tupleMember0;
+            _builtResult4_tupleMember0 = PyFloat_FromDouble(x);
+            if (_builtResult4_tupleMember0 == NULL) {
+                Py_CLEAR(_builtResult4);
+                goto _builtResult4_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult4, 0, _builtResult4_tupleMember0);
+            }
+            {
+            PyObject* _builtResult4_tupleMember1;
+            _builtResult4_tupleMember1 = PyFloat_FromDouble(x);
+            if (_builtResult4_tupleMember1 == NULL) {
+                Py_CLEAR(_builtResult4);
+                goto _builtResult4_cleanup;
+            }
+            PyTuple_SET_ITEM(_builtResult4, 1, _builtResult4_tupleMember1);
+            }
+            _builtResult4_cleanup: ;
+            }
+            
+            return _builtResult4;
+            }
+            
     }
 
     errno = 0;
     x = modf(x, &y);
-    return Py_BuildValue("(dd)", x, y);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(2);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    _builtResult2_tupleMember0 = PyFloat_FromDouble(x);
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    _builtResult2_tupleMember1 = PyFloat_FromDouble(y);
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 

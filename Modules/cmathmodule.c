@@ -1036,7 +1036,37 @@ cmath_polar_impl(PyObject *module, Py_complex z)
     if (errno != 0)
         return math_error();
     else
-        return Py_BuildValue("dd", r, phi);
+        {
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyTuple_New(2);
+        if (_builtResult1 == NULL) {
+            goto _builtResult1_cleanup;
+        }
+        {
+        PyObject* _builtResult1_tupleMember0;
+        _builtResult1_tupleMember0 = PyFloat_FromDouble(r);
+        if (_builtResult1_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+        }
+        {
+        PyObject* _builtResult1_tupleMember1;
+        _builtResult1_tupleMember1 = PyFloat_FromDouble(phi);
+        if (_builtResult1_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+        }
+        _builtResult1_cleanup: ;
+        }
+        
+        return _builtResult1;
+        }
+        
 }
 
 /*

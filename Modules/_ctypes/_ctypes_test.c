@@ -561,7 +561,46 @@ PyObject *py_func_si(PyObject *self, PyObject *args)
 {
     char *name;
     int i;
-    if (!PyArg_ParseTuple(args, "si", &name, &i))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("py_func_si", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(args, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&i = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     Py_RETURN_NONE;
 }

@@ -222,7 +222,26 @@ MakeFields(PyObject *type, CFieldObject *descr,
         CFieldObject *fdescr;
         CFieldObject *new_descr;
         /* Convert to PyArg_UnpackTuple... */
-        if (!PyArg_ParseTuple(pair, "OO|O", &fname, &ftype, &bits)) {
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(pair);
+            if (!_PyArg_CheckPositional("MakeFields", _nargs, 2, 3)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                *&fname = PyTuple_GET_ITEM(pair, 0);
+            }
+            {
+                *&ftype = PyTuple_GET_ITEM(pair, 1);
+            }
+            {
+            }
+            if (_nargs >= 3) {
+                *&bits = PyTuple_GET_ITEM(pair, 2);
+            }
+        }
+        _parse_exit_label:
+        if (!_parseResult) {
             Py_DECREF(fieldlist);
             return -1;
         }
@@ -503,7 +522,43 @@ PyCStructUnionType_update_stgdict(PyObject *type, PyObject *fields, int isStruct
         StgDictObject *dict;
         int bitsize = 0;
 
-        if (!pair || !PyArg_ParseTuple(pair, "UO|i", &name, &desc, &bitsize)) {
+        int _parseResult = 1;
+        {
+            Py_ssize_t _nargs = PyTuple_GET_SIZE(pair);
+            if (!_PyArg_CheckPositional("PyCStructUnionType_update_stgdict", _nargs, 2, 3)) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            {
+                if (!PyUnicode_Check(PyTuple_GET_ITEM(pair, 0))) {
+                    PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(pair, 0))->tp_name);
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (PyUnicode_READY(PyTuple_GET_ITEM(pair, 0)) == -1) {
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&name = PyTuple_GET_ITEM(pair, 0);
+            }
+            {
+                *&desc = PyTuple_GET_ITEM(pair, 1);
+            }
+            {
+            }
+            if (_nargs >= 3) {
+                long _ival = PyLong_AsLong(PyTuple_GET_ITEM(pair, 2));
+                if (_ival == -1 && PyErr_Occurred()) {
+                    _parseResult = 0; goto _parse_exit_label;
+                } else if (_ival > INT_MAX) {
+                    PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                    _parseResult = 0; goto _parse_exit_label;
+                } else if (_ival < INT_MIN) {
+                    PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&bitsize = _ival;
+            }
+        }
+        _parse_exit_label:
+        if (!pair || !_parseResult) {
             PyErr_SetString(PyExc_TypeError,
                             "'_fields_' must be a sequence of (name, C type) pairs");
             Py_XDECREF(pair);

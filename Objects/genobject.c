@@ -1282,10 +1282,60 @@ compute_cr_origin(int origin_depth)
     frame = _PyEval_GetFrame();
     for (int i = 0; i < frame_count; ++i) {
         PyCodeObject *code = frame->f_code;
-        PyObject *frameinfo = Py_BuildValue("OiO",
-                                            code->co_filename,
-                                            PyCode_Addr2Line(frame->f_code, frame->f_lasti*sizeof(_Py_CODEUNIT)),
-                                            code->co_name);
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyTuple_New(3);
+        if (_builtResult1 == NULL) {
+            goto _builtResult1_cleanup;
+        }
+        {
+        PyObject* _builtResult1_tupleMember0;
+        PyObject* _objectArg = (PyObject*) code->co_filename;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult1_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember0 = NULL;
+        }
+        if (_builtResult1_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+        }
+        {
+        PyObject* _builtResult1_tupleMember1;
+        _builtResult1_tupleMember1 = PyLong_FromLong(PyCode_Addr2Line(frame->f_code, frame->f_lasti*sizeof(_Py_CODEUNIT)));
+        if (_builtResult1_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+        }
+        {
+        PyObject* _builtResult1_tupleMember2;
+        PyObject* _objectArg = (PyObject*) code->co_name;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult1_tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember2 = NULL;
+        }
+        if (_builtResult1_tupleMember2 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+        }
+        _builtResult1_cleanup: ;
+        }
+        PyObject *frameinfo = _builtResult1;
         if (!frameinfo) {
             Py_DECREF(cr_origin);
             return NULL;

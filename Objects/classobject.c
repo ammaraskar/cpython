@@ -128,8 +128,84 @@ method_reduce(PyMethodObject *im, PyObject *Py_UNUSED(ignored))
     if (funcname == NULL) {
         return NULL;
     }
-    return Py_BuildValue("N(ON)", _PyEval_GetBuiltinId(&PyId_getattr),
-                         self, funcname);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) _PyEval_GetBuiltinId(&PyId_getattr);
+    if (_objectArg) {
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyTuple_New(2);
+    if (_builtResult1_tupleMember1 == NULL) {
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) self;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember1);
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember1, 0, _builtResult1_tupleMember1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1_tupleMember1;
+    PyObject* _objectArg = (PyObject*) funcname;
+    if (_objectArg) {
+        _builtResult1_tupleMember1_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1_tupleMember1 = NULL;
+    }
+    if (_builtResult1_tupleMember1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember1);
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember1, 1, _builtResult1_tupleMember1_tupleMember1);
+    }
+    _builtResult1_tupleMember1_cleanup: ;
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyMethodDef method_methods[] = {

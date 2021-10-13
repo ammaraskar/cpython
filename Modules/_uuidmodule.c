@@ -27,7 +27,43 @@ py_uuid_generate_time_safe(PyObject *Py_UNUSED(context),
     int res;
 
     res = uuid_generate_time_safe(uuid);
-    return Py_BuildValue("y#i", (const char *) uuid, sizeof(uuid), res);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    const char* _strArg = (const char*) (const char *) uuid;
+    if (_strArg) {
+        _builtResult1_tupleMember0 = PyBytes_FromStringAndSize(_strArg, sizeof(uuid));
+    } else {
+        _builtResult1_tupleMember0 = Py_None;
+        Py_INCREF(_builtResult1_tupleMember0);
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyLong_FromLong(res);
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 #elif defined(HAVE_UUID_CREATE)
     uint32_t status;
     uuid_create(&uuid, &status);

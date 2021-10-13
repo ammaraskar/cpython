@@ -56,7 +56,53 @@ pysqlite_microprotocols_add(PyTypeObject *type, PyObject *proto, PyObject *cast)
 
     assert(type != NULL);
     assert(proto != NULL);
-    key = Py_BuildValue("(OO)", (PyObject*)type, proto);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) (PyObject*)type;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    PyObject* _objectArg = (PyObject*) proto;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1 = NULL;
+    }
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    key = _builtResult1;
+    } 
     if (!key) {
         return -1;
     }
@@ -83,7 +129,53 @@ pysqlite_microprotocols_adapt(pysqlite_state *state, PyObject *obj,
        way to get a quotable object to be its instance */
 
     /* look for an adapter in the registry */
-    key = Py_BuildValue("(OO)", (PyObject*)Py_TYPE(obj), proto);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(2);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    PyObject* _objectArg = (PyObject*) (PyObject*)Py_TYPE(obj);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember0 = NULL;
+    }
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    PyObject* _objectArg = (PyObject*) proto;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember1 = NULL;
+    }
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    _builtResult2_cleanup: ;
+    }
+    key = _builtResult2;
+    } 
     if (!key) {
         return NULL;
     }

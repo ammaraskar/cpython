@@ -1211,7 +1211,49 @@ pattern_subx(_sremodulestate* module_state,
     }
 
     if (subn)
-        return Py_BuildValue("Nn", item, n);
+        {
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyTuple_New(2);
+        if (_builtResult1 == NULL) {
+            goto _builtResult1_cleanup;
+        }
+        {
+        PyObject* _builtResult1_tupleMember0;
+        PyObject* _objectArg = (PyObject*) item;
+        if (_objectArg) {
+            _builtResult1_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember0 = NULL;
+        }
+        if (_builtResult1_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+        }
+        {
+        PyObject* _builtResult1_tupleMember1;
+        #if SIZEOF_SIZE_T!=SIZEOF_LONG
+        _builtResult1_tupleMember1 = PyLong_FromSsize_t(n);
+        #else
+        _builtResult1_tupleMember1 = PyLong_FromLong(n);
+        #endif
+        if (_builtResult1_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+        }
+        _builtResult1_cleanup: ;
+        }
+        
+        return _builtResult1;
+        }
+        
 
     return item;
 

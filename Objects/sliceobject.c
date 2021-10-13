@@ -544,7 +544,70 @@ slice_indices(PySliceObject* self, PyObject* len)
     if (error == -1)
         return NULL;
     else
-        return Py_BuildValue("(NNN)", start, stop, step);
+        {
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyTuple_New(3);
+        if (_builtResult1 == NULL) {
+            goto _builtResult1_cleanup;
+        }
+        {
+        PyObject* _builtResult1_tupleMember0;
+        PyObject* _objectArg = (PyObject*) start;
+        if (_objectArg) {
+            _builtResult1_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember0 = NULL;
+        }
+        if (_builtResult1_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+        }
+        {
+        PyObject* _builtResult1_tupleMember1;
+        PyObject* _objectArg = (PyObject*) stop;
+        if (_objectArg) {
+            _builtResult1_tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember1 = NULL;
+        }
+        if (_builtResult1_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+        }
+        {
+        PyObject* _builtResult1_tupleMember2;
+        PyObject* _objectArg = (PyObject*) step;
+        if (_objectArg) {
+            _builtResult1_tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult1_tupleMember2 = NULL;
+        }
+        if (_builtResult1_tupleMember2 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+        }
+        _builtResult1_cleanup: ;
+        }
+        
+        return _builtResult1;
+        }
+        
 }
 
 PyDoc_STRVAR(slice_indices_doc,
@@ -558,7 +621,104 @@ handling of normal slices.");
 static PyObject *
 slice_reduce(PySliceObject* self, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("O(OOO)", Py_TYPE(self), self->start, self->stop, self->step);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(2);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember0 = NULL;
+    }
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    _builtResult2_tupleMember1 = PyTuple_New(3);
+    if (_builtResult2_tupleMember1 == NULL) {
+        goto _builtResult2_tupleMember1_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) self->start;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember1_tupleMember0 = NULL;
+    }
+    if (_builtResult2_tupleMember1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2_tupleMember1);
+        goto _builtResult2_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2_tupleMember1, 0, _builtResult2_tupleMember1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1_tupleMember1;
+    PyObject* _objectArg = (PyObject*) self->stop;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember1_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember1_tupleMember1 = NULL;
+    }
+    if (_builtResult2_tupleMember1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2_tupleMember1);
+        goto _builtResult2_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2_tupleMember1, 1, _builtResult2_tupleMember1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1_tupleMember2;
+    PyObject* _objectArg = (PyObject*) self->step;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult2_tupleMember1_tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember1_tupleMember2 = NULL;
+    }
+    if (_builtResult2_tupleMember1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult2_tupleMember1);
+        goto _builtResult2_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2_tupleMember1, 2, _builtResult2_tupleMember1_tupleMember2);
+    }
+    _builtResult2_tupleMember1_cleanup: ;
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 PyDoc_STRVAR(reduce_doc, "Return state information for pickling.");

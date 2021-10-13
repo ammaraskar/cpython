@@ -1607,7 +1607,35 @@ select_epoll_poll_impl(pyEpoll_Object *self, PyObject *timeout_obj,
     }
 
     for (i = 0; i < nfds; i++) {
-        etuple = Py_BuildValue("iI", evs[i].data.fd, evs[i].events);
+        {
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyTuple_New(2);
+        if (_builtResult1 == NULL) {
+            goto _builtResult1_cleanup;
+        }
+        {
+        PyObject* _builtResult1_tupleMember0;
+        _builtResult1_tupleMember0 = PyLong_FromLong(evs[i].data.fd);
+        if (_builtResult1_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+        }
+        {
+        PyObject* _builtResult1_tupleMember1;
+        _builtResult1_tupleMember1 = PyLong_FromUnsignedLong(evs[i].events);
+        if (_builtResult1_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult1);
+            goto _builtResult1_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+        }
+        _builtResult1_cleanup: ;
+        }
+        etuple = _builtResult1;
+        } 
         if (etuple == NULL) {
             Py_CLEAR(elist);
             goto error;

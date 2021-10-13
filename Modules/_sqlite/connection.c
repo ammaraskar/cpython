@@ -1295,7 +1295,15 @@ static PyObject* pysqlite_connection_get_total_changes(pysqlite_Connection* self
     if (!pysqlite_check_connection(self)) {
         return NULL;
     } else {
-        return Py_BuildValue("i", sqlite3_total_changes(self->db));
+        {
+        PyObject* _builtResult1 = NULL;
+        {
+        _builtResult1 = PyLong_FromLong(sqlite3_total_changes(self->db));
+        }
+        
+        return _builtResult1;
+        }
+        
     }
 }
 
@@ -1381,7 +1389,25 @@ pysqlite_connection_call(pysqlite_Connection *self, PyObject *args,
     if (!_PyArg_NoKeywords(MODULE_NAME ".Connection", kwargs))
         return NULL;
 
-    if (!PyArg_ParseTuple(args, "U", &sql))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("pysqlite_connection_call", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&sql = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     statement = pysqlite_statement_create(self, sql);

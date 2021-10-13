@@ -184,8 +184,82 @@ meth_reduce(PyCFunctionObject *m, PyObject *Py_UNUSED(ignored))
     if (m->m_self == NULL || PyModule_Check(m->m_self))
         return PyUnicode_FromString(m->m_ml->ml_name);
 
-    return Py_BuildValue("N(Os)", _PyEval_GetBuiltinId(&PyId_getattr),
-                         m->m_self, m->m_ml->ml_name);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) _PyEval_GetBuiltinId(&PyId_getattr);
+    if (_objectArg) {
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyTuple_New(2);
+    if (_builtResult1_tupleMember1 == NULL) {
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) m->m_self;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember1);
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember1, 0, _builtResult1_tupleMember1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1_tupleMember1;
+    const char* _strArg = (const char*) m->m_ml->ml_name;
+    if (_strArg) {
+        _builtResult1_tupleMember1_tupleMember1 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult1_tupleMember1_tupleMember1 = Py_None;
+        Py_INCREF(_builtResult1_tupleMember1_tupleMember1);
+    }
+    if (_builtResult1_tupleMember1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember1);
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember1, 1, _builtResult1_tupleMember1_tupleMember1);
+    }
+    _builtResult1_tupleMember1_cleanup: ;
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyMethodDef meth_methods[] = {

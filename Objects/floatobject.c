@@ -682,7 +682,37 @@ float_divmod(PyObject *v, PyObject *w)
         return NULL;
     }
     _float_div_mod(vx, wx, &floordiv, &mod);
-    return Py_BuildValue("(dd)", floordiv, mod);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = PyFloat_FromDouble(floordiv);
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyFloat_FromDouble(mod);
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyObject *
@@ -1684,7 +1714,28 @@ static PyObject *
 float___getnewargs___impl(PyObject *self)
 /*[clinic end generated code: output=873258c9d206b088 input=002279d1d77891e6]*/
 {
-    return Py_BuildValue("(d)", ((PyFloatObject *)self)->ob_fval);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(1);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    _builtResult2_tupleMember0 = PyFloat_FromDouble(((PyFloatObject *)self)->ob_fval);
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 /* this is for the benefit of the pack/unpack routines below */

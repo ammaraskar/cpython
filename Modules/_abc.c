@@ -285,11 +285,75 @@ _abc__get_dump(PyObject *module, PyObject *self)
     if (impl == NULL) {
         return NULL;
     }
-    PyObject *res = Py_BuildValue("NNNK",
-                                  PySet_New(impl->_abc_registry),
-                                  PySet_New(impl->_abc_cache),
-                                  PySet_New(impl->_abc_negative_cache),
-                                  impl->_abc_negative_cache_version);
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(4);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_registry);
+    if (_objectArg) {
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_cache);
+    if (_objectArg) {
+        _builtResult1_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1 = NULL;
+    }
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2;
+    PyObject* _objectArg = (PyObject*) PySet_New(impl->_abc_negative_cache);
+    if (_objectArg) {
+        _builtResult1_tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember2 = NULL;
+    }
+    if (_builtResult1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+    }
+    {
+    PyObject* _builtResult1_tupleMember3;
+    _builtResult1_tupleMember3 = PyLong_FromUnsignedLongLong(impl->_abc_negative_cache_version);
+    if (_builtResult1_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 3, _builtResult1_tupleMember3);
+    }
+    _builtResult1_cleanup: ;
+    }
+    PyObject *res = _builtResult1;
     Py_DECREF(impl);
     return res;
 }

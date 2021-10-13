@@ -88,7 +88,53 @@ newossobject(PyObject *arg)
          open(mode)         (for backwards compatibility)
        because the *first* argument is optional, parsing args is
        a wee bit tricky. */
-    if (!PyArg_ParseTuple(arg, "s|s:open", &devicename, &mode))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(arg);
+        if (!_PyArg_CheckPositional("open", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(arg, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(arg, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&devicename = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(arg, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(arg, 1))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(arg, 1), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&mode = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(arg, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
        return NULL;
     if (mode == NULL) {                 /* only one arg supplied */
        mode = devicename;
@@ -169,7 +215,35 @@ newossmixerobject(PyObject *arg)
     int fd;
     oss_mixer_t *self;
 
-    if (!PyArg_ParseTuple(arg, "|s", &devicename)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(arg);
+        if (!_PyArg_CheckPositional("newossmixerobject", _nargs, 0, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            if (PyUnicode_Check(PyTuple_GET_ITEM(arg, 0))) {
+                Py_ssize_t _len;
+                const char* _sarg = PyUnicode_AsUTF8AndSize(PyTuple_GET_ITEM(arg, 0), &_len);
+                if (_sarg == NULL) {
+                    PyErr_SetString(PyExc_TypeError, "unicode conversion error");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                if (strlen(_sarg) != (size_t)_len) {
+                    PyErr_SetString(PyExc_ValueError, "embedded null character");
+                    _parseResult = 0; goto _parse_exit_label;
+                }
+                *&devicename = _sarg;
+            } else {
+                PyErr_Format(PyExc_TypeError, "must be a str or None, not %.50s", Py_TYPE(PyTuple_GET_ITEM(arg, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 
@@ -406,7 +480,26 @@ oss_read(oss_audio_t *self, PyObject *args)
     if (!_is_fd_valid(self->fd))
         return NULL;
 
-    if (!PyArg_ParseTuple(args, "n:read", &size))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("read", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     rv = PyBytes_FromStringAndSize(NULL, size);
@@ -566,9 +659,69 @@ oss_setparameters(oss_audio_t *self, PyObject *args)
     if (!_is_fd_valid(self->fd))
         return NULL;
 
-    if (!PyArg_ParseTuple(args, "iii|i:setparameters",
-                          &wanted_fmt, &wanted_channels, &wanted_rate,
-                          &strict))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("setparameters", _nargs, 3, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&wanted_fmt = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&wanted_channels = _ival;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 2));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&wanted_rate = _ival;
+        }
+        {
+        }
+        if (_nargs >= 4) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 3));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&strict = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     fmt = wanted_fmt;
@@ -606,7 +759,46 @@ oss_setparameters(oss_audio_t *self, PyObject *args)
 
     /* Construct the return value: a (fmt, channels, rate) tuple that
        tells what the audio hardware was actually set to. */
-    return Py_BuildValue("(iii)", fmt, channels, rate);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(3);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = PyLong_FromLong(fmt);
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyLong_FromLong(channels);
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2;
+    _builtResult1_tupleMember2 = PyLong_FromLong(rate);
+    if (_builtResult1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static int
@@ -726,7 +918,46 @@ oss_getptr(oss_audio_t *self, PyObject *unused)
         PyErr_SetFromErrno(PyExc_OSError);
         return NULL;
     }
-    return Py_BuildValue("iii", info.bytes, info.blocks, info.ptr);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(3);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    _builtResult2_tupleMember0 = PyLong_FromLong(info.bytes);
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    _builtResult2_tupleMember1 = PyLong_FromLong(info.blocks);
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    {
+    PyObject* _builtResult2_tupleMember2;
+    _builtResult2_tupleMember2 = PyLong_FromLong(info.ptr);
+    if (_builtResult2_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 2, _builtResult2_tupleMember2);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 
@@ -794,7 +1025,28 @@ oss_mixer_get(oss_mixer_t *self, PyObject *args)
         return NULL;
 
     /* Can't use _do_ioctl_1 because of encoded arg thingy. */
-    if (!PyArg_ParseTuple(args, "i:get", &channel))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("get", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&channel = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (channel < 0 || channel > SOUND_MIXER_NRDEVICES) {
@@ -805,7 +1057,37 @@ oss_mixer_get(oss_mixer_t *self, PyObject *args)
     if (ioctl(self->fd, MIXER_READ(channel), &volume) == -1)
         return PyErr_SetFromErrno(PyExc_OSError);
 
-    return Py_BuildValue("(ii)", volume & 0xff, (volume & 0xff00) >> 8);
+    {
+    PyObject* _builtResult3 = NULL;
+    {
+    _builtResult3 = PyTuple_New(2);
+    if (_builtResult3 == NULL) {
+        goto _builtResult3_cleanup;
+    }
+    {
+    PyObject* _builtResult3_tupleMember0;
+    _builtResult3_tupleMember0 = PyLong_FromLong(volume & 0xff);
+    if (_builtResult3_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 0, _builtResult3_tupleMember0);
+    }
+    {
+    PyObject* _builtResult3_tupleMember1;
+    _builtResult3_tupleMember1 = PyLong_FromLong((volume & 0xff00) >> 8);
+    if (_builtResult3_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 1, _builtResult3_tupleMember1);
+    }
+    _builtResult3_cleanup: ;
+    }
+    
+    return _builtResult3;
+    }
+    
 }
 
 static PyObject *
@@ -835,7 +1117,37 @@ oss_mixer_set(oss_mixer_t *self, PyObject *args)
     if (ioctl(self->fd, MIXER_WRITE(channel), &volume) == -1)
         return PyErr_SetFromErrno(PyExc_OSError);
 
-    return Py_BuildValue("(ii)", volume & 0xff, (volume & 0xff00) >> 8);
+    {
+    PyObject* _builtResult4 = NULL;
+    {
+    _builtResult4 = PyTuple_New(2);
+    if (_builtResult4 == NULL) {
+        goto _builtResult4_cleanup;
+    }
+    {
+    PyObject* _builtResult4_tupleMember0;
+    _builtResult4_tupleMember0 = PyLong_FromLong(volume & 0xff);
+    if (_builtResult4_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult4);
+        goto _builtResult4_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4, 0, _builtResult4_tupleMember0);
+    }
+    {
+    PyObject* _builtResult4_tupleMember1;
+    _builtResult4_tupleMember1 = PyLong_FromLong((volume & 0xff00) >> 8);
+    if (_builtResult4_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult4);
+        goto _builtResult4_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4, 1, _builtResult4_tupleMember1);
+    }
+    _builtResult4_cleanup: ;
+    }
+    
+    return _builtResult4;
+    }
+    
 }
 
 static PyObject *

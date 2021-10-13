@@ -1675,7 +1675,26 @@ static PyObject *
 FutureIter_throw(futureiterobject *self, PyObject *args)
 {
     PyObject *type, *val = NULL, *tb = NULL;
-    if (!PyArg_ParseTuple(args, "O|OO", &type, &val, &tb))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("FutureIter_throw", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&type = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&val = PyTuple_GET_ITEM(args, 1);
+        }
+        if (_nargs >= 3) {
+            *&tb = PyTuple_GET_ITEM(args, 2);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (val == Py_None) {
@@ -3329,7 +3348,32 @@ module_init(void)
     }
 
 
-    context_kwname = Py_BuildValue("(s)", "context");
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(1);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    const char* _strArg = (const char*) "context";
+    if (_strArg) {
+        _builtResult1_tupleMember0 = PyUnicode_FromStringAndSize(_strArg, strlen(_strArg));
+    } else {
+        _builtResult1_tupleMember0 = Py_None;
+        Py_INCREF(_builtResult1_tupleMember0);
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    _builtResult1_cleanup: ;
+    }
+    context_kwname = _builtResult1;
+    } 
     if (context_kwname == NULL) {
         goto fail;
     }

@@ -421,7 +421,28 @@ mmap_write_byte_method(mmap_object *self,
     char value;
 
     CHECK_VALID(NULL);
-    if (!PyArg_ParseTuple(args, "b:write_byte", &value))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("write_byte", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < 0) {
+                PyErr_SetString(PyExc_OverflowError, "unsigned byte integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > UCHAR_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "unsigned byte integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&value = (unsigned char) _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return(NULL);
 
     if (!is_writable(self))
@@ -493,7 +514,26 @@ mmap_resize_method(mmap_object *self,
 {
     Py_ssize_t new_size;
     CHECK_VALID(NULL);
-    if (!PyArg_ParseTuple(args, "n:resize", &new_size) ||
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("resize", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&new_size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&new_size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&new_size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult ||
         !is_resizeable(self)) {
         return NULL;
     }
@@ -598,7 +638,39 @@ mmap_flush_method(mmap_object *self, PyObject *args)
     Py_ssize_t offset = 0;
     Py_ssize_t size = self->size;
     CHECK_VALID(NULL);
-    if (!PyArg_ParseTuple(args, "|nn:flush", &offset, &size))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("flush", _nargs, 0, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+        }
+        if (_nargs >= 1) {
+            *&offset = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&offset = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&offset == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 2) {
+            *&size = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&size = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&size == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     if (size < 0 || offset < 0 || self->size - offset < size) {
         PyErr_SetString(PyExc_ValueError, "flush values out of range");
@@ -633,7 +705,41 @@ mmap_seek_method(mmap_object *self, PyObject *args)
     Py_ssize_t dist;
     int how=0;
     CHECK_VALID(NULL);
-    if (!PyArg_ParseTuple(args, "n|i:seek", &dist, &how))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("seek", _nargs, 1, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&dist = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&dist = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&dist == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 1));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&how = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
     else {
         Py_ssize_t where;
@@ -671,7 +777,48 @@ mmap_move_method(mmap_object *self, PyObject *args)
 {
     Py_ssize_t dest, src, cnt;
     CHECK_VALID(NULL);
-    if (!PyArg_ParseTuple(args, "nnn:move", &dest, &src, &cnt) ||
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("move", _nargs, 3, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&dest = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 0));
+            if (_iobj != NULL) {
+                *&dest = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&dest == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&src = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&src = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&src == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        {
+            *&cnt = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&cnt = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&cnt == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult ||
         !is_writable(self)) {
         return NULL;
     } else {
@@ -787,7 +934,52 @@ mmap_madvise_method(mmap_object *self, PyObject *args)
     CHECK_VALID(NULL);
     length = self->size;
 
-    if (!PyArg_ParseTuple(args, "i|nn:madvise", &option, &start, &length)) {
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("madvise", _nargs, 1, 3)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&option = _ival;
+        }
+        {
+        }
+        if (_nargs >= 2) {
+            *&start = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 1));
+            if (_iobj != NULL) {
+                *&start = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&start == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+        if (_nargs >= 3) {
+            *&length = -1;
+            PyObject* _iobj = _PyNumber_Index(PyTuple_GET_ITEM(args, 2));
+            if (_iobj != NULL) {
+                *&length = PyLong_AsSsize_t(_iobj);
+                Py_DECREF(_iobj);
+            }
+            if (*&length == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult) {
         return NULL;
     }
 

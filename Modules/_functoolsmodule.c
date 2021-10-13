@@ -410,9 +410,153 @@ partial_repr(partialobject *pto)
 static PyObject *
 partial_reduce(partialobject *pto, PyObject *unused)
 {
-    return Py_BuildValue("O(O)(OOOO)", Py_TYPE(pto), pto->fn, pto->fn,
-                         pto->args, pto->kw,
-                         pto->dict ? pto->dict : Py_None);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(3);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(pto);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyTuple_New(1);
+    if (_builtResult1_tupleMember1 == NULL) {
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) pto->fn;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember1);
+        goto _builtResult1_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember1, 0, _builtResult1_tupleMember1_tupleMember0);
+    }
+    _builtResult1_tupleMember1_cleanup: ;
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2;
+    _builtResult1_tupleMember2 = PyTuple_New(4);
+    if (_builtResult1_tupleMember2 == NULL) {
+        goto _builtResult1_tupleMember2_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember2_tupleMember0;
+    PyObject* _objectArg = (PyObject*) pto->fn;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember2_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember2_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember2);
+        goto _builtResult1_tupleMember2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember2, 0, _builtResult1_tupleMember2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2_tupleMember1;
+    PyObject* _objectArg = (PyObject*) pto->args;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember2_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember2_tupleMember1 = NULL;
+    }
+    if (_builtResult1_tupleMember2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember2);
+        goto _builtResult1_tupleMember2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember2, 1, _builtResult1_tupleMember2_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2_tupleMember2;
+    PyObject* _objectArg = (PyObject*) pto->kw;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember2_tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember2_tupleMember2 = NULL;
+    }
+    if (_builtResult1_tupleMember2_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember2);
+        goto _builtResult1_tupleMember2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember2, 2, _builtResult1_tupleMember2_tupleMember2);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2_tupleMember3;
+    PyObject* _objectArg = (PyObject*) pto->dict ? pto->dict : Py_None;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult1_tupleMember2_tupleMember3 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember2_tupleMember3 = NULL;
+    }
+    if (_builtResult1_tupleMember2_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult1_tupleMember2);
+        goto _builtResult1_tupleMember2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1_tupleMember2, 3, _builtResult1_tupleMember2_tupleMember3);
+    }
+    _builtResult1_tupleMember2_cleanup: ;
+    if (_builtResult1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 static PyObject *
@@ -420,8 +564,28 @@ partial_setstate(partialobject *pto, PyObject *state)
 {
     PyObject *fn, *fnargs, *kw, *dict;
 
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(state);
+        if (!_PyArg_CheckPositional("partial_setstate", _nargs, 4, 4)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            *&fn = PyTuple_GET_ITEM(state, 0);
+        }
+        {
+            *&fnargs = PyTuple_GET_ITEM(state, 1);
+        }
+        {
+            *&kw = PyTuple_GET_ITEM(state, 2);
+        }
+        {
+            *&dict = PyTuple_GET_ITEM(state, 3);
+        }
+    }
+    _parse_exit_label:
     if (!PyTuple_Check(state) ||
-        !PyArg_ParseTuple(state, "OOOO", &fn, &fnargs, &kw, &dict) ||
+        !_parseResult ||
         !PyCallable_Check(fn) ||
         !PyTuple_Check(fnargs) ||
         (kw != Py_None && !PyDict_Check(kw)))

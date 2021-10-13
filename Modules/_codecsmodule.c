@@ -166,7 +166,49 @@ PyObject *codec_tuple(PyObject *decoded,
 {
     if (decoded == NULL)
         return NULL;
-    return Py_BuildValue("Nn", decoded, len);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(2);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    PyObject* _objectArg = (PyObject*) decoded;
+    if (_objectArg) {
+        _builtResult1_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult1_tupleMember0 = NULL;
+    }
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _builtResult1_tupleMember1 = PyLong_FromSsize_t(len);
+    #else
+    _builtResult1_tupleMember1 = PyLong_FromLong(len);
+    #endif
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    _builtResult1_cleanup: ;
+    }
+    
+    return _builtResult1;
+    }
+    
 }
 
 /* --- String codecs ------------------------------------------------------ */
@@ -386,7 +428,58 @@ _codecs_utf_16_ex_decode_impl(PyObject *module, Py_buffer *data,
                                                       final ? NULL : &consumed);
     if (decoded == NULL)
         return NULL;
-    return Py_BuildValue("Nni", decoded, consumed, byteorder);
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(3);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    PyObject* _objectArg = (PyObject*) decoded;
+    if (_objectArg) {
+        _builtResult2_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult2_tupleMember0 = NULL;
+    }
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _builtResult2_tupleMember1 = PyLong_FromSsize_t(consumed);
+    #else
+    _builtResult2_tupleMember1 = PyLong_FromLong(consumed);
+    #endif
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    {
+    PyObject* _builtResult2_tupleMember2;
+    _builtResult2_tupleMember2 = PyLong_FromLong(byteorder);
+    if (_builtResult2_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 2, _builtResult2_tupleMember2);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 /*[clinic input]
@@ -482,7 +575,58 @@ _codecs_utf_32_ex_decode_impl(PyObject *module, Py_buffer *data,
                                                       final ? NULL : &consumed);
     if (decoded == NULL)
         return NULL;
-    return Py_BuildValue("Nni", decoded, consumed, byteorder);
+    {
+    PyObject* _builtResult3 = NULL;
+    {
+    _builtResult3 = PyTuple_New(3);
+    if (_builtResult3 == NULL) {
+        goto _builtResult3_cleanup;
+    }
+    {
+    PyObject* _builtResult3_tupleMember0;
+    PyObject* _objectArg = (PyObject*) decoded;
+    if (_objectArg) {
+        _builtResult3_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult3_tupleMember0 = NULL;
+    }
+    if (_builtResult3_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 0, _builtResult3_tupleMember0);
+    }
+    {
+    PyObject* _builtResult3_tupleMember1;
+    #if SIZEOF_SIZE_T!=SIZEOF_LONG
+    _builtResult3_tupleMember1 = PyLong_FromSsize_t(consumed);
+    #else
+    _builtResult3_tupleMember1 = PyLong_FromLong(consumed);
+    #endif
+    if (_builtResult3_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 1, _builtResult3_tupleMember1);
+    }
+    {
+    PyObject* _builtResult3_tupleMember2;
+    _builtResult3_tupleMember2 = PyLong_FromLong(byteorder);
+    if (_builtResult3_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 2, _builtResult3_tupleMember2);
+    }
+    _builtResult3_cleanup: ;
+    }
+    
+    return _builtResult3;
+    }
+    
 }
 
 /*[clinic input]

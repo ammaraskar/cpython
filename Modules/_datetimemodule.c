@@ -1679,12 +1679,98 @@ build_struct_time(int y, int m, int d, int hh, int mm, int ss, int dstflag)
         return NULL;
     }
 
-    args = Py_BuildValue("iiiiiiiii",
-                         y, m, d,
-                         hh, mm, ss,
-                         weekday(y, m, d),
-                         days_before_month(y, m) + d,
-                         dstflag);
+    {
+    PyObject* _builtResult1 = NULL;
+    {
+    _builtResult1 = PyTuple_New(9);
+    if (_builtResult1 == NULL) {
+        goto _builtResult1_cleanup;
+    }
+    {
+    PyObject* _builtResult1_tupleMember0;
+    _builtResult1_tupleMember0 = PyLong_FromLong(y);
+    if (_builtResult1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 0, _builtResult1_tupleMember0);
+    }
+    {
+    PyObject* _builtResult1_tupleMember1;
+    _builtResult1_tupleMember1 = PyLong_FromLong(m);
+    if (_builtResult1_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 1, _builtResult1_tupleMember1);
+    }
+    {
+    PyObject* _builtResult1_tupleMember2;
+    _builtResult1_tupleMember2 = PyLong_FromLong(d);
+    if (_builtResult1_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 2, _builtResult1_tupleMember2);
+    }
+    {
+    PyObject* _builtResult1_tupleMember3;
+    _builtResult1_tupleMember3 = PyLong_FromLong(hh);
+    if (_builtResult1_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 3, _builtResult1_tupleMember3);
+    }
+    {
+    PyObject* _builtResult1_tupleMember4;
+    _builtResult1_tupleMember4 = PyLong_FromLong(mm);
+    if (_builtResult1_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 4, _builtResult1_tupleMember4);
+    }
+    {
+    PyObject* _builtResult1_tupleMember5;
+    _builtResult1_tupleMember5 = PyLong_FromLong(ss);
+    if (_builtResult1_tupleMember5 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 5, _builtResult1_tupleMember5);
+    }
+    {
+    PyObject* _builtResult1_tupleMember6;
+    _builtResult1_tupleMember6 = PyLong_FromLong(weekday(y, m, d));
+    if (_builtResult1_tupleMember6 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 6, _builtResult1_tupleMember6);
+    }
+    {
+    PyObject* _builtResult1_tupleMember7;
+    _builtResult1_tupleMember7 = PyLong_FromLong(days_before_month(y, m) + d);
+    if (_builtResult1_tupleMember7 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 7, _builtResult1_tupleMember7);
+    }
+    {
+    PyObject* _builtResult1_tupleMember8;
+    _builtResult1_tupleMember8 = PyLong_FromLong(dstflag);
+    if (_builtResult1_tupleMember8 == NULL) {
+        Py_CLEAR(_builtResult1);
+        goto _builtResult1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult1, 8, _builtResult1_tupleMember8);
+    }
+    _builtResult1_cleanup: ;
+    }
+    args = _builtResult1;
+                         } 
     if (args == NULL) {
         Py_DECREF(time);
         return NULL;
@@ -2613,9 +2699,46 @@ delta_str(PyDateTime_Delta *self)
 static PyObject *
 delta_getstate(PyDateTime_Delta *self)
 {
-    return Py_BuildValue("iii", GET_TD_DAYS(self),
-                                GET_TD_SECONDS(self),
-                                GET_TD_MICROSECONDS(self));
+    {
+    PyObject* _builtResult2 = NULL;
+    {
+    _builtResult2 = PyTuple_New(3);
+    if (_builtResult2 == NULL) {
+        goto _builtResult2_cleanup;
+    }
+    {
+    PyObject* _builtResult2_tupleMember0;
+    _builtResult2_tupleMember0 = PyLong_FromLong(GET_TD_DAYS(self));
+    if (_builtResult2_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 0, _builtResult2_tupleMember0);
+    }
+    {
+    PyObject* _builtResult2_tupleMember1;
+    _builtResult2_tupleMember1 = PyLong_FromLong(GET_TD_SECONDS(self));
+    if (_builtResult2_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 1, _builtResult2_tupleMember1);
+    }
+    {
+    PyObject* _builtResult2_tupleMember2;
+    _builtResult2_tupleMember2 = PyLong_FromLong(GET_TD_MICROSECONDS(self));
+    if (_builtResult2_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult2);
+        goto _builtResult2_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult2, 2, _builtResult2_tupleMember2);
+    }
+    _builtResult2_cleanup: ;
+    }
+    
+    return _builtResult2;
+    }
+    
 }
 
 static PyObject *
@@ -2637,7 +2760,54 @@ delta_total_seconds(PyObject *self, PyObject *Py_UNUSED(ignored))
 static PyObject *
 delta_reduce(PyDateTime_Delta* self, PyObject *Py_UNUSED(ignored))
 {
-    return Py_BuildValue("ON", Py_TYPE(self), delta_getstate(self));
+    {
+    PyObject* _builtResult3 = NULL;
+    {
+    _builtResult3 = PyTuple_New(2);
+    if (_builtResult3 == NULL) {
+        goto _builtResult3_cleanup;
+    }
+    {
+    PyObject* _builtResult3_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult3_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult3_tupleMember0 = NULL;
+    }
+    if (_builtResult3_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 0, _builtResult3_tupleMember0);
+    }
+    {
+    PyObject* _builtResult3_tupleMember1;
+    PyObject* _objectArg = (PyObject*) delta_getstate(self);
+    if (_objectArg) {
+        _builtResult3_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult3_tupleMember1 = NULL;
+    }
+    if (_builtResult3_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult3);
+        goto _builtResult3_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult3, 1, _builtResult3_tupleMember1);
+    }
+    _builtResult3_cleanup: ;
+    }
+    
+    return _builtResult3;
+    }
+    
 }
 
 #define OFFSET(field)  offsetof(PyDateTime_Delta, field)
@@ -3196,7 +3366,25 @@ date_format(PyDateTime_Date *self, PyObject *args)
 {
     PyObject *format;
 
-    if (!PyArg_ParseTuple(args, "U:__format__", &format))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__format__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&format = PyTuple_GET_ITEM(args, 0);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     /* if the format is zero length, return str(self) */
@@ -3251,12 +3439,113 @@ static PyObject *
 iso_calendar_date_reduce(PyObject *self, PyObject *Py_UNUSED(ignored))
 {
     // Construct the tuple that this reduces to
-    PyObject * reduce_tuple = Py_BuildValue(
-        "O((OOO))", &PyTuple_Type,
-        PyTuple_GET_ITEM(self, 0),
-        PyTuple_GET_ITEM(self, 1),
-        PyTuple_GET_ITEM(self, 2)
-    );
+    PyObject* _builtResult4 = NULL;
+    {
+    _builtResult4 = PyTuple_New(2);
+    if (_builtResult4 == NULL) {
+        goto _builtResult4_cleanup;
+    }
+    {
+    PyObject* _builtResult4_tupleMember0;
+    PyObject* _objectArg = (PyObject*) &PyTuple_Type;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult4_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult4_tupleMember0 = NULL;
+    }
+    if (_builtResult4_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult4);
+        goto _builtResult4_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4, 0, _builtResult4_tupleMember0);
+    }
+    {
+    PyObject* _builtResult4_tupleMember1;
+    _builtResult4_tupleMember1 = PyTuple_New(1);
+    if (_builtResult4_tupleMember1 == NULL) {
+        goto _builtResult4_tupleMember1_cleanup;
+    }
+    {
+    PyObject* _builtResult4_tupleMember1_tupleMember0;
+    _builtResult4_tupleMember1_tupleMember0 = PyTuple_New(3);
+    if (_builtResult4_tupleMember1_tupleMember0 == NULL) {
+        goto _builtResult4_tupleMember1_tupleMember0_cleanup;
+    }
+    {
+    PyObject* _builtResult4_tupleMember1_tupleMember0_tupleMember0;
+    PyObject* _objectArg = (PyObject*) PyTuple_GET_ITEM(self, 0);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult4_tupleMember1_tupleMember0_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult4_tupleMember1_tupleMember0_tupleMember0 = NULL;
+    }
+    if (_builtResult4_tupleMember1_tupleMember0_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult4_tupleMember1_tupleMember0);
+        goto _builtResult4_tupleMember1_tupleMember0_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4_tupleMember1_tupleMember0, 0, _builtResult4_tupleMember1_tupleMember0_tupleMember0);
+    }
+    {
+    PyObject* _builtResult4_tupleMember1_tupleMember0_tupleMember1;
+    PyObject* _objectArg = (PyObject*) PyTuple_GET_ITEM(self, 1);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult4_tupleMember1_tupleMember0_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult4_tupleMember1_tupleMember0_tupleMember1 = NULL;
+    }
+    if (_builtResult4_tupleMember1_tupleMember0_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult4_tupleMember1_tupleMember0);
+        goto _builtResult4_tupleMember1_tupleMember0_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4_tupleMember1_tupleMember0, 1, _builtResult4_tupleMember1_tupleMember0_tupleMember1);
+    }
+    {
+    PyObject* _builtResult4_tupleMember1_tupleMember0_tupleMember2;
+    PyObject* _objectArg = (PyObject*) PyTuple_GET_ITEM(self, 2);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult4_tupleMember1_tupleMember0_tupleMember2 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult4_tupleMember1_tupleMember0_tupleMember2 = NULL;
+    }
+    if (_builtResult4_tupleMember1_tupleMember0_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult4_tupleMember1_tupleMember0);
+        goto _builtResult4_tupleMember1_tupleMember0_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4_tupleMember1_tupleMember0, 2, _builtResult4_tupleMember1_tupleMember0_tupleMember2);
+    }
+    _builtResult4_tupleMember1_tupleMember0_cleanup: ;
+    if (_builtResult4_tupleMember1_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult4_tupleMember1);
+        goto _builtResult4_tupleMember1_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4_tupleMember1, 0, _builtResult4_tupleMember1_tupleMember0);
+    }
+    _builtResult4_tupleMember1_cleanup: ;
+    if (_builtResult4_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult4);
+        goto _builtResult4_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult4, 1, _builtResult4_tupleMember1);
+    }
+    _builtResult4_cleanup: ;
+    }
+    PyObject * reduce_tuple = _builtResult4;
 
     return reduce_tuple;
 }
@@ -3411,7 +3700,44 @@ date_replace(PyDateTime_Date *self, PyObject *args, PyObject *kw)
     if (! PyArg_ParseTupleAndKeywords(args, kw, "|iii:replace", date_kws,
                                       &year, &month, &day))
         return NULL;
-    tuple = Py_BuildValue("iii", year, month, day);
+    {
+    PyObject* _builtResult5 = NULL;
+    {
+    _builtResult5 = PyTuple_New(3);
+    if (_builtResult5 == NULL) {
+        goto _builtResult5_cleanup;
+    }
+    {
+    PyObject* _builtResult5_tupleMember0;
+    _builtResult5_tupleMember0 = PyLong_FromLong(year);
+    if (_builtResult5_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult5);
+        goto _builtResult5_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult5, 0, _builtResult5_tupleMember0);
+    }
+    {
+    PyObject* _builtResult5_tupleMember1;
+    _builtResult5_tupleMember1 = PyLong_FromLong(month);
+    if (_builtResult5_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult5);
+        goto _builtResult5_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult5, 1, _builtResult5_tupleMember1);
+    }
+    {
+    PyObject* _builtResult5_tupleMember2;
+    _builtResult5_tupleMember2 = PyLong_FromLong(day);
+    if (_builtResult5_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult5);
+        goto _builtResult5_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult5, 2, _builtResult5_tupleMember2);
+    }
+    _builtResult5_cleanup: ;
+    }
+    tuple = _builtResult5;
+    } 
     if (tuple == NULL)
         return NULL;
     clone = date_new(Py_TYPE(self), tuple, NULL);
@@ -3463,13 +3789,89 @@ date_getstate(PyDateTime_Date *self)
     PyObject* field;
     field = PyBytes_FromStringAndSize((char*)self->data,
                                        _PyDateTime_DATE_DATASIZE);
-    return Py_BuildValue("(N)", field);
+    {
+    PyObject* _builtResult6 = NULL;
+    {
+    _builtResult6 = PyTuple_New(1);
+    if (_builtResult6 == NULL) {
+        goto _builtResult6_cleanup;
+    }
+    {
+    PyObject* _builtResult6_tupleMember0;
+    PyObject* _objectArg = (PyObject*) field;
+    if (_objectArg) {
+        _builtResult6_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult6_tupleMember0 = NULL;
+    }
+    if (_builtResult6_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult6);
+        goto _builtResult6_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult6, 0, _builtResult6_tupleMember0);
+    }
+    _builtResult6_cleanup: ;
+    }
+    
+    return _builtResult6;
+    }
+    
 }
 
 static PyObject *
 date_reduce(PyDateTime_Date *self, PyObject *arg)
 {
-    return Py_BuildValue("(ON)", Py_TYPE(self), date_getstate(self));
+    {
+    PyObject* _builtResult7 = NULL;
+    {
+    _builtResult7 = PyTuple_New(2);
+    if (_builtResult7 == NULL) {
+        goto _builtResult7_cleanup;
+    }
+    {
+    PyObject* _builtResult7_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult7_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult7_tupleMember0 = NULL;
+    }
+    if (_builtResult7_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult7);
+        goto _builtResult7_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult7, 0, _builtResult7_tupleMember0);
+    }
+    {
+    PyObject* _builtResult7_tupleMember1;
+    PyObject* _objectArg = (PyObject*) date_getstate(self);
+    if (_objectArg) {
+        _builtResult7_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult7_tupleMember1 = NULL;
+    }
+    if (_builtResult7_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult7);
+        goto _builtResult7_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult7, 1, _builtResult7_tupleMember1);
+    }
+    _builtResult7_cleanup: ;
+    }
+    
+    return _builtResult7;
+    }
+    
 }
 
 static PyMethodDef date_methods[] = {
@@ -3773,10 +4175,121 @@ tzinfo_reduce(PyObject *self, PyObject *Py_UNUSED(ignored))
 
     if (state == Py_None) {
         Py_DECREF(state);
-        return Py_BuildValue("(ON)", Py_TYPE(self), args);
+        {
+        PyObject* _builtResult9 = NULL;
+        {
+        _builtResult9 = PyTuple_New(2);
+        if (_builtResult9 == NULL) {
+            goto _builtResult9_cleanup;
+        }
+        {
+        PyObject* _builtResult9_tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult9_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult9_tupleMember0 = NULL;
+        }
+        if (_builtResult9_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult9);
+            goto _builtResult9_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult9, 0, _builtResult9_tupleMember0);
+        }
+        {
+        PyObject* _builtResult9_tupleMember1;
+        PyObject* _objectArg = (PyObject*) args;
+        if (_objectArg) {
+            _builtResult9_tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult9_tupleMember1 = NULL;
+        }
+        if (_builtResult9_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult9);
+            goto _builtResult9_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult9, 1, _builtResult9_tupleMember1);
+        }
+        _builtResult9_cleanup: ;
+        }
+        
+        return _builtResult9;
+        }
+        
     }
     else
-        return Py_BuildValue("(ONN)", Py_TYPE(self), args, state);
+        {
+        PyObject* _builtResult8 = NULL;
+        {
+        _builtResult8 = PyTuple_New(3);
+        if (_builtResult8 == NULL) {
+            goto _builtResult8_cleanup;
+        }
+        {
+        PyObject* _builtResult8_tupleMember0;
+        PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult8_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult8_tupleMember0 = NULL;
+        }
+        if (_builtResult8_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult8);
+            goto _builtResult8_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult8, 0, _builtResult8_tupleMember0);
+        }
+        {
+        PyObject* _builtResult8_tupleMember1;
+        PyObject* _objectArg = (PyObject*) args;
+        if (_objectArg) {
+            _builtResult8_tupleMember1 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult8_tupleMember1 = NULL;
+        }
+        if (_builtResult8_tupleMember1 == NULL) {
+            Py_CLEAR(_builtResult8);
+            goto _builtResult8_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult8, 1, _builtResult8_tupleMember1);
+        }
+        {
+        PyObject* _builtResult8_tupleMember2;
+        PyObject* _objectArg = (PyObject*) state;
+        if (_objectArg) {
+            _builtResult8_tupleMember2 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult8_tupleMember2 = NULL;
+        }
+        if (_builtResult8_tupleMember2 == NULL) {
+            Py_CLEAR(_builtResult8);
+            goto _builtResult8_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult8, 2, _builtResult8_tupleMember2);
+        }
+        _builtResult8_cleanup: ;
+        }
+        
+        return _builtResult8;
+        }
+        
 }
 
 static PyMethodDef tzinfo_methods[] = {
@@ -4012,8 +4525,86 @@ static PyObject *
 timezone_getinitargs(PyDateTime_TimeZone *self, PyObject *Py_UNUSED(ignored))
 {
     if (self->name == NULL)
-        return Py_BuildValue("(O)", self->offset);
-    return Py_BuildValue("(OO)", self->offset, self->name);
+        {
+        PyObject* _builtResult11 = NULL;
+        {
+        _builtResult11 = PyTuple_New(1);
+        if (_builtResult11 == NULL) {
+            goto _builtResult11_cleanup;
+        }
+        {
+        PyObject* _builtResult11_tupleMember0;
+        PyObject* _objectArg = (PyObject*) self->offset;
+        if (_objectArg) {
+            Py_INCREF(_objectArg);
+            _builtResult11_tupleMember0 = _objectArg;
+        } else {
+            if (!PyErr_Occurred()) {
+                PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+            }
+            _builtResult11_tupleMember0 = NULL;
+        }
+        if (_builtResult11_tupleMember0 == NULL) {
+            Py_CLEAR(_builtResult11);
+            goto _builtResult11_cleanup;
+        }
+        PyTuple_SET_ITEM(_builtResult11, 0, _builtResult11_tupleMember0);
+        }
+        _builtResult11_cleanup: ;
+        }
+        
+        return _builtResult11;
+        }
+        
+    {
+    PyObject* _builtResult10 = NULL;
+    {
+    _builtResult10 = PyTuple_New(2);
+    if (_builtResult10 == NULL) {
+        goto _builtResult10_cleanup;
+    }
+    {
+    PyObject* _builtResult10_tupleMember0;
+    PyObject* _objectArg = (PyObject*) self->offset;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult10_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult10_tupleMember0 = NULL;
+    }
+    if (_builtResult10_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult10);
+        goto _builtResult10_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult10, 0, _builtResult10_tupleMember0);
+    }
+    {
+    PyObject* _builtResult10_tupleMember1;
+    PyObject* _objectArg = (PyObject*) self->name;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult10_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult10_tupleMember1 = NULL;
+    }
+    if (_builtResult10_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult10);
+        goto _builtResult10_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult10, 1, _builtResult10_tupleMember1);
+    }
+    _builtResult10_cleanup: ;
+    }
+    
+    return _builtResult10;
+    }
+    
 }
 
 static PyMethodDef timezone_methods[] = {
@@ -4385,12 +4976,98 @@ time_strftime(PyDateTime_Time *self, PyObject *args, PyObject *kw)
      * timetuple.  The year is forced to (the otherwise nonsensical)
      * 1900 to work around that.
      */
-    tuple = Py_BuildValue("iiiiiiiii",
-                          1900, 1, 1, /* year, month, day */
-                  TIME_GET_HOUR(self),
-                  TIME_GET_MINUTE(self),
-                  TIME_GET_SECOND(self),
-                  0, 1, -1); /* weekday, daynum, dst */
+    {
+    PyObject* _builtResult12 = NULL;
+    {
+    _builtResult12 = PyTuple_New(9);
+    if (_builtResult12 == NULL) {
+        goto _builtResult12_cleanup;
+    }
+    {
+    PyObject* _builtResult12_tupleMember0;
+    _builtResult12_tupleMember0 = PyLong_FromLong(1900);
+    if (_builtResult12_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 0, _builtResult12_tupleMember0);
+    }
+    {
+    PyObject* _builtResult12_tupleMember1;
+    _builtResult12_tupleMember1 = PyLong_FromLong(1);
+    if (_builtResult12_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 1, _builtResult12_tupleMember1);
+    }
+    {
+    PyObject* _builtResult12_tupleMember2;
+    _builtResult12_tupleMember2 = PyLong_FromLong(1);
+    if (_builtResult12_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 2, _builtResult12_tupleMember2);
+    }
+    {
+    PyObject* _builtResult12_tupleMember3;
+    _builtResult12_tupleMember3 = PyLong_FromLong(TIME_GET_HOUR(self));
+    if (_builtResult12_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 3, _builtResult12_tupleMember3);
+    }
+    {
+    PyObject* _builtResult12_tupleMember4;
+    _builtResult12_tupleMember4 = PyLong_FromLong(TIME_GET_MINUTE(self));
+    if (_builtResult12_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 4, _builtResult12_tupleMember4);
+    }
+    {
+    PyObject* _builtResult12_tupleMember5;
+    _builtResult12_tupleMember5 = PyLong_FromLong(TIME_GET_SECOND(self));
+    if (_builtResult12_tupleMember5 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 5, _builtResult12_tupleMember5);
+    }
+    {
+    PyObject* _builtResult12_tupleMember6;
+    _builtResult12_tupleMember6 = PyLong_FromLong(0);
+    if (_builtResult12_tupleMember6 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 6, _builtResult12_tupleMember6);
+    }
+    {
+    PyObject* _builtResult12_tupleMember7;
+    _builtResult12_tupleMember7 = PyLong_FromLong(1);
+    if (_builtResult12_tupleMember7 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 7, _builtResult12_tupleMember7);
+    }
+    {
+    PyObject* _builtResult12_tupleMember8;
+    _builtResult12_tupleMember8 = PyLong_FromLong(-1);
+    if (_builtResult12_tupleMember8 == NULL) {
+        Py_CLEAR(_builtResult12);
+        goto _builtResult12_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult12, 8, _builtResult12_tupleMember8);
+    }
+    _builtResult12_cleanup: ;
+    }
+    tuple = _builtResult12;
+                  }  /* weekday, daynum, dst */
     if (tuple == NULL)
         return NULL;
     assert(PyTuple_Size(tuple) == 9);
@@ -4554,7 +5231,71 @@ time_replace(PyDateTime_Time *self, PyObject *args, PyObject *kw)
                         "fold must be either 0 or 1");
         return NULL;
     }
-    tuple = Py_BuildValue("iiiiO", hh, mm, ss, us, tzinfo);
+    {
+    PyObject* _builtResult13 = NULL;
+    {
+    _builtResult13 = PyTuple_New(5);
+    if (_builtResult13 == NULL) {
+        goto _builtResult13_cleanup;
+    }
+    {
+    PyObject* _builtResult13_tupleMember0;
+    _builtResult13_tupleMember0 = PyLong_FromLong(hh);
+    if (_builtResult13_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult13);
+        goto _builtResult13_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult13, 0, _builtResult13_tupleMember0);
+    }
+    {
+    PyObject* _builtResult13_tupleMember1;
+    _builtResult13_tupleMember1 = PyLong_FromLong(mm);
+    if (_builtResult13_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult13);
+        goto _builtResult13_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult13, 1, _builtResult13_tupleMember1);
+    }
+    {
+    PyObject* _builtResult13_tupleMember2;
+    _builtResult13_tupleMember2 = PyLong_FromLong(ss);
+    if (_builtResult13_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult13);
+        goto _builtResult13_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult13, 2, _builtResult13_tupleMember2);
+    }
+    {
+    PyObject* _builtResult13_tupleMember3;
+    _builtResult13_tupleMember3 = PyLong_FromLong(us);
+    if (_builtResult13_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult13);
+        goto _builtResult13_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult13, 3, _builtResult13_tupleMember3);
+    }
+    {
+    PyObject* _builtResult13_tupleMember4;
+    PyObject* _objectArg = (PyObject*) tzinfo;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult13_tupleMember4 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult13_tupleMember4 = NULL;
+    }
+    if (_builtResult13_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult13);
+        goto _builtResult13_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult13, 4, _builtResult13_tupleMember4);
+    }
+    _builtResult13_cleanup: ;
+    }
+    tuple = _builtResult13;
+    } 
     if (tuple == NULL)
         return NULL;
     clone = time_new(Py_TYPE(self), tuple, NULL);
@@ -4647,16 +5388,131 @@ static PyObject *
 time_reduce_ex(PyDateTime_Time *self, PyObject *args)
 {
     int proto;
-    if (!PyArg_ParseTuple(args, "i:__reduce_ex__", &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__reduce_ex__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&proto = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
-    return Py_BuildValue("(ON)", Py_TYPE(self), time_getstate(self, proto));
+    {
+    PyObject* _builtResult14 = NULL;
+    {
+    _builtResult14 = PyTuple_New(2);
+    if (_builtResult14 == NULL) {
+        goto _builtResult14_cleanup;
+    }
+    {
+    PyObject* _builtResult14_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult14_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult14_tupleMember0 = NULL;
+    }
+    if (_builtResult14_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult14);
+        goto _builtResult14_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult14, 0, _builtResult14_tupleMember0);
+    }
+    {
+    PyObject* _builtResult14_tupleMember1;
+    PyObject* _objectArg = (PyObject*) time_getstate(self, proto);
+    if (_objectArg) {
+        _builtResult14_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult14_tupleMember1 = NULL;
+    }
+    if (_builtResult14_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult14);
+        goto _builtResult14_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult14, 1, _builtResult14_tupleMember1);
+    }
+    _builtResult14_cleanup: ;
+    }
+    
+    return _builtResult14;
+    }
+    
 }
 
 static PyObject *
 time_reduce(PyDateTime_Time *self, PyObject *arg)
 {
-    return Py_BuildValue("(ON)", Py_TYPE(self), time_getstate(self, 2));
+    {
+    PyObject* _builtResult15 = NULL;
+    {
+    _builtResult15 = PyTuple_New(2);
+    if (_builtResult15 == NULL) {
+        goto _builtResult15_cleanup;
+    }
+    {
+    PyObject* _builtResult15_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult15_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult15_tupleMember0 = NULL;
+    }
+    if (_builtResult15_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult15);
+        goto _builtResult15_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult15, 0, _builtResult15_tupleMember0);
+    }
+    {
+    PyObject* _builtResult15_tupleMember1;
+    PyObject* _objectArg = (PyObject*) time_getstate(self, 2);
+    if (_objectArg) {
+        _builtResult15_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult15_tupleMember1 = NULL;
+    }
+    if (_builtResult15_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult15);
+        goto _builtResult15_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult15, 1, _builtResult15_tupleMember1);
+    }
+    _builtResult15_cleanup: ;
+    }
+    
+    return _builtResult15;
+    }
+    
 }
 
 static PyMethodDef time_methods[] = {
@@ -5153,7 +6009,35 @@ datetime_strptime(PyObject *cls, PyObject *args)
     PyObject *string, *format;
     _Py_IDENTIFIER(_strptime_datetime);
 
-    if (!PyArg_ParseTuple(args, "UU:strptime", &string, &format))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("strptime", _nargs, 2, 2)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 0))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 0))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 0)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&string = PyTuple_GET_ITEM(args, 0);
+        }
+        {
+            if (!PyUnicode_Check(PyTuple_GET_ITEM(args, 1))) {
+                PyErr_Format(PyExc_TypeError, "must be str, not %.50s", Py_TYPE(PyTuple_GET_ITEM(args, 1))->tp_name);
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            if (PyUnicode_READY(PyTuple_GET_ITEM(args, 1)) == -1) {
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&format = PyTuple_GET_ITEM(args, 1);
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
     if (module == NULL) {
@@ -5866,7 +6750,98 @@ datetime_replace(PyDateTime_DateTime *self, PyObject *args, PyObject *kw)
                         "fold must be either 0 or 1");
         return NULL;
     }
-    tuple = Py_BuildValue("iiiiiiiO", y, m, d, hh, mm, ss, us, tzinfo);
+    {
+    PyObject* _builtResult16 = NULL;
+    {
+    _builtResult16 = PyTuple_New(8);
+    if (_builtResult16 == NULL) {
+        goto _builtResult16_cleanup;
+    }
+    {
+    PyObject* _builtResult16_tupleMember0;
+    _builtResult16_tupleMember0 = PyLong_FromLong(y);
+    if (_builtResult16_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 0, _builtResult16_tupleMember0);
+    }
+    {
+    PyObject* _builtResult16_tupleMember1;
+    _builtResult16_tupleMember1 = PyLong_FromLong(m);
+    if (_builtResult16_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 1, _builtResult16_tupleMember1);
+    }
+    {
+    PyObject* _builtResult16_tupleMember2;
+    _builtResult16_tupleMember2 = PyLong_FromLong(d);
+    if (_builtResult16_tupleMember2 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 2, _builtResult16_tupleMember2);
+    }
+    {
+    PyObject* _builtResult16_tupleMember3;
+    _builtResult16_tupleMember3 = PyLong_FromLong(hh);
+    if (_builtResult16_tupleMember3 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 3, _builtResult16_tupleMember3);
+    }
+    {
+    PyObject* _builtResult16_tupleMember4;
+    _builtResult16_tupleMember4 = PyLong_FromLong(mm);
+    if (_builtResult16_tupleMember4 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 4, _builtResult16_tupleMember4);
+    }
+    {
+    PyObject* _builtResult16_tupleMember5;
+    _builtResult16_tupleMember5 = PyLong_FromLong(ss);
+    if (_builtResult16_tupleMember5 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 5, _builtResult16_tupleMember5);
+    }
+    {
+    PyObject* _builtResult16_tupleMember6;
+    _builtResult16_tupleMember6 = PyLong_FromLong(us);
+    if (_builtResult16_tupleMember6 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 6, _builtResult16_tupleMember6);
+    }
+    {
+    PyObject* _builtResult16_tupleMember7;
+    PyObject* _objectArg = (PyObject*) tzinfo;
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult16_tupleMember7 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult16_tupleMember7 = NULL;
+    }
+    if (_builtResult16_tupleMember7 == NULL) {
+        Py_CLEAR(_builtResult16);
+        goto _builtResult16_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult16, 7, _builtResult16_tupleMember7);
+    }
+    _builtResult16_cleanup: ;
+    }
+    tuple = _builtResult16;
+    } 
     if (tuple == NULL)
         return NULL;
     clone = datetime_new(Py_TYPE(self), tuple, NULL);
@@ -6303,16 +7278,131 @@ static PyObject *
 datetime_reduce_ex(PyDateTime_DateTime *self, PyObject *args)
 {
     int proto;
-    if (!PyArg_ParseTuple(args, "i:__reduce_ex__", &proto))
+    int _parseResult = 1;
+    {
+        Py_ssize_t _nargs = PyTuple_GET_SIZE(args);
+        if (!_PyArg_CheckPositional("__reduce_ex__", _nargs, 1, 1)) {
+            _parseResult = 0; goto _parse_exit_label;
+        }
+        {
+            long _ival = PyLong_AsLong(PyTuple_GET_ITEM(args, 0));
+            if (_ival == -1 && PyErr_Occurred()) {
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival > INT_MAX) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is greater than maximum");
+                _parseResult = 0; goto _parse_exit_label;
+            } else if (_ival < INT_MIN) {
+                PyErr_SetString(PyExc_OverflowError, "signed integer is less than minimum");
+                _parseResult = 0; goto _parse_exit_label;
+            }
+            *&proto = _ival;
+        }
+    }
+    _parse_exit_label:
+    if (!_parseResult)
         return NULL;
 
-    return Py_BuildValue("(ON)", Py_TYPE(self), datetime_getstate(self, proto));
+    {
+    PyObject* _builtResult17 = NULL;
+    {
+    _builtResult17 = PyTuple_New(2);
+    if (_builtResult17 == NULL) {
+        goto _builtResult17_cleanup;
+    }
+    {
+    PyObject* _builtResult17_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult17_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult17_tupleMember0 = NULL;
+    }
+    if (_builtResult17_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult17);
+        goto _builtResult17_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult17, 0, _builtResult17_tupleMember0);
+    }
+    {
+    PyObject* _builtResult17_tupleMember1;
+    PyObject* _objectArg = (PyObject*) datetime_getstate(self, proto);
+    if (_objectArg) {
+        _builtResult17_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult17_tupleMember1 = NULL;
+    }
+    if (_builtResult17_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult17);
+        goto _builtResult17_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult17, 1, _builtResult17_tupleMember1);
+    }
+    _builtResult17_cleanup: ;
+    }
+    
+    return _builtResult17;
+    }
+    
 }
 
 static PyObject *
 datetime_reduce(PyDateTime_DateTime *self, PyObject *arg)
 {
-    return Py_BuildValue("(ON)", Py_TYPE(self), datetime_getstate(self, 2));
+    {
+    PyObject* _builtResult18 = NULL;
+    {
+    _builtResult18 = PyTuple_New(2);
+    if (_builtResult18 == NULL) {
+        goto _builtResult18_cleanup;
+    }
+    {
+    PyObject* _builtResult18_tupleMember0;
+    PyObject* _objectArg = (PyObject*) Py_TYPE(self);
+    if (_objectArg) {
+        Py_INCREF(_objectArg);
+        _builtResult18_tupleMember0 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult18_tupleMember0 = NULL;
+    }
+    if (_builtResult18_tupleMember0 == NULL) {
+        Py_CLEAR(_builtResult18);
+        goto _builtResult18_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult18, 0, _builtResult18_tupleMember0);
+    }
+    {
+    PyObject* _builtResult18_tupleMember1;
+    PyObject* _objectArg = (PyObject*) datetime_getstate(self, 2);
+    if (_objectArg) {
+        _builtResult18_tupleMember1 = _objectArg;
+    } else {
+        if (!PyErr_Occurred()) {
+            PyErr_SetString(PyExc_SystemError, "NULL object passed to Py_BuildValue");
+        }
+        _builtResult18_tupleMember1 = NULL;
+    }
+    if (_builtResult18_tupleMember1 == NULL) {
+        Py_CLEAR(_builtResult18);
+        goto _builtResult18_cleanup;
+    }
+    PyTuple_SET_ITEM(_builtResult18, 1, _builtResult18_tupleMember1);
+    }
+    _builtResult18_cleanup: ;
+    }
+    
+    return _builtResult18;
+    }
+    
 }
 
 static PyMethodDef datetime_methods[] = {
