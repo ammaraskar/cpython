@@ -4358,7 +4358,7 @@ PyTypeObject PyType_Type = {
     sizeof(PyHeapTypeObject),                   /* tp_basicsize */
     sizeof(PyMemberDef),                        /* tp_itemsize */
     (destructor)type_dealloc,                   /* tp_dealloc */
-    offsetof(PyTypeObject, tp_vectorcall),      /* tp_vectorcall_offset */
+    Py_VECTORCALL_TAGGED_FUNC(type_vectorcall), /* tp_vectorcall_offset */
     0,                                          /* tp_getattr */
     0,                                          /* tp_setattr */
     0,                                          /* tp_as_async */

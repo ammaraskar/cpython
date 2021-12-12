@@ -36,7 +36,6 @@ _PyFunction_FromConstructor(PyFrameConstructor *constr)
     op->func_weakreflist = NULL;
     op->func_module = NULL;
     op->func_annotations = NULL;
-    op->vectorcall = _PyFunction_Vectorcall;
     op->func_version = 0;
     _PyObject_GC_TRACK(op);
     return op;
@@ -113,7 +112,6 @@ PyFunction_NewWithQualName(PyObject *code, PyObject *globals, PyObject *qualname
     op->func_weakreflist = NULL;
     op->func_module = module;
     op->func_annotations = NULL;
-    op->vectorcall = _PyFunction_Vectorcall;
     op->func_version = 0;
     _PyObject_GC_TRACK(op);
     return (PyObject *)op;
@@ -736,7 +734,7 @@ PyTypeObject PyFunction_Type = {
     sizeof(PyFunctionObject),
     0,
     (destructor)func_dealloc,                   /* tp_dealloc */
-    offsetof(PyFunctionObject, vectorcall),     /* tp_vectorcall_offset */
+    Py_VECTORCALL_TAGGED_FUNC(_PyFunction_Vectorcall), /* tp_vectorcall_offset */
     0,                                          /* tp_getattr */
     0,                                          /* tp_setattr */
     0,                                          /* tp_as_async */

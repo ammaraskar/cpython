@@ -367,6 +367,8 @@ given type object has a specified feature.
 #endif
 
 #define Py_VECTORCALL_TAG_BIT (1)
+#define Py_VECTORCALL_TAGGED_FUNC(ptr) \
+    (((Py_ssize_t) ptr) + Py_VECTORCALL_TAG_BIT)
 
 /* Set if the type is 'ready' -- fully initialized */
 #define Py_TPFLAGS_READY (1UL << 12)

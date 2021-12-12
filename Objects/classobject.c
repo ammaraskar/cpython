@@ -112,7 +112,6 @@ PyMethod_New(PyObject *func, PyObject *self)
     im->im_func = func;
     Py_INCREF(self);
     im->im_self = self;
-    im->vectorcall = method_vectorcall;
     _PyObject_GC_TRACK(im);
     return (PyObject *)im;
 }
@@ -335,7 +334,7 @@ PyTypeObject PyMethod_Type = {
     sizeof(PyMethodObject),
     0,
     (destructor)method_dealloc,                 /* tp_dealloc */
-    offsetof(PyMethodObject, vectorcall),       /* tp_vectorcall_offset */
+    Py_VECTORCALL_TAGGED_FUNC(method_vectorcall), /* tp_vectorcall_offset */
     0,                                          /* tp_getattr */
     0,                                          /* tp_setattr */
     0,                                          /* tp_as_async */
