@@ -278,12 +278,17 @@ PyVectorcall_Call(PyObject *callable, PyObject *tuple, PyObject *kwargs)
     assert(PyCallable_Check(callable));
 
     vectorcallfunc func;
-    memcpy(&func, (char *) callable + offset, sizeof(func));
-    if (func == NULL) {
-        _PyErr_Format(tstate, PyExc_TypeError,
-                      "'%.200s' object does not support vectorcall",
-                      Py_TYPE(callable)->tp_name);
-        return NULL;
+    // Check if the tag bit is set indicating this is directly the func pointer.
+    if (Py_VECTORCALL_TAG_BIT & offset) {
+        func = (vectorcallfunc) (offset & ~Py_VECTORCALL_TAG_BIT);
+    } else {
+        memcpy(&func, (char *) callable + offset, sizeof(func));
+        if (func == NULL) {
+            _PyErr_Format(tstate, PyExc_TypeError,
+                        "'%.200s' object does not support vectorcall",
+                        Py_TYPE(callable)->tp_name);
+            return NULL;
+        }
     }
 
     return _PyVectorcall_Call(tstate, func, callable, tuple, kwargs);

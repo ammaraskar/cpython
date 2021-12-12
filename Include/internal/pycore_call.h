@@ -46,6 +46,11 @@ _PyVectorcall_FunctionInline(PyObject *callable)
     Py_ssize_t offset = tp->tp_vectorcall_offset;
     assert(offset > 0);
 
+    // Check if the tag bit is set indicating this is directly the func pointer.
+    if (Py_VECTORCALL_TAG_BIT & offset) {
+        return (vectorcallfunc) (offset & ~Py_VECTORCALL_TAG_BIT);
+    }
+
     vectorcallfunc ptr;
     memcpy(&ptr, (char *) callable + offset, sizeof(ptr));
     return ptr;

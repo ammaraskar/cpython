@@ -366,6 +366,8 @@ given type object has a specified feature.
 #define _Py_TPFLAGS_HAVE_VECTORCALL Py_TPFLAGS_HAVE_VECTORCALL
 #endif
 
+#define Py_VECTORCALL_TAG_BIT (1)
+
 /* Set if the type is 'ready' -- fully initialized */
 #define Py_TPFLAGS_READY (1UL << 12)
 
