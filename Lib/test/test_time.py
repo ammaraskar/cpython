@@ -490,6 +490,8 @@ class TimeTestCase(unittest.TestCase):
         t1 = time.mktime(lt1)
         self.assertAlmostEqual(t1, t0, delta=0.2)
 
+    @unittest.skipIf(sys.platform == "win32",
+                     "mktime with negative values not supported on windows")
     def test_mktime(self):
         # Issue #1726687
         for t in (-2, -1, 0, 1):
@@ -764,6 +766,8 @@ class TestPytime(unittest.TestCase):
         if lt.tm_gmtoff is None:
             self.assertTrue(not hasattr(time, "timezone"))
         else:
+            print(lt)
+            print(lt.tm_gmtoff, time.timezone, time.altzone)
             self.assertEqual(lt.tm_gmtoff, -[time.timezone, time.altzone][lt.tm_isdst])
         if lt.tm_zone is None:
             self.assertTrue(not hasattr(time, "tzname"))
